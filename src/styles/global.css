@@ -90,6 +90,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 24px);
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 [id] {
@@ -1980,6 +1981,13 @@ html[data-theme="light"] .theme-icon-sun {
   top: 12px;
 }
 
+.video-level .pill {
+  background: rgba(9, 12, 16, 0.72);
+  border-color: rgba(215, 168, 79, 0.45);
+  color: var(--brass-strong);
+  backdrop-filter: blur(8px);
+}
+
 .video-body {
   padding: 18px;
   display: flex;
@@ -3445,6 +3453,7 @@ tbody tr:hover td {
   border-bottom: 1px solid var(--line);
   font-size: 0.84rem;
   color: var(--muted);
+  overflow-wrap: anywhere;
 }
 
 .credits strong {
@@ -3748,6 +3757,12 @@ html.js .reveal.is-visible {
     font-size: 16px;
   }
 
+  .credits {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding-block: 14px;
+  }
+
   .container {
     width: min(calc(100% - 28px), var(--max));
   }
@@ -3921,6 +3936,38 @@ html.js .reveal.is-visible {
 
   .route-table {
     font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-inner {
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-name {
+    font-size: 0.98rem;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .header-tools {
+    gap: 4px;
+  }
+
+  .icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero-float {
+    display: none;
   }
 }
 

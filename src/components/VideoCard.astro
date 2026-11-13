@@ -16,20 +16,21 @@ const thumb = `https://i.ytimg.com/vi/${video.youtubeId}/mqdefault.jpg`;
   data-level={video.level}
   data-topic={video.topic}
 >
-  <button
+  <a
     class="video-thumb"
-    type="button"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     data-video-id={video.youtubeId}
     data-video-title={video.title}
-    data-video-fallback={href}
-    aria-label={`播放视频：${video.title}`}
   >
+    <span class="sr-only">播放视频：{video.title}</span>
     <img src={thumb} alt="" loading="lazy" width="320" height="180" onerror="this.style.display='none'" />
     <span class="video-level"><span class="pill pill-accent">{video.level}</span></span>
     <span class="play-badge" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z" /></svg>
     </span>
-  </button>
+  </a>
   <div class="video-body">
     <div class="video-channel">{video.channel} · {video.topic}</div>
     <h3><a href={href} target="_blank" rel="noopener noreferrer">{video.title}</a></h3>

@@ -11,7 +11,7 @@ const levels = ["全部", "入门", "进阶", "高级", "全阶段"];
 const langs = ["全部", "英文", "中文", "多语"];
 const types = ["全部", "免费课程", "免费试听", "付费课程", "曲谱工具", "参考网站", "播客社区"];
 
-const featuredVideos = VIDEOS.filter((video) => ["gussow-day1", "tomlin-first", "tomlin-chug", "liam-bend", "com-blues", "ricci-sonnyboy"].includes(video.id));
+const lessonVideos = VIDEOS;
 ---
 
 <BaseLayout
@@ -70,14 +70,14 @@ const featuredVideos = VIDEOS.filter((video) => ["gussow-day1", "tomlin-first", 
   <section class="section">
     <div class="container">
       <SectionHead
-        kicker="Twelve lessons"
-        title="12 支值得反复看的课"
-        description="从第一课、shuffle、chug、压音、12 小节到舌堵、超吹和第三把位。每支都配“为什么看”。"
+        kicker="The video library"
+        title="20 支值得反复看的课"
+        description="从第一课、shuffle、chug、压音、12 小节到舌堵、超吹、第三把位和聆听。每支都配“为什么看”。"
         link="/toolkit/#jam"
         linkLabel="看完去 jam"
       />
       <div class="video-grid">
-        {featuredVideos.map((video) => <VideoCard video={video} />)}
+        {lessonVideos.map((video) => <VideoCard video={video} />)}
       </div>
       <div class="btn-row section-foot">
         <a class="btn btn-ghost" href="#all-courses">看完整课程与资源库 <span aria-hidden="true">→</span></a>

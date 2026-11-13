@@ -23,5 +23,5 @@ export const SITE_STATS = [
   { value: "10", label: "章系统知识" },
   { value: "48", label: "周学习计划" },
   { value: "20+", label: "免费课程入口" },
-  { value: "8", label: "互动练习工具" },
+  { value: "6", label: "互动练习工具" },
 ];

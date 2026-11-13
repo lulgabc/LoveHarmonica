@@ -134,13 +134,12 @@ function closeVideo() {
 }
 
 document.querySelectorAll<HTMLElement>("[data-video-id]").forEach((trigger) => {
-  trigger.addEventListener("click", () => {
+  trigger.addEventListener("click", (event) => {
     const id = trigger.dataset.videoId;
-    if (!id || !videoDialog || !videoFrame) {
-      const fallback = trigger.dataset.videoFallback;
-      if (fallback) window.open(fallback, "_blank", "noopener,noreferrer");
+    if (!id || !videoDialog || !videoFrame || typeof videoDialog.showModal !== "function") {
       return;
     }
+    event.preventDefault();
     lastVideoTrigger = trigger;
     const title = trigger.dataset.videoTitle || "视频";
     if (videoTitle) videoTitle.textContent = title;
