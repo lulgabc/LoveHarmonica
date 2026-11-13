@@ -136,7 +136,7 @@ export const LICKS: Lick[] = [
     description:
       "G Mixolydian 是第二把位蓝调的“母音阶”：G A B C D E F。它比蓝调音阶更亮，适合在 I7 和弦上制造“开阔”的感觉。",
     how: "先慢速上下行，再把 b7（-5）停在长音上，听它和 I7 和弦的张力。",
-    tokens: [t(2, "draw", 0, 1), t(3, "draw", 1, 1), t(4, "blow", 0, 1), t(4, "draw", 0, 1), t(5, "draw", 0, 1), t(6, "blow", 0, 1), t(6, "draw", 0, 1), t(7, "blow", 0, 2)],
+    tokens: [t(2, "draw", 0, 1), t(3, "draw", 2, 1), t(3, "draw", 0, 1), t(4, "blow", 0, 1), t(4, "draw", 0, 1), t(5, "draw", 1, 1), t(5, "draw", 0, 1), t(6, "blow", 0, 2)],
   },
   {
     id: "jazz-blues-line",

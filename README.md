@@ -6,11 +6,11 @@ A Chinese-language blues harmonica field guide, 12-month roadmap, curated free-c
 
 ## What's inside
 
-- **基础知识** — 10 chapters: instrument, first notes, positions, bending/overbending, rhythm & tongue blocking, theory/improvisation, tone & amplification, gear & maintenance, history, glossary.
-- **12 个月路线图** — four phases, 48 weekly focus points, output tasks, checkpoints with local progress saving.
-- **免费课程库** — curated YouTube channels, free courses, free trials, tab sites, reference sites, podcasts and Chinese-language resources.
-- **大师名录** — 20+ blues harmonica players with recommended albums and listening notes.
-- **教材书单** — method books, technique books, history/culture and lick collections.
+- **基础知识** — 10 chapters: instrument, first notes, positions, bending/overbending, rhythm & tongue blocking, theory/improvisation, tone & amplification, gear & maintenance, history, glossary (89 terms).
+- **12 个月路线图** — four phases, 48 weekly focus points, output tasks, 20 checkpoints with local progress saving, plus a 10-tune starter repertoire.
+- **免费课程库** — 20 curated videos, 15 YouTube channels, 24 course/tab/reference/podcast entries, with free/paid/trial labels and Chinese-language resources.
+- **大师名录** — 21 blues harmonica players with recommended albums and listening notes.
+- **教材书单** — 16 method books, technique books, history/culture and lick collections.
 - **乐句工坊** — 10 playable tab phrases with Web Audio playback.
 - **练习室** — 12-bar jam machine, interactive harp map, 2nd-position key finder, metronome, 20-minute practice timer.
 
@@ -23,6 +23,8 @@ A Chinese-language blues harmonica field guide, 12-month roadmap, curated free-c
 - YouTube thumbnails and links; video playback opens a privacy-enhanced `youtube-nocookie.com` embed
 
 ## Local development
+
+Requires Node.js **22.23.4+** (Node 24 recommended; Astro 7 will refuse older versions).
 
 ```bash
 npm install

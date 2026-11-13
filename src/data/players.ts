@@ -271,7 +271,7 @@ export const PLAYERS: Player[] = [
       { title: "Big Boy", year: "1999", note: "把他的 blues 根基和爵士野心放在一起听。" },
       { title: "Blues Mongrel", year: "2005", note: "风格跨度很大，适合听他怎么处理不同编制。" },
     ],
-    keyTracks: ["Big Boy", "Blues Mongrel", "Doodle Oodle"],
+    keyTracks: ["Big Boy", "Blues Mongrel", "Up and at 'Em"],
     tags: ["爵士", "超吹", "现代"],
   },
   {
