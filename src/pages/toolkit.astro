@@ -1,0 +1,236 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import { url } from "../lib/url";
+import { ROUTINES } from "../data/roadmap";
+
+const jamKeys = ["G", "A", "C", "D", "E", "F", "Bb", "Eb"];
+const harpKeys = ["C", "A", "G", "D", "F", "Bb", "Eb", "E"];
+const songKeys = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+const keyLabels: Record<string, string> = {
+  C: "C", Db: "D♭", D: "D", Eb: "E♭", E: "E", F: "F", Gb: "G♭", G: "G", Ab: "A♭", A: "A", Bb: "B♭", B: "B",
+};
+const timerRoutine = ROUTINES[0];
+---
+
+<BaseLayout
+  title="练习室"
+  description="蓝调口琴互动练习室：12 小节伴奏机、交互式口琴音位图、第二把位换算器、节拍器、练习计时器。全部在浏览器本地运行。"
+  current="/toolkit"
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href={url("/")}>首页</a><span>/</span><span>练习室</span></div>
+      <span class="eyebrow" style="margin-top:18px;">The practice studio · browser-only</span>
+      <h1>今天，<br />先 jam 再说。</h1>
+      <p class="lead">
+        一个不需要注册、不会收集数据的练习室：12 小节伴奏、口琴音位图、第二把位换算、节拍器和计时器。
+        所有声音由浏览器实时合成，所有进度只保存在你的本地。
+      </p>
+      <div class="btn-row" style="margin-top:22px;">
+        <a class="btn btn-primary" href="#jam">打开 12 小节伴奏</a>
+        <a class="btn btn-ghost" href="#harp-map">查看音位图</a>
+        <a class="btn btn-ghost" href={url("/tabs/")}>去乐句工坊</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight" id="jam">
+    <div class="container">
+      <div class="tool-shell" data-jam>
+        <div class="tool-head">
+          <div>
+            <span class="tool-tag">01 · Jam machine</span>
+            <h2>12 小节伴奏机</h2>
+            <p>选择歌曲调、速度和 quick change，浏览器会实时生成一套 shuffle 伴奏。用第二把位口琴跟着吹。</p>
+          </div>
+          <span class="pill pill-accent">Web Audio · 实时合成</span>
+        </div>
+        <div class="tool-body">
+          <div class="tool-controls">
+            <div class="control">
+              <label for="jam-key">歌曲调</label>
+              <select id="jam-key" data-jam-key>
+                {jamKeys.map((key) => <option value={key} selected={key === "G"}>{keyLabels[key]} blues</option>)}
+              </select>
+            </div>
+            <div class="control">
+              <label for="jam-bpm">速度 <span data-jam-bpm-label>92</span> BPM</label>
+              <input id="jam-bpm" type="range" min="60" max="140" step="1" value="92" data-jam-bpm />
+            </div>
+            <label class="jam-toggle"><input type="checkbox" data-jam-quick checked /> Quick change</label>
+            <label class="jam-toggle"><input type="checkbox" data-jam-count checked /> 一小节 count-in</label>
+            <button class="tool-btn tool-btn-primary" type="button" data-jam-play>▶ 播放伴奏</button>
+          </div>
+
+          <div class="jam-grid" data-jam-grid aria-label="12 小节和弦进行"></div>
+
+          <div class="jam-status">
+            <span class="jam-pulse" data-jam-pulse></span>
+            <span>小节 <strong data-jam-bar>—</strong></span>
+            <span>和弦 <strong data-jam-chord>待开始</strong></span>
+            <span class="pill" data-jam-harp>C 调口琴 · 2nd position</span>
+          </div>
+          <p class="tool-note" style="margin-top:12px;">
+            提示：2nd position 下，C 琴吹 G 蓝调，A 琴吹 E 蓝调。点任意小节可以单独试听该和弦。
+            第一次播放需要浏览器允许音频。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="harp-map">
+    <div class="container">
+      <div class="tool-shell" data-harp-map>
+        <div class="tool-head">
+          <div>
+            <span class="tool-tag">02 · Harp map</span>
+            <h2>交互式音位图</h2>
+            <p>点任意孔听声音，切换口琴调，显示/隐藏压音。2 孔吸音用金框标出，它是第二把位的“家”。</p>
+          </div>
+          <span class="pill pill-accent">Click to hear</span>
+        </div>
+        <div class="tool-body">
+          <div class="tool-controls">
+            <div class="control">
+              <label for="harp-key">口琴调</label>
+              <select id="harp-key" data-harp-key>
+                {harpKeys.map((key) => <option value={key} selected={key === "C"}>{keyLabels[key]} 调</option>)}
+              </select>
+            </div>
+            <label class="jam-toggle"><input type="checkbox" data-harp-bends checked /> 显示压音</label>
+            <span class="pill" data-harp-root-label>2 孔吸音 = G（2nd position）</span>
+          </div>
+          <div class="harp-map" data-harp-grid></div>
+          <p class="tool-note harp-map-mobile-hint">左右滑动查看 7–10 孔 →</p>
+          <div class="harp-map-legend">
+            <span><i class="legend-dot"></i> 2 孔吸音 = 第二把位根音</span>
+            <span>小字 = 可压音（点击试听）</span>
+            <span>吹气孔在上，吸气孔在下</span>
+          </div>
+          <p class="tool-note" style="margin-top:12px;">标准 Richter 调音。不同型号/调音可能略有差异；以你的琴和调音器为准。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="key-finder">
+    <div class="container">
+      <div class="tool-shell" data-keyfinder>
+        <div class="tool-head">
+          <div>
+            <span class="tool-tag">03 · Key finder</span>
+            <h2>第二把位换算器</h2>
+            <p>选歌曲调，立刻知道该用哪把口琴。公式：口琴调 = 歌曲调 + 纯四度（5 个半音）。</p>
+          </div>
+          <span class="pill pill-accent">Cross Harp</span>
+        </div>
+        <div class="tool-body">
+          <div class="key-finder">
+            <div class="key-box">
+              <span>歌曲调</span>
+              <strong data-kf-song>G</strong>
+              <small>12 小节 blues</small>
+            </div>
+            <div class="key-arrow" aria-hidden="true">→</div>
+            <div class="key-box">
+              <span>第二把位口琴</span>
+              <strong data-kf-harp>C</strong>
+              <small>2nd position</small>
+            </div>
+          </div>
+          <div class="key-keyboard" style="margin-top:18px;">
+            {songKeys.map((key) => (
+              <button class:list={[key === "G" && "is-active"]} type="button" data-kf-key={key}>{keyLabels[key]}</button>
+            ))}
+          </div>
+          <p class="tool-note" data-kf-note style="margin-top:12px;">C 调口琴 · 2 孔吸音 = G（2nd position 根音）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="04 · Time & focus"
+        title="节拍器与练习计时器"
+        description="蓝调口琴先练时间，再练音。用 2 & 4 重音找 shuffle，用 20 分钟计时器把练习分成块。"
+      />
+      <div class="grid grid-2">
+        <div class="tool-shell" data-metronome>
+          <div class="tool-head">
+            <div>
+              <span class="tool-tag">Metronome</span>
+              <h3>节拍器</h3>
+              <p>2 &amp; 4 重音默认开启，也可以打开三连音细分。</p>
+            </div>
+            <span class="pill">40–208 BPM</span>
+          </div>
+          <div class="tool-body">
+            <div class="metro-display">
+              <span class="metro-bpm" data-metro-bpm>92</span>
+              <small style="color:var(--muted);font-size:0.68rem;letter-spacing:0.12em;">BPM</small>
+            </div>
+            <div class="beat-dots" aria-hidden="true">
+              <span class="beat-dot is-on" data-metro-dot></span>
+              <span class="beat-dot is-accent" data-metro-dot></span>
+              <span class="beat-dot" data-metro-dot></span>
+              <span class="beat-dot is-accent" data-metro-dot></span>
+            </div>
+            <input type="range" min="40" max="208" value="92" data-metro-range aria-label="BPM" style="width:100%;accent-color:var(--brass);" />
+            <div class="tool-controls" style="margin-top:16px;margin-bottom:0;">
+              <button class="tool-btn tool-btn-primary" type="button" data-metro-toggle>▶ 开始</button>
+              <button class="tool-btn" type="button" data-metro-tap>Tap tempo</button>
+              <label class="jam-toggle"><input type="checkbox" data-metro-accent checked /> 2 &amp; 4 重音</label>
+              <label class="jam-toggle"><input type="checkbox" data-metro-shuffle /> 三连音细分</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-shell" data-timer>
+          <div class="tool-head">
+            <div>
+              <span class="tool-tag">Practice timer</span>
+              <h3>20 分钟练习计时器</h3>
+              <p>呼吸 → 技巧 → 曲目 → 即兴 → 录音。每段结束会响铃。</p>
+            </div>
+            <span class="pill">20 min</span>
+          </div>
+          <div class="tool-body">
+            <div class="timer-display" data-timer-display>20:00</div>
+            <div class="timer-segments">
+              {timerRoutine.blocks.map((block, index) => (
+                <div class:list={["timer-segment", index === 0 && "is-active"]} data-timer-segment data-minutes={block.minutes}>
+                  <span>{block.name}</span>
+                  <span>{block.minutes} min</span>
+                </div>
+              ))}
+            </div>
+            <div class="tool-controls" style="margin-top:16px;margin-bottom:0;">
+              <button class="tool-btn tool-btn-primary" type="button" data-timer-toggle>▶ 开始练习</button>
+              <button class="tool-btn" type="button" data-timer-reset>重置</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="padding:clamp(24px,4vw,42px);text-align:center;">
+        <span class="eyebrow" style="justify-content:center;">Next step</span>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);margin:12px auto;">Tools 只是开始，句子才是音乐。</h2>
+        <p class="lead" style="max-width:620px;margin:0 auto 22px;">
+          打开乐句工坊，选一条 2 小节乐句，跟伴奏吹 10 遍。然后把其中一个音改掉，让它变成你的。
+        </p>
+        <div class="btn-row" style="justify-content:center;">
+          <a class="btn btn-primary" href={url("/tabs/")}>去乐句工坊</a>
+          <a class="btn btn-ghost" href={url("/roadmap/")}>回到路线图</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+import type { Book } from "../data/books";
+
+interface Props {
+  book: Book;
+}
+
+const { book } = Astro.props;
+---
+
+<article class="book-card reveal" data-filter-item data-category={book.category} data-level={book.level} data-lang={book.lang}>
+  <div
+    class="book-cover"
+    style={`--cover-from:${book.cover.from};--cover-to:${book.cover.to};--cover-ink:${book.cover.ink};background:linear-gradient(140deg, ${book.cover.from}, ${book.cover.to});`}
+    aria-hidden="true"
+  >
+    <div class="book-cover-text">
+      <div>
+        <strong>{book.title}</strong>
+        <small>{book.author}</small>
+        <div style="margin-top:8px;font-size:0.42rem;letter-spacing:0.14em;">{book.cover.label}</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3><a href={book.url} target="_blank" rel="noopener noreferrer">{book.title}</a></h3>
+    <div class="book-author">{book.author} · {book.year}</div>
+    <p>{book.oneLiner}</p>
+    <div class="book-meta">
+      <span class="pill">{book.category}</span>
+      <span class="pill pill-accent">{book.level}</span>
+      <span class="pill">{book.lang}</span>
+    </div>
+    <div class="book-level">为什么读：{book.why}</div>
+    <div class="book-level" style="color:var(--faint);">涵盖：{book.contents.join(" · ")}</div>
+  </div>
+</article>

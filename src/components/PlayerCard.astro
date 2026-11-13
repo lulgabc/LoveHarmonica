@@ -1,0 +1,44 @@
+---
+import type { Player } from "../data/players";
+
+interface Props {
+  player: Player;
+  detailed?: boolean;
+}
+
+const { player, detailed = false } = Astro.props;
+const initial = player.name.replace(/[^A-Za-z]/g, "").charAt(0) || "♪";
+---
+
+<article
+  class="player-card reveal"
+  id={player.id}
+  data-filter-item
+  data-era={player.era}
+  data-style={player.style}
+>
+  <span class="player-years">{player.years}</span>
+  <span class="player-initial" aria-hidden="true">{initial}</span>
+  <div class="player-role">{player.style}</div>
+  <h3>{player.name}</h3>
+  {player.nameZh && <div class="player-zh">{player.nameZh}</div>}
+  <p>{player.oneLiner}</p>
+  {detailed && <p style="margin-top:10px;">{player.bio}</p>}
+  <div class="player-listen">
+    {!detailed && (
+      <><span>先听：</span>{player.listen[0].title}{player.listen[0].year ? ` (${player.listen[0].year})` : ""}</>
+    )}
+    {detailed && (
+      <div style="margin-top:0;display:grid;gap:7px;">
+        {player.listen.map((item) => (
+          <div>
+            <strong style="color:var(--text-soft);font-weight:600;">{item.title}{item.year ? ` · ${item.year}` : ""}</strong>
+            <div style="color:var(--muted);font-size:0.74rem;line-height:1.55;">{item.note}</div>
+          </div>
+        ))}
+        <div style="margin-top:4px;color:var(--faint);font-size:0.7rem;">标志性：{player.signature}</div>
+        <div style="margin-top:2px;color:var(--faint);font-size:0.7rem;">代表作：{player.keyTracks.join(" · ")}</div>
+      </div>
+    )}
+  </div>
+</article>

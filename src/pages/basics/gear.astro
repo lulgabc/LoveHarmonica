@@ -1,0 +1,160 @@
+---
+import ChapterLayout from "../../components/ChapterLayout.astro";
+
+const toc = [
+  { id: "first", label: "第一把琴" },
+  { id: "keys", label: "第二、第三把买什么调" },
+  { id: "models", label: "型号与价格带" },
+  { id: "mic", label: "麦克风" },
+  { id: "amp", label: "音箱" },
+  { id: "accessories", label: "配件清单" },
+  { id: "maintenance", label: "维护与维修" },
+  { id: "budget", label: "三档预算方案" },
+  { id: "used", label: "二手与定制琴" },
+];
+---
+
+<ChapterLayout
+  title="器材、选购与维护"
+  description="从第一把 C 琴到第二把 A 琴，从 Green Bullet 到小电子管音箱，从清洁到换簧。把钱花在真正影响声音和手感的地方。"
+  number="08"
+  chapterId="gear"
+  toc={toc}
+  read="13 分钟"
+  meta={["器材", "选购", "维护", "预算"]}
+>
+  <p class="lead">
+    器材很重要，但没有你想的那么重要。一把 300 元的 Special 20，足够你学两年；
+    一把 3000 元的定制琴，不会自动让你会压音。这一章帮你把钱花在“响应、音准、耐用”上，而不是 logo 上。
+  </p>
+
+  <h2 id="first">第一把琴：C 调，10 孔，塑料格</h2>
+  <p>
+    第一把琴的选择标准：<strong>音准可靠、响应容易、压音不费劲、你愿意每天拿起来</strong>。
+    最稳妥的答案仍然是：C 调、10 孔全音阶、塑料或密封性好的琴格、200–500 元。
+  </p>
+  <ul>
+    <li><strong>Hohner Special 20</strong>：最稳的“第一把好琴”。响应好、耐用、配件多。</li>
+    <li><strong>Lee Oskar Major Diatonic</strong>：音色明亮、耐用，适合摇滚/流行/蓝调。</li>
+    <li><strong>Seydel Session Steel</strong>：不锈钢簧片、寿命长，响应直接。</li>
+    <li><strong>Suzuki Manji</strong>：音色厚、响应快，性价比高。</li>
+  </ul>
+  <p>
+    不建议第一把买：<strong>木格 Marine Band 1896</strong>（可能刮嘴/膨胀，虽然音色经典）、<strong>超低价玩具琴</strong>（漏气、音不准、压音困难）、<strong>定制琴</strong>（你还不知道自己需要什么）。
+  </p>
+
+  <h2 id="keys">第二、第三把买什么调</h2>
+  <p>
+    第二把位的公式：口琴调 = 歌曲调 + 纯四度。你常 jam 的调，决定你缺哪把琴。
+    对大多数蓝调/摇滚 jam，最实用的是：
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>顺序</th><th>口琴调</th><th>第二把位可吹</th><th>为什么</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>C</td><td>G</td><td>教材标准，先学它</td></tr>
+        <tr><td>2</td><td>A</td><td>E</td><td>吉他最爱的 E 蓝调</td></tr>
+        <tr><td>3</td><td>Bb</td><td>F</td><td>钢琴/管乐友好，很多经典录音用 F</td></tr>
+        <tr><td>4</td><td>G</td><td>D</td><td>明亮、常用</td></tr>
+        <tr><td>5</td><td>D</td><td>A</td><td>吉他友好</td></tr>
+        <tr><td>6</td><td>F</td><td>C</td><td>钢琴友好</td></tr>
+        <tr><td>7</td><td>E</td><td>B</td><td>较少见，但有用</td></tr>
+        <tr><td>8</td><td>Eb</td><td>Bb</td><td>管乐调，进阶</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    如果你只买两把：<strong>C + A</strong>。如果三把：<strong>C + A + Bb</strong>。
+    不要一次买 7 把“套装”，除非你已经知道自己会长期玩，并且需要这些调。
+  </p>
+
+  <h2 id="models">型号与价格带</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>价位（人民币）</th><th>代表型号</th><th>特点</th></tr></thead>
+      <tbody>
+        <tr><td>200–350</td><td>Hohner Special 20、Lee Oskar、Suzuki Harpmaster</td><td>入门/进阶工作琴，足够用很久</td></tr>
+        <tr><td>350–600</td><td>Seydel Session Steel、Suzuki Manji、Hohner Rocket</td><td>更好的响应、音色和耐用度</td></tr>
+        <tr><td>600–1000</td><td>Hohner Crossover、Marine Band Deluxe、Seydel 1847</td><td>高端音色，适合确定长期投入</td></tr>
+        <tr><td>1000+</td><td>定制琴、改装琴</td><td>个性化响应/音色，不适合盲买</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">
+    价格为大致参考，随地区、汇率和渠道变化。买之前先确认售后、调音和退换政策。
+  </p>
+
+  <h2 id="mic">麦克风：先别急着买</h2>
+  <p>
+    如果你还在练单音和压音，手机录音就够。等你开始和乐队 jam、需要电声音量时，再考虑口琴麦。
+  </p>
+  <ul>
+    <li><strong>Shure 520DX “Green Bullet”</strong>：经典子弹麦，高阻抗，直接推小音箱。缺点是笨重、容易反馈。</li>
+    <li><strong>Audix FireBall</strong>：现代口琴麦，握持舒服、反馈控制更好，适合舞台。</li>
+    <li><strong>Shure SM58</strong>：通用动圈麦，清音演出可靠；不是“口琴专用”，但很实用。</li>
+    <li><strong>阻抗匹配</strong>：高阻抗麦接现代音频接口时，可能需要 DI/阻抗转换，否则声音会薄。</li>
+  </ul>
+
+  <h2 id="amp">音箱：小瓦数，大声音</h2>
+  <p>
+    蓝调口琴的经典音色来自“小功率电子管音箱被推到头”。5–15W 的 combo 足够在 club 里用，也更容易录。
+  </p>
+  <ul>
+    <li><strong>Fender Champ / Princeton</strong>：经典小管箱，Clean 和过载都很好听。</li>
+    <li><strong>Gibson GA-5 / Harpgear / Lone Wolf / Mission</strong>：口琴玩家常用的小管箱/定制箱。</li>
+    <li><strong>Bassman 等大箱</strong>：音量太大，家里很难开到“甜点”，除非你有衰减器或隔音空间。</li>
+  </ul>
+  <p>
+    如果你没有音箱，可以先用品脱/软件模拟，或者直接用清音录音。音色的核心仍然是你的呼吸和双手。
+  </p>
+
+  <h2 id="accessories">配件清单</h2>
+  <ul>
+    <li><strong>琴盒</strong>：硬盒或软包，保护簧片和琴格。多把琴可以用 7 孔/12 孔琴包。</li>
+    <li><strong>超细纤维布</strong>：擦琴身和盖板，不要用纸巾（掉屑）。</li>
+    <li><strong>调音器</strong>：手机 App 即可，用来检查压音和音准。</li>
+    <li><strong>节拍器</strong>：手机 App 或本站工具。</li>
+    <li><strong>录音设备</strong>：手机 + 安静房间，先别买复杂设备。</li>
+    <li><strong>小螺丝刀</strong>：如果琴可拆，用来清洁/换簧；不会拆就不要硬拆。</li>
+    <li><strong>琴格蜡/润滑</strong>：少数木格琴需要，但不是新手必需。</li>
+  </ul>
+
+  <h2 id="maintenance">维护与维修</h2>
+  <p>口琴的寿命很大程度取决于“口水管理”和“清洁习惯”。</p>
+  <ul>
+    <li><strong>吹前漱口、暖琴</strong>：减少冷凝水和食物残渣。</li>
+    <li><strong>吹后轻拍</strong>：在手掌上轻拍，把口水拍出；不要用力敲。</li>
+    <li><strong>自然干燥</strong>：放在通风处，不要密封在潮湿盒子里。</li>
+    <li><strong>不要泡水</strong>：木格琴尤其不能泡；塑料格可以有限度冲洗，但要彻底干燥。</li>
+    <li><strong>不要用酒精/消毒液</strong>：可能损坏琴格和簧片。</li>
+    <li><strong>跑音/不响</strong>：先检查是否有异物卡住；不要自己乱掰簧片。找专业维修。</li>
+    <li><strong>换簧</strong>：需要工具和技术，建议先找制琴师/维修师。</li>
+  </ul>
+
+  <h2 id="budget">三档预算方案</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>方案</th><th>预算</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td>极简入门</td><td>300–500 元</td><td>一把 C 调 Special 20 / Lee Oskar + 手机 App 节拍器/调音器</td></tr>
+        <tr><td>稳定学习</td><td>1000–1500 元</td><td>C + A 两把琴 + 琴盒 + 调音器 + 手机录音</td></tr>
+        <tr><td>电声入门</td><td>3000–5000 元</td><td>C/A/Bb 三把琴 + 子弹麦 + 5–10W 小管箱 + 线材</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    先花在“琴”和“时间”上，再花在“麦”和“箱”上。你弹得越多，越知道自己需要什么。
+  </p>
+
+  <h2 id="used">二手与定制琴</h2>
+  <p>
+    二手琴可以捡漏，也可以踩坑。检查：簧片是否锈蚀、音准是否严重偏离、琴格是否膨胀/开裂、螺丝是否滑牙、吹吸是否漏气。
+    定制琴（custom harmonica）通常经过 gap、reed profiling、embossing、调音等处理，响应和音色更个性化，但价格高、等待久。
+    第一把琴不建议定制；等你明确知道自己喜欢什么响应和音色，再考虑。
+  </p>
+
+  <div class="callout callout-listen">
+    <strong class="callout-title">这一章听完再走</strong>
+    <p>听 Little Walter 的《Juke》和 Big Walter 的《Easy》。两把琴、两种音色，但都不是靠“贵设备”堆出来的。先练呼吸和手型。</p>
+  </div>
+</ChapterLayout>

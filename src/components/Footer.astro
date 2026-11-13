@@ -1,0 +1,68 @@
+---
+import { SITE } from "../lib/site";
+import { url } from "../lib/url";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href={url("/")}>
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 44 44" fill="none">
+              <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1" opacity=".45" />
+              <path d="M10 17.5h24v9H10z" stroke="currentColor" stroke-width="1.1" opacity=".72" />
+              <path d="M14 17.5v9M18 17.5v9M22 17.5v9M26 17.5v9M30 17.5v9" stroke="currentColor" stroke-width=".8" opacity=".55" />
+              <circle cx="22" cy="22" r="2.2" fill="currentColor" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">LoveHarmonica</span>
+            <span class="brand-sub">Blues Harp Field Guide</span>
+          </span>
+        </a>
+        <p>为喜欢蓝调的人，做一份可以真正跟下去的中文口琴地图。<br />不追求速成，只追求每天都有声音。</p>
+        <div class="footer-quote">“You can't buy the blues. You have to live them.”</div>
+      </div>
+
+      <div class="footer-col">
+        <h3>学习</h3>
+        <ul>
+          <li><a href={url("/basics/")}>基础知识 · 10 章</a></li>
+          <li><a href={url("/basics/first-notes/")}>第一口呼吸</a></li>
+          <li><a href={url("/roadmap/")}>12 个月路线图</a></li>
+          <li><a href={url("/toolkit/")}>互动练习室</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>资料</h3>
+        <ul>
+          <li><a href={url("/courses/")}>免费课程与频道</a></li>
+          <li><a href={url("/tabs/")}>乐句与 Tab</a></li>
+          <li><a href={url("/players/")}>大师名录</a></li>
+          <li><a href={url("/books/")}>教材与书单</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>项目</h3>
+        <ul>
+          <li><a href={url("/about/")}>关于本站</a></li>
+          <li><a href={SITE.repo} target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></li>
+          <li><a href={`${SITE.repo}/issues`} target="_blank" rel="noopener noreferrer">纠错与建议 ↗</a></li>
+          <li><a href="#top">回到顶部 ↑</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-wordmark" aria-hidden="true">LOVE HARMONICA</div>
+
+    <div class="footer-bottom">
+      <span>© {year} LoveHarmonica · 个人学习项目，非商业用途</span>
+      <span>Built with Astro · Deployed on GitHub Pages</span>
+    </div>
+  </div>
+</footer>

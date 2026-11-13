@@ -1,0 +1,169 @@
+---
+import ChapterLayout from "../../components/ChapterLayout.astro";
+import { url } from "../../lib/url";
+
+const toc = [
+  { id: "twelve", label: "12 小节：蓝调的棋盘" },
+  { id: "shuffle", label: "Shuffle：长—短的呼吸" },
+  { id: "chug", label: "Chug：一个人撑起乐队" },
+  { id: "train", label: "Train rhythm" },
+  { id: "tongue", label: "舌堵：音色与和弦" },
+  { id: "octave", label: "八度、双音与 split" },
+  { id: "comping", label: "伴奏 vs 主奏" },
+  { id: "practice", label: "20 分钟节奏练习" },
+];
+---
+
+<ChapterLayout
+  title="节奏、Chug 与舌堵"
+  description="Shuffle、12 小节、chug、train、舌堵、八度、slap：这一章讲清楚“一个人怎么撑起一支乐队”，以及为什么节奏比音阶更重要。"
+  number="05"
+  chapterId="rhythm"
+  toc={toc}
+  read="15 分钟"
+  meta={["shuffle", "12 小节", "chug", "舌堵"]}
+>
+  <p class="lead">
+    蓝调口琴首先是一件节奏乐器。你吹什么音，远不如“什么时候吹、吹多长、什么时候不吹”重要。
+    这一章从 12 小节开始，把 chug、shuffle、train 和舌堵串成一条线。
+  </p>
+
+  <h2 id="twelve">12 小节：蓝调的棋盘</h2>
+  <p>
+    12 小节蓝调（12-bar blues）是最核心的曲式。它像一张棋盘：和弦在固定位置循环，你在上面走句子。
+    最常见的进行是 I–IV–V。以 G 调为例：
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>小节</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Slow change</strong></td><td>G7</td><td>G7</td><td>G7</td><td>G7</td><td>C7</td><td>C7</td><td>G7</td><td>G7</td><td>D7</td><td>C7</td><td>G7</td><td>D7</td></tr>
+        <tr><td><strong>Quick change</strong></td><td>G7</td><td>C7</td><td>G7</td><td>G7</td><td>C7</td><td>C7</td><td>G7</td><td>G7</td><td>D7</td><td>C7</td><td>G7</td><td>D7</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    <strong>Quick change</strong> 在第 2 小节就进入 IV7，更“急”、更推动；<strong>slow change</strong> 前 4 小节都停在 I7，更稳、更适合慢蓝调。
+    第 11–12 小节是 <strong>turnaround</strong>，负责把音乐带回第 1 小节。
+  </p>
+  <p>
+    你可以用最少的音玩 12 小节：第 1–4 小节吹 -2，第 5–6 小节吹 4，第 7–8 小节回 -2，第 9 小节 -4，第 10 小节 4，第 11–12 小节 -2 → -4。
+    这已经是一段“能听”的蓝调伴奏。
+  </p>
+
+  <h2 id="shuffle">Shuffle：长—短的呼吸</h2>
+  <p>
+    Shuffle 是把八分音符奏成“长—短”的感觉，接近三连音里的“前两个音连起来，第三个音单独”。
+    数拍时不是“1 & 2 &”平均，而是“da—DA da—DA”。
+  </p>
+  <ul>
+    <li><strong>先数拍</strong>：1–2–3–4，脚踩四分音符。</li>
+    <li><strong>再加八分</strong>：1 & 2 & 3 & 4 &，但把“&”稍微往后推，找到 swing 的感觉。</li>
+    <li><strong>用 chug 练</strong>：1 拍低音、2 拍和弦、3 拍低音、4 拍和弦；先不要加旋律。</li>
+    <li><strong>跟录音</strong>：Little Walter、Junior Wells、James Cotton 的 shuffle 都比节拍器更“有人味”。</li>
+  </ul>
+  <div class="callout callout-tip">
+    <strong class="callout-title">2 &amp; 4 的重音</strong>
+    <p>蓝调和爵士一样，重音常在 2、4 拍。你可以先用节拍器只响 2、4 拍，感受“后面推着走”的律动。</p>
+  </div>
+
+  <h2 id="chug">Chug：一个人撑起乐队</h2>
+  <p>
+    Chug 是有节奏地吹/吸和弦或双音，制造“泵”一样的伴奏感。它是口琴手在没有乐队时，仍然能撑起 12 小节的秘诀。
+  </p>
+  <p>一个最基础的 chug 型：</p>
+  <ul>
+    <li>第 1 拍：低音（例如 -2 或 2 孔和弦）</li>
+    <li>第 2 拍：和弦（含 2–3 个孔）</li>
+    <li>第 3 拍：低音</li>
+    <li>第 4 拍：和弦</li>
+  </ul>
+  <p>
+    关键是“音头”要清楚，像舌头在说“ta”。不要每个音都吹满；chug 的魅力在于短促、弹性、留白。
+    当你能稳定 chug，就可以在 chug 之间插入单音句子，形成“伴奏 + 主奏”的一个人乐队。
+  </p>
+
+  <h2 id="train">Train rhythm</h2>
+  <p>
+    火车节奏是 blues 口琴的经典语汇：用 chug、双音、滑音和舌堵模仿蒸汽火车的“轰—轰—”、“呜—呜—”和节奏推进。
+    它不只是音效，而是一种把节奏、音色和故事结合起来的演奏方式。
+  </p>
+  <p>入门可以先练：</p>
+  <ol>
+    <li>稳定的 chug：1 &amp; 3 拍低音，2 &amp; 4 拍和弦。</li>
+    <li>加一个双音长音，像火车汽笛。</li>
+    <li>用 -2 → -3' → 4 的滑音，模仿火车启动。</li>
+    <li>在 chug 之间留半拍空白，让节奏“呼吸”。</li>
+  </ol>
+
+  <h2 id="tongue">舌堵：音色与和弦</h2>
+  <p>
+    舌堵（tongue blocking）是蓝调口琴的另一个世界。嘴巴含住 3–4 个孔，舌头堵住左边，只让右边一个孔发声。
+    它给你：
+  </p>
+  <ul>
+    <li><strong>更厚的音色</strong>：舌头和口腔形成更大的共鸣空间。</li>
+    <li><strong>和弦与八度</strong>：舌头抬起/放下，可以同时发出多个音。</li>
+    <li><strong>Slap / lift</strong>：舌头快速离开/盖上，制造节奏性的“啪”声。</li>
+    <li><strong>舌堵压音</strong>：用舌头的移动控制压音，音色更宽。</li>
+  </ul>
+  <p>
+    舌堵不是“高级玩家的炫技”，而是蓝调口琴的一种基本声音。很多 Chicago 大师（Big Walter、Little Walter、James Cotton）
+    都大量使用舌堵。你可以先学唇含，但不要永远停在唇含。
+  </p>
+  <div class="callout callout-warn">
+    <strong class="callout-title">别急着切换</strong>
+    <p>如果你还没有稳定的单音，先不要同时学舌堵。每天 5 分钟舌堵练习足够；等单音和压音稳定，再逐步增加。</p>
+  </div>
+
+  <h2 id="octave">八度、双音与 split</h2>
+  <p>
+    舌堵让你可以同时发出两个音。最常见的是八度：舌头在中间，左右各留一个孔，发出相差 8 度的两个音。
+    八度在 jump blues、swing 和 Chicago 里非常常见，声音厚、有“号角感”。
+  </p>
+  <ul>
+    <li><strong>八度</strong>：例如 4 孔吹 + 7 孔吹（C + C），或 2 孔吸 + 5 孔吸（G + G）。</li>
+    <li><strong>双音</strong>：相邻两个孔同时发声，音程可能是三度、四度、五度。</li>
+    <li><strong>Split</strong>：舌头在中间隔开，同时发出两个不相邻的音，常用于五度/八度和声。</li>
+  </ul>
+  <p>
+    八度不是“音量大”，而是“声音宽”。练习时先只吹一个八度长音，确认两个音都干净；再用它吹一个 12 小节 shuffle。
+  </p>
+
+  <h2 id="comping">伴奏 vs 主奏</h2>
+  <p>
+    蓝调口琴有两个角色：<strong>伴奏（comping）</strong>和<strong>主奏（lead）</strong>。
+    很多人只练 solo，结果一进乐队就不知道该干嘛。其实伴奏能力决定你有没有工作。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>角色</th><th>你要做什么</th><th>不要做什么</th></tr></thead>
+      <tbody>
+        <tr><td>伴奏</td><td>稳定 chug、留空间、支持歌手、在句尾填空</td><td>一直吹、抢拍、盖住人声</td></tr>
+        <tr><td>主奏</td><td>有开头/发展/结尾、call & response、动态</td><td>从头到尾堆音、没有留白</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    一个很好的练习：和一位吉他手（或伴奏音轨）约定——前 12 小节你只 chug，后 12 小节你 solo。
+    你会发现“少吹”反而更难，也更有音乐性。
+  </p>
+
+  <h2 id="practice">20 分钟节奏练习</h2>
+  <ol>
+    <li><strong>4 分钟</strong>：60 BPM，1 &amp; 3 拍低音、2 &amp; 4 拍和弦。</li>
+    <li><strong>4 分钟</strong>：加 2 &amp; 4 重音，找到 shuffle 的“长—短”。</li>
+    <li><strong>4 分钟</strong>：在 chug 之间加一个 -2 长音。</li>
+    <li><strong>4 分钟</strong>：12 小节里，前 8 小节 chug，后 4 小节 solo。</li>
+    <li><strong>4 分钟</strong>：录下来，听“有没有断拍、有没有留白”。</li>
+  </ol>
+  <p>
+    打开 <a href={url("/toolkit/#jam")}>12 小节伴奏机</a>，把 BPM 设在 70–90，先慢后快。
+    如果你能在 70 BPM 吹得稳，再加速；不要一开始就追 120。
+  </p>
+
+  <div class="callout callout-listen">
+    <strong class="callout-title">这一章听完再走</strong>
+    <p>听 Junior Wells 的《Hoodoo Man Blues》和 James Cotton 的《The Creeper》。注意鼓、贝斯和口琴如何一起“推”节奏，而不是各吹各的。</p>
+  </div>
+</ChapterLayout>

@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import { SITE } from "../lib/site";
+import { url } from "../lib/url";
+---
+
+<BaseLayout
+  title="关于本站"
+  description="LoveHarmonica 是一个中文蓝调口琴学习项目：基础知识、12 个月路线、免费课程、大师名录、书单和互动练习室。"
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href={url("/")}>首页</a><span>/</span><span>关于</span></div>
+      <span class="eyebrow" style="margin-top:18px;">About this project</span>
+      <h1>为喜欢蓝调的人，<br />做一份能跟下去的地图。</h1>
+      <p class="lead">
+        LoveHarmonica 是一个个人学习项目。它不卖课、不卖琴、不收集你的数据。
+        它只是把“一个自学者在蓝调口琴里踩过的坑、找到的好资源、有效的练习顺序”整理成一个可以用的网站。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <h2 class="sr-only">项目说明</h2>
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <span class="card-index">01</span>
+          <h3>为什么做这个站</h3>
+          <p>网上不缺口琴视频，缺的是“下一步该练什么”。这个站的核心不是资料量，而是顺序、判断和可执行的练习。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">02</span>
+          <h3>它不是什么</h3>
+          <p>它不是一个“21 天速成”课程，也不是权威考级教材。它是一个自学者写给自学者的路线图，允许你停、退、重来。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">03</span>
+          <h3>怎么用</h3>
+          <p>先读“第一口呼吸”，打开练习室，按路线图走。卡住时回来看对应章节，而不是继续收藏新视频。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Editorial principles"
+        title="我们怎么选内容"
+        description="不是“看起来厉害”，而是“对自学者真的有用”。"
+      />
+      <div class="grid grid-2">
+        <article class="card reveal">
+          <h3>免费优先</h3>
+          <p>能免费学的，先标免费。付费课程必须明确标价/试用，并写清楚“买的是什么”（结构、反馈、社群），而不是暗示“不买就学不会”。</p>
+        </article>
+        <article class="card reveal">
+          <h3>结构优先</h3>
+          <p>一个只有零散 lick 的频道，适合补充，不适合当主线。我们更愿意推荐有明确顺序、能告诉你“下一步”的课程。</p>
+        </article>
+        <article class="card reveal">
+          <h3>尊重原作</h3>
+          <p>所有外部课程、视频、书籍都链接到官方/原作者页面。本站不托管盗版 PDF、不重新上传完整课程、不冒充任何老师。</p>
+        </article>
+        <article class="card reveal">
+          <h3>可验证</h3>
+          <p>历史、专辑、年份等信息尽量交叉核对；不确定的地方宁可省略。发现错误欢迎在 GitHub Issues 指出。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Sources"
+        title="主要参考与致谢"
+        description="本站的知识来自公开资料、官方课程页面、唱片信息与长期聆听。以下是最重要的参考来源。"
+      />
+      <div class="credits"><strong>课程与教学</strong><span>Adam Gussow / Modern Blues Harmonica、Tomlin Leckie、Liam Ward / LearnTheHarmonica、Ronnie Shellist / Harmonica123、Luke Clebsch / Harmonica.com、David Barrett / BluesHarmonica.com、Howard Levy / ArtistWorks、Jason Ricci、Filip Jers、张晓松 / 蓝调口琴网。</span></div>
+      <div class="credits"><strong>历史与参考</strong><span>Kim Field《Harmonicas, Harps and Heavy Breathers》、Pat Missin's Harmonica Site、Hohner 官方资料、Britannica、Smithsonian / 唱片内页与公开访谈。</span></div>
+      <div class="credits"><strong>书籍</strong><span>Winslow Yerxa、David Barrett、Steve Baker、Jon Gindick、Howard Levy、Steve Cohen、Robert Palmer、Mike Rowe、Adam Gussow 等作者的公开出版物。</span></div>
+      <div class="credits"><strong>唱片与艺人</strong><span>Little Walter、Big Walter Horton、Sonny Boy Williamson I/II、Howlin' Wolf、Junior Wells、James Cotton、Charlie Musselwhite、Paul Butterfield、Kim Wilson、William Clarke、Sugar Blue、Howard Levy、Carlos del Junco、Jason Ricci、Dennis Gruenling、Filip Jers、Toots Thielemans、Stevie Wonder、Lee Oskar、Indiara Sfair 等。</span></div>
+      <div class="credits"><strong>技术</strong><span>Astro、GitHub Pages、Web Audio API。所有交互音频由浏览器实时合成，不使用第三方音频文件或跟踪脚本。</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        <div class="card">
+          <span class="kicker">Disclaimer</span>
+          <h2 style="font-size:1.7rem;margin:10px 0;">关于外部链接</h2>
+          <p>本站链接的课程、视频、书籍和网站均归原作者/机构所有。价格、免费试用期、课程内容和可用性可能变化，请以对方页面为准。本站不收取推广费，也不对第三方内容作任何保证。</p>
+          <p style="margin-top:12px;">如果你发现链接失效、信息过时或有版权问题，请在 GitHub Issues 留言，我们会尽快处理。</p>
+        </div>
+        <div class="card">
+          <span class="kicker">License</span>
+          <h2 style="font-size:1.7rem;margin:10px 0;">内容与代码</h2>
+          <p>本站文字与原创图表采用 <strong>CC BY-NC-SA 4.0</strong>：欢迎非商业转载/改编，请署名并同样开放共享。代码采用 MIT License。</p>
+          <p style="margin-top:12px;">外部视频、书籍封面、商标和唱片信息归各自权利人所有，本站仅作介绍与评论之用。</p>
+          <div class="btn-row" style="margin-top:18px;">
+            <a class="btn btn-ghost" href={SITE.repo} target="_blank" rel="noopener noreferrer">查看 GitHub 仓库 ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="padding:clamp(24px,4vw,42px);text-align:center;">
+        <span class="eyebrow" style="justify-content:center;">Keep in touch</span>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);margin:12px auto;">发现错误，或者想一起完善？</h2>
+        <p class="lead" style="max-width:620px;margin:0 auto 22px;">
+          这是一个持续迭代的项目。欢迎补充课程、纠正信息、指出失效链接，或者分享你的练习方法。
+        </p>
+        <div class="btn-row" style="justify-content:center;">
+          <a class="btn btn-primary" href={`${SITE.repo}/issues`} target="_blank" rel="noopener noreferrer">打开 GitHub Issues</a>
+          <a class="btn btn-ghost" href={url("/roadmap/")}>回到路线图</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

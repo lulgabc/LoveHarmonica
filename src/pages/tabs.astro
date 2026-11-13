@@ -1,0 +1,153 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import { LICKS, tokenLabel, type LickToken } from "../data/licks";
+import { url } from "../lib/url";
+
+const BLOW = ["C", "E", "G", "C", "E", "G", "C", "E", "G", "C"];
+const DRAW = ["D", "G", "B", "D", "F", "A", "B", "D", "F", "A"];
+const NAMES = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+const PITCH: Record<string, number> = { C: 0, Db: 1, D: 2, Eb: 3, E: 4, F: 5, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
+
+function noteName(token: LickToken): string {
+  const base = token.dir === "blow" ? BLOW[token.hole - 1] : DRAW[token.hole - 1];
+  return NAMES[(PITCH[base] - token.bend + 12) % 12];
+}
+---
+
+<BaseLayout
+  title="乐句工坊"
+  description="蓝调口琴乐句与 tab：第一口呼吸、第二把位、Sonny Boy 问答、火车节奏、Little Walter 转身、慢蓝调、第三把位、Mixolydian。可在浏览器中播放。"
+  current="/tabs"
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href={url("/")}>首页</a><span>/</span><span>乐句工坊</span></div>
+      <span class="eyebrow" style="margin-top:18px;">The lick lab · 10 phrases</span>
+      <h1>先学一句，<br />再把它变成你的。</h1>
+      <p class="lead">
+        这些不是“神级 solo”，而是 10 条可以真正练进去的短句：单音、第二把位、Sonny Boy 式问答、火车节奏、
+        turnaround、慢蓝调、第三把位和 Mixolydian。点任意音听声音，或整句播放。
+      </p>
+      <div class="chapter-meta">
+        <span class="pill pill-accent">C 调口琴</span>
+        <span class="pill">2nd / 3rd position</span>
+        <span class="pill">可点击试听</span>
+        <span class="pill">含练习提示</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <div class="resource-toolbar">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;">
+          <span class="tiny muted">播放速度</span>
+          <input type="range" min="50" max="140" value="84" data-tab-tempo aria-label="乐句播放速度" style="width:160px;accent-color:var(--brass);" />
+          <span class="pill pill-accent" data-tab-tempo-label>84 BPM</span>
+        </div>
+        <span class="small muted">所有孔位以标准 C 调十孔口琴（Richter 调音）为例</span>
+      </div>
+
+      <h2 class="sr-only">乐句练习方法</h2>
+      <div class="grid grid-3" style="margin-bottom:34px;">
+        <article class="card reveal">
+          <span class="card-index">01</span>
+          <h3>先唱，再吹</h3>
+          <p>点“播放”听一遍，跟着唱。唱不准的地方，吹出来也不会像你想说的。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">02</span>
+          <h3>一次只学 2 小节</h3>
+          <p>不要从头到尾刷 10 条。选一条，吹 10 遍，再放进 12 小节里吹 4 遍。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">03</span>
+          <h3>改一个音</h3>
+          <p>把乐句最后一个音换掉，或改变节奏。让它从“别人的句子”变成“你的动机”。</p>
+        </article>
+      </div>
+
+      <div class="lick-grid">
+        {LICKS.map((lick) => (
+          <article class="lick-card reveal" data-lick-card data-level={lick.level}>
+            <div class="lick-head">
+              <h3>{lick.title}</h3>
+              <span class="pill pill-accent">{lick.level}</span>
+            </div>
+            <div class="lick-sub">{lick.subtitle} · {lick.position} · {lick.bars}</div>
+            <p class="lick-desc">{lick.description}</p>
+            <div class="tab-line" data-tab-line aria-label={`${lick.title} 口琴 tab`}>
+              {lick.tokens.map((token) => (
+                <button
+                  class="tab-note"
+                  type="button"
+                  data-tab-note
+                  data-hole={token.hole}
+                  data-dir={token.dir}
+                  data-bend={token.bend}
+                  data-beats={token.beats}
+                  aria-label={`${tokenLabel(token)}，${noteName(token)}，${token.beats} 拍`}
+                >
+                  {tokenLabel(token)}
+                  <small>{noteName(token)}</small>
+                </button>
+              ))}
+            </div>
+            <div class="lick-actions">
+              <button class="tool-btn tool-btn-primary" type="button" data-lick-play>▶ 播放</button>
+              <button class="tool-btn" type="button" data-lick-stop>停止</button>
+              <span class="tiny muted" data-lick-status>准备</span>
+            </div>
+            <div class="lick-hint"><strong>怎么练：</strong>{lick.how}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Put it in the form"
+        title="把乐句放进 12 小节"
+        description="一条乐句只有在 12 小节里“放得住”，才算真的学会。用这个简单的落点表安排你的句子。"
+        link="/toolkit/#jam"
+        linkLabel="打开伴奏机"
+      />
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>小节</th><th>和弦（G 调）</th><th>你可以做什么</th><th>建议乐句</th></tr></thead>
+          <tbody>
+            <tr><td>1–4</td><td>G7</td><td>抛出主题、建立动机、留白</td><td>“第二把位的家” / “Sonny Boy 问答”</td></tr>
+            <tr><td>5–6</td><td>C7</td><td>换颜色，落到 C7 的 3 度/7 度</td><td>“Little Walter 转身”前半</td></tr>
+            <tr><td>7–8</td><td>G7</td><td>回到 home，重复/变形主题</td><td>“第二把位的家”变奏</td></tr>
+            <tr><td>9</td><td>D7</td><td>制造张力，落 D/F#/A/C</td><td>“Jazz Blues 下行”</td></tr>
+            <tr><td>10</td><td>C7</td><td>回答，落 E/Bb</td><td>“火车节奏”短句</td></tr>
+            <tr><td>11–12</td><td>G7 → D7</td><td>Turnaround，收尾</td><td>“12 小节 Turnaround”</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-tip" style="margin-top:26px;">
+        <strong class="callout-title">关于这些 tab</strong>
+        <p>这些乐句是为学习编写的练习语汇（部分向经典风格致意），不是对某位大师 solo 的完整转录。想学完整 solo，请跟着原录音逐句扒，并尊重版权。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="padding:clamp(24px,4vw,42px);text-align:center;">
+        <span class="eyebrow" style="justify-content:center;">Next</span>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);margin:12px auto;">学会一句，就去 jam。</h2>
+        <p class="lead" style="max-width:600px;margin:0 auto 22px;">
+          打开 12 小节伴奏，选 G 调、70 BPM。第 1–4 小节吹你刚学的句子，第 5–6 小节停，第 7–8 小节回答。
+        </p>
+        <div class="btn-row" style="justify-content:center;">
+          <a class="btn btn-primary" href={url("/toolkit/#jam")}>打开 12 小节伴奏</a>
+          <a class="btn btn-ghost" href={url("/roadmap/#phase-2")}>看第二阶段路线</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

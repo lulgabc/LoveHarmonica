@@ -1,0 +1,39 @@
+---
+import type { Video } from "../data/courses";
+
+interface Props {
+  video: Video;
+}
+
+const { video } = Astro.props;
+const href = `https://www.youtube.com/watch?v=${video.youtubeId}`;
+const thumb = `https://i.ytimg.com/vi/${video.youtubeId}/mqdefault.jpg`;
+---
+
+<article
+  class="video-card reveal"
+  data-filter-item
+  data-level={video.level}
+  data-topic={video.topic}
+>
+  <button
+    class="video-thumb"
+    type="button"
+    data-video-id={video.youtubeId}
+    data-video-title={video.title}
+    data-video-fallback={href}
+    aria-label={`播放视频：${video.title}`}
+  >
+    <img src={thumb} alt="" loading="lazy" width="320" height="180" onerror="this.style.display='none'" />
+    <span class="video-level"><span class="pill pill-accent">{video.level}</span></span>
+    <span class="play-badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z" /></svg>
+    </span>
+  </button>
+  <div class="video-body">
+    <div class="video-channel">{video.channel} · {video.topic}</div>
+    <h3><a href={href} target="_blank" rel="noopener noreferrer">{video.title}</a></h3>
+    <p>{video.description}</p>
+    <div class="video-why"><strong>为什么看：</strong>{video.why}</div>
+  </div>
+</article>

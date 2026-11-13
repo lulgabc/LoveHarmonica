@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHead from "../../components/SectionHead.astro";
+import { BASICS_CHAPTERS } from "../../data/basics";
+import { url } from "../../lib/url";
+---
+
+<BaseLayout
+  title="基础知识"
+  description="蓝调口琴的系统基础知识：乐器构造、第一口呼吸、把位、压音、节奏、理论、音色、器材、历史与术语。"
+  current="/basics"
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href={url("/")}>首页</a><span>/</span><span>基础知识</span></div>
+      <span class="eyebrow" style="margin-top:18px;">The fundamentals · 10 chapters</span>
+      <h1>先把声音<br />弄明白。</h1>
+      <p class="lead">
+        口琴很小，但它包含的东西不少：簧片、气流、调性、把位、和声、音色、历史。
+        这 10 章不是百科，而是一条“从能吹响到能表达”的路径。可以按顺序读，也可以卡住时回来查。
+      </p>
+      <div class="chapter-meta">
+        <span class="pill pill-accent">零基础可读</span>
+        <span class="pill">10 章</span>
+        <span class="pill">含速查表与练习建议</span>
+        <span class="pill">可配合练习室使用</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <h2 class="sr-only">全部章节</h2>
+      <div class="chapter-grid">
+        {BASICS_CHAPTERS.map((chapter) => (
+          <a class="chapter-card reveal" href={url(chapter.href)}>
+            <div class="chapter-num">{chapter.number}</div>
+            <div>
+              <h3>{chapter.title}</h3>
+              <p>{chapter.subtitle}</p>
+              <p style="margin-top:6px;">{chapter.description}</p>
+              <div class="chapter-tags">
+                {chapter.tags.map((tag) => <span class="pill">{tag}</span>)}
+                <span class="pill pill-accent">{chapter.read}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="How to read this"
+        title="不要一次读完"
+        description="一次读一章，然后立刻用 15 分钟练它。知识只有在嘴上和耳朵里发生，才算真的学会。"
+      />
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <span class="card-index">01</span>
+          <h3>先读“乐器”和“第一口呼吸”</h3>
+          <p>如果你还没买琴，先看第 1 章；如果已经有一把 C 调琴，直接从第 2 章开始。不要跳过单音。</p>
+          <a class="text-link" href={url("/basics/instrument/")} style="margin-top:16px;">从第 1 章开始 →</a>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">02</span>
+          <h3>卡住时，回到“把位”和“压音”</h3>
+          <p>大多数自学者的瓶颈不是“练得少”，而是不知道自己在哪个把位、哪个音为什么会响。第 3、4 章是查漏补缺用的。</p>
+          <a class="text-link" href={url("/basics/positions/")} style="margin-top:16px;">查看把位表 →</a>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">03</span>
+          <h3>把知识放进 12 小节</h3>
+          <p>每读一个概念，就去练习室打开伴奏，把它放进 12 小节里。不能在伴奏里用出来的知识，只是信息。</p>
+          <a class="text-link" href={url("/toolkit/#jam")} style="margin-top:16px;">打开 12 小节伴奏 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;">
+        <div>
+          <span class="kicker">Quick answer</span>
+          <h2 style="font-size:clamp(1.7rem,3vw,2.5rem);margin:10px 0;">第一把琴，买什么？</h2>
+          <p style="max-width:660px;">
+            10 孔全音阶、C 调、塑料琴格、预算 200–500 元。常见选择：Hohner Special 20、Lee Oskar Major Diatonic、Seydel Session Steel、Suzuki Manji。
+            不要买 30 元的“玩具琴”，它会让压音和单音变得不可能。
+          </p>
+        </div>
+        <a class="btn btn-primary" href={url("/basics/instrument/")}>看完整选购指南</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import BookCard from "../components/BookCard.astro";
+import { BOOKS } from "../data/books";
+import { url } from "../lib/url";
+
+const categories = ["全部", "方法书", "技巧书", "历史与人文", "乐句与曲集"];
+const levels = ["全部", "入门", "进阶", "高级", "全阶段"];
+---
+
+<BaseLayout
+  title="教材与书单"
+  description="蓝调口琴书籍推荐：Blues Harmonica For Dummies、The Harp Handbook、David Barrett 系列、Jon Gindick、Howard Levy、Kim Field 等，附阅读顺序与选择建议。"
+  current="/books"
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href={url("/")}>首页</a><span>/</span><span>教材书单</span></div>
+      <span class="eyebrow" style="margin-top:18px;">The library · read less, read in order</span>
+      <h1>书不用多，<br />读对顺序。</h1>
+      <p class="lead">
+        口琴书大致分四类：方法、技巧、历史、乐句。你不需要全买。
+        先选一本主线，其余当参考；每本都写清楚“为什么读、什么时候读、读完之后练什么”。
+      </p>
+      <div class="chapter-meta">
+        <span class="pill pill-accent">{BOOKS.length} 本推荐</span>
+        <span class="pill">4 个类别</span>
+        <span class="pill">含免费替代方案</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <h2 class="sr-only">选书与阅读顺序</h2>
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <span class="card-index">01</span>
+          <h3>第一本：选“方法书”</h3>
+          <p>如果你完全零基础，先读 Blues Harmonica For Dummies 或 First Lessons Blues Harmonica。不要同时读三本入门书。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">02</span>
+          <h3>第二本：选“技巧书”</h3>
+          <p>当你能吹完 12 小节，再读 Building Harmonica Technique 或 The Harp Handbook，补压音、舌堵、位置和器材。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">03</span>
+          <h3>第三本：选“历史/乐句”</h3>
+          <p>历史让你理解“为什么这样吹”，乐句书让你有素材。两本交替读，比只读教材更有趣。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="The shelf"
+        title="按类别与难度筛选"
+        description="每本书都附“为什么读”和“读完之后练什么”。价格与版本以出版社/书店为准。"
+      />
+      <div data-filter-root>
+        <div class="resource-toolbar">
+          <div class="filter-group">
+            <span class="tiny muted" style="align-self:center;margin-right:4px;">类别</span>
+            {categories.map((cat) => (
+              <button class:list={["filter-btn", cat === "全部" && "is-active"]} type="button" data-filter data-filter-key="category" data-filter-value={cat === "全部" ? "all" : cat}>{cat}</button>
+            ))}
+          </div>
+          <div class="filter-group">
+            <span class="tiny muted" style="align-self:center;margin-right:4px;">难度</span>
+            {levels.map((level) => (
+              <button class:list={["filter-btn", level === "全部" && "is-active"]} type="button" data-filter data-filter-key="level" data-filter-value={level === "全部" ? "all" : level}>{level}</button>
+            ))}
+          </div>
+          <span class="filter-count" data-filter-count></span>
+        </div>
+        <div class="book-grid">
+          {BOOKS.map((book) => <BookCard book={book} />)}
+        </div>
+        <div class="empty-state" data-filter-empty hidden>没有匹配的书。换一个类别试试。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Reading order"
+        title="一个不焦虑的阅读顺序"
+        description="如果你不想一次买一堆，按这个顺序，每本只读你需要的那一部分。"
+      />
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>阶段</th><th>读什么</th><th>只读哪部分</th><th>读完之后</th></tr></thead>
+          <tbody>
+            <tr><td>第 1 个月</td><td>Blues Harmonica For Dummies</td><td>选琴、持琴、单音、12 小节</td><td>每天 15 分钟长音 + 12 小节根音</td></tr>
+            <tr><td>第 2–3 个月</td><td>First Lessons Blues Harmonica</td><td>压音、vibrato、shakes、简单 solo</td><td>录 2 分钟，完成 Phase 1 检查点</td></tr>
+            <tr><td>第 4–6 个月</td><td>Building Harmonica Technique</td><td>位置、lead/accompaniment、句子</td><td>把 20 个 lick 分类，放进 12 小节</td></tr>
+            <tr><td>第 7–9 个月</td><td>The Harp Handbook</td><td>压音/超吹、器材、维护、风格史</td><td>调一次自己的音色，录 mini set</td></tr>
+            <tr><td>第 10–12 个月</td><td>100 Authentic Blues Harmonica Licks + 历史书</td><td>挑 10 条拆解；读 Delta/Chicago 历史</td><td>写一首原创 12 小节，准备上台</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Free alternatives"
+        title="不买书，也能学得很好"
+        description="书不是门槛。免费视频、图书馆、出版社样章和二手书，都能帮你走很远。"
+      />
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <h3>先用免费课程</h3>
+          <p>Tomlin、Gussow、Liam、Harmonica.com、张晓松的免费内容，足够覆盖前 3 个月。书可以等你知道自己卡在哪再买。</p>
+          <a class="text-link" href={url("/courses/")} style="margin-top:14px;">打开免费课程库 →</a>
+        </article>
+        <article class="card reveal">
+          <h3>图书馆 / 电子书</h3>
+          <p>Blues Harmonica For Dummies、Harmonica For Dummies、The Harp Handbook 在很多城市图书馆或 OverDrive 有电子版。</p>
+        </article>
+        <article class="card reveal">
+          <h3>出版社样章</h3>
+          <p>Wiley、Mel Bay、Hal Leonard 常提供目录、样页和音频示例。先看样章，再决定是否值得买。</p>
+        </article>
+      </div>
+      <div class="callout callout-tip" style="margin-top:26px;">
+        <strong class="callout-title">购买建议</strong>
+        <p>优先买“你会反复查”的书（The Harp Handbook、Harmonica Essentials），而不是“读完一遍就放下”的书。乐句书可以先买电子版，方便搜索和打印。</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

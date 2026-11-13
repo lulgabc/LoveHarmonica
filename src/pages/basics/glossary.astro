@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { GLOSSARY } from "../../data/glossary";
+import { url } from "../../lib/url";
+
+const categories = ["全部", "乐器", "技巧", "理论", "风格", "器材", "历史"];
+---
+
+<BaseLayout
+  title="术语与速查"
+  description="60+ 个蓝调口琴关键词：压音、超吹、把位、chug、turnaround、Green Bullet、Chicago blues……按类别浏览或直接搜索。"
+  current="/basics"
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href={url("/")}>首页</a><span>/</span><a href={url("/basics/")}>基础知识</a><span>/</span><span>术语</span></div>
+      <span class="eyebrow" style="margin-top:18px;">Glossary · quick reference</span>
+      <h1>术语与速查</h1>
+      <p class="lead">
+        蓝调口琴的术语很多，而且中文、英文、tab 符号经常混着用。这里把最常用的词收在一起：卡住时搜一下，不用翻整本站。
+      </p>
+      <div class="chapter-meta">
+        <span class="pill pill-accent">{GLOSSARY.length} 个词条</span>
+        <span class="pill">按类别筛选</span>
+        <span class="pill">支持搜索</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <h2 class="sr-only">全部词条</h2>
+      <div class="resource-toolbar">
+        <div class="filter-group" data-glossary-filters>
+          {categories.map((cat) => (
+            <button class:list={["filter-btn", cat === "全部" && "is-active"]} type="button" data-glossary-cat={cat === "全部" ? "all" : cat}>
+              {cat}
+            </button>
+          ))}
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <input
+            type="search"
+            placeholder="搜索：压音、把位、chug…"
+            aria-label="搜索术语"
+            data-glossary-search
+            style="height:38px;min-width:220px;padding:0 13px;border:1px solid var(--line-strong);border-radius:999px;background:var(--panel);color:var(--text);font-size:0.8rem;"
+          />
+          <span class="filter-count" data-glossary-count>{GLOSSARY.length} / {GLOSSARY.length}</span>
+        </div>
+      </div>
+
+      <div class="grid grid-3" data-glossary-grid>
+        {GLOSSARY.map((item) => (
+          <article
+            class="card"
+            data-glossary-item
+            data-cat={item.category}
+            data-text={`${item.term} ${item.en} ${item.definition}`.toLowerCase()}
+          >
+            <div class="card-top" style="margin-bottom:8px;">
+              <span class="pill pill-accent">{item.category}</span>
+              <span class="pill">{item.en}</span>
+            </div>
+            <h3>{item.term}</h3>
+            <p>{item.definition}</p>
+          </article>
+        ))}
+      </div>
+      <div class="empty-state" data-glossary-empty hidden>没有匹配的词条。试试更短的关键词。</div>
+    </div>
+  </section>
+
+  <script>
+    const items = [...document.querySelectorAll<HTMLElement>("[data-glossary-item]")];
+    const buttons = [...document.querySelectorAll<HTMLButtonElement>("[data-glossary-cat]")];
+    const search = document.querySelector<HTMLInputElement>("[data-glossary-search]");
+    const count = document.querySelector<HTMLElement>("[data-glossary-count]");
+    const empty = document.querySelector<HTMLElement>("[data-glossary-empty]");
+    let category = "all";
+
+    function apply() {
+      const query = (search?.value || "").trim().toLowerCase();
+      let visible = 0;
+      items.forEach((item) => {
+        const catOk = category === "all" || item.dataset.cat === category;
+        const textOk = !query || (item.dataset.text || "").includes(query);
+        const show = catOk && textOk;
+        item.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (count) count.textContent = `${visible} / ${items.length}`;
+      if (empty) empty.hidden = visible !== 0;
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        category = button.dataset.glossaryCat || "all";
+        buttons.forEach((b) => b.classList.toggle("is-active", b === button));
+        apply();
+      });
+    });
+
+    search?.addEventListener("input", apply);
+  </script>
+</BaseLayout>

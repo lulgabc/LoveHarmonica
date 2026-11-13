@@ -1,0 +1,193 @@
+---
+import ChapterLayout from "../../components/ChapterLayout.astro";
+
+const toc = [
+  { id: "what", label: "压音到底是什么" },
+  { id: "chart", label: "哪些孔能压、能压多少" },
+  { id: "two", label: "从 2 孔吸音开始" },
+  { id: "three", label: "3 孔：蓝调的灵魂" },
+  { id: "four-five-six", label: "4、5、6 孔" },
+  { id: "blow-bend", label: "吹气压音" },
+  { id: "overbend", label: "超吹与超吸" },
+  { id: "trouble", label: "压不响怎么办" },
+  { id: "plan", label: "四周压音计划" },
+];
+---
+
+<ChapterLayout
+  title="压音与超吹"
+  description="哪些孔能压、能压多少、为什么压不响？从 2 孔吸音到 3 孔全音压音，再到超吹/超吸，这一章把“哭腔”拆成可以练的步骤。"
+  number="04"
+  chapterId="bending"
+  toc={toc}
+  read="16 分钟"
+  meta={["压音", "超吹", "blue notes", "调音器"]}
+>
+  <p class="lead">
+    如果蓝调口琴有一种“魔法”，那就是压音。它让一个音可以像人声一样滑下去、哭出来、笑出来。
+    但压音不是“用力吸”，而是一套口腔、舌头和气流的协调。理解它，比死磕它更重要。
+  </p>
+
+  <h2 id="what">压音到底是什么</h2>
+  <p>
+    十孔口琴的每个孔里有两片簧片：一片吹气响，一片吸气响。压音发生时，你并不是“把簧片压弯”，
+    而是通过改变口腔的共鸣，让<strong>两片簧片发生耦合</strong>：较高的那片被“带低”，较低的那片继续发声。
+  </p>
+  <p>
+    这也解释了两个关键事实：
+  </p>
+  <ul>
+    <li>只有“较高的簧片”能被压下去。所以不是所有孔、所有方向都能压。</li>
+    <li>压音的音高由两片簧片的音程决定。音程越大，能压的幅度通常越大（例如 2 孔、3 孔）。</li>
+  </ul>
+  <div class="callout">
+    <strong class="callout-title">一句话</strong>
+    <p>压音不是“更用力”，而是“换一个共鸣空间”。你要找的是口腔形状，不是肺活量。</p>
+  </div>
+
+  <h2 id="chart">哪些孔能压、能压多少</h2>
+  <p>标准 Richter 调音的 C 调十孔口琴，压音分布如下：</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>孔</th><th>吹气音</th><th>吸气音</th><th>可压音</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>C</td><td>D</td><td>吸气压半音：D → Db</td></tr>
+        <tr><td>2</td><td>E</td><td>G</td><td>吸气压半音/全音：G → Gb → F</td></tr>
+        <tr><td>3</td><td>G</td><td>B</td><td>吸气压半音/全音：B → Bb → A</td></tr>
+        <tr><td>4</td><td>C</td><td>D</td><td>吸气压半音：D → Db</td></tr>
+        <tr><td>5</td><td>E</td><td>F</td><td>吸气压半音：F → E</td></tr>
+        <tr><td>6</td><td>G</td><td>A</td><td>吸气压半音：A → Ab</td></tr>
+        <tr><td>7</td><td>C</td><td>B</td><td>吹气压半音：C → B</td></tr>
+        <tr><td>8</td><td>E</td><td>D</td><td>吹气压半音：E → Eb</td></tr>
+        <tr><td>9</td><td>G</td><td>F</td><td>吹气压半音：G → Gb</td></tr>
+        <tr><td>10</td><td>C</td><td>A</td><td>吹气压半音/全音：C → B → Bb</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    注意：这是标准调音的理论值。实际能否压到、音色如何，取决于琴的 gap、你的口型和练习程度。
+    不要因为“理论上能压全音”就第一天死磕 3 孔全音；先把半音压稳。
+  </p>
+
+  <h2 id="two">从 2 孔吸音开始</h2>
+  <p>2 孔吸音是大多数人的第一个压音，因为它的音程大、响应明显。</p>
+  <ol>
+    <li><strong>先吹准 -2</strong>。用调音器确认是 G。不要一上来就压。</li>
+    <li><strong>发“ee”或“yu”</strong>，舌头后部抬起，口腔变窄，像含着一根吸管。</li>
+    <li><strong>保持气流</strong>，不要突然加大。压音是“改变形状”，不是“吸得更猛”。</li>
+    <li><strong>听音高下滑</strong>。先接受它可能很闷、很薄；稳定比音色重要。</li>
+    <li><strong>用调音器找 F#</strong>，停住 4 拍。再找 F，停住 4 拍。</li>
+    <li><strong>回到 G</strong>。练习 G → F# → G，像滑音一样。</li>
+  </ol>
+  <div class="callout callout-tip">
+    <strong class="callout-title">练习顺序</strong>
+    <p>先“压下去”，再“停住”，再“压准”，最后“压得响”。不要一开始就追求音量；压音的音色会随着控制力慢慢变好。</p>
+  </div>
+
+  <h2 id="three">3 孔：蓝调的灵魂</h2>
+  <p>
+    3 孔吸音是 B。压半音得到 Bb（第二把位的 b3），压全音得到 A（第二把位的 9 度/2 度）。
+    这两个音是蓝调口琴最核心的“哭腔”来源。很多人说“不会 3 孔压音，就不算会吹蓝调”，虽然有点绝对，但说明了它的重要性。
+  </p>
+  <p>3 孔比 2 孔难，因为：</p>
+  <ul>
+    <li>它的音程更大，需要更精确的口腔形状。</li>
+    <li>半音和全音之间的界限更细，容易“压过头”。</li>
+    <li>音色容易变闷，需要更多气流支撑。</li>
+  </ul>
+  <p>练习建议：</p>
+  <ol>
+    <li>先只练 B → Bb，停 4 拍，回到 B。</li>
+    <li>稳定后再练 B → A，不要追求音量。</li>
+    <li>用“B → Bb → A → Bb → B”的滑音，像人声叹气。</li>
+    <li>把它放进句子：-2 → -3' → 4 → -4' → -4。感受 b3 的“酸味”。</li>
+  </ol>
+  <div class="callout callout-warn">
+    <strong class="callout-title">不要用喉咙挤</strong>
+    <p>压音时如果喉咙疼、头晕，说明你在用蛮力。停下来，放松肩膀，回到正常呼吸。压音应该像“改变口腔形状”，而不是“憋气”。</p>
+  </div>
+
+  <h2 id="four-five-six">4、5、6 孔：蓝调的五声音阶</h2>
+  <p>
+    4 孔吸音压半音（D → Db）是第二把位的 b5，也是蓝调音阶里最有张力的音。
+    5 孔吸音压半音（F → E）可以让你在 I7 和 IV7 之间更自由地移动。
+    6 孔吸音压半音（A → Ab）则是高音区的蓝调味。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>孔</th><th>原音</th><th>压半音</th><th>在 G 蓝调里的角色</th></tr></thead>
+      <tbody>
+        <tr><td>-4</td><td>D</td><td>Db</td><td>b5，张力/转折</td></tr>
+        <tr><td>-5</td><td>F</td><td>E</td><td>3 度，适合 C7（IV7）</td></tr>
+        <tr><td>-6</td><td>A</td><td>Ab</td><td>高音蓝调味</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    一个非常实用的练习：在 12 小节里，每小节只吹一个音，但把 -4' 和 -5' 放进去。
+    例如第 5–6 小节（C7）用 -5'（E），第 9 小节（D7）用 -4（D）或 -6（A）。你会发现“压音”开始变成“和声语言”。
+  </p>
+
+  <h2 id="blow-bend">吹气压音：高音区的秘密</h2>
+  <p>
+    7–10 孔的吹气音可以压音。它们比吸气压音更难，因为高音区簧片短、响应快，口腔需要更小的变化。
+    但一旦掌握，你可以在高音区做出非常性感的滑音和“哭腔”。
+  </p>
+  <ul>
+    <li>7 孔吹：C → B</li>
+    <li>8 孔吹：E → Eb</li>
+    <li>9 孔吹：G → Gb</li>
+    <li>10 孔吹：C → B → Bb</li>
+  </ul>
+  <p>练习时先用 7 孔吹，发“hee”或“hyu”，把舌头抬高，气流变细。不要用更大的气，反而要更集中。</p>
+
+  <h2 id="overbend">超吹与超吸：打开半音世界</h2>
+  <p>
+    超吹（overblow）和超吸（overdraw）是更进阶的技术。它们让你在十孔口琴上得到原本没有的半音，
+    从而可以演奏完整的半音阶、爵士和复杂旋律。Howard Levy 是这项技术最重要的系统化者之一。
+  </p>
+  <ul>
+    <li><strong>超吹</strong>：在 1–6 孔的吹气方向上，让较高的簧片被压制，发出比该孔吸音更高的音。</li>
+    <li><strong>超吸</strong>：在 7–10 孔的吸气方向上，发出比该孔吹音更高的音。</li>
+    <li><strong>前提</strong>：你需要先能稳定压音、控制气流、让单音干净。超吹不是“用力吹”，而是“精确控制”。</li>
+  </ul>
+  <p>
+    如果你刚开始学口琴，先不要碰超吹。它很容易让你形成错误的用力习惯。等你完成路线图的前两个阶段，再考虑。
+  </p>
+
+  <h2 id="trouble">压不响怎么办</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>现象</th><th>可能原因</th><th>怎么办</th></tr></thead>
+      <tbody>
+        <tr><td>怎么吸都没有变化</td><td>口腔太宽、舌头太低</td><td>发“ee”，抬高舌后部；先只练 2 孔。</td></tr>
+        <tr><td>压下去但很闷、很小声</td><td>气流不足、口型太紧</td><td>保持气流，放松嘴唇；不要用喉咙挤。</td></tr>
+        <tr><td>音高不稳、忽高忽低</td><td>口腔形状在变</td><td>用调音器，停住 4 拍；先求稳，再求快。</td></tr>
+        <tr><td>压过头，直接没声</td><td>舌头抬得太高/气流太猛</td><td>回到原音，慢慢加一点“ee”，找到中间点。</td></tr>
+        <tr><td>3 孔只能压半音</td><td>正常，全音需要更多练习</td><td>先稳定 Bb，再尝试 A；不要急。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="plan">四周压音计划</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>周</th><th>目标</th><th>每天 10 分钟</th></tr></thead>
+      <tbody>
+        <tr><td>Week 1</td><td>2 孔半音</td><td>G → F# → G，停 4 拍；用调音器。</td></tr>
+        <tr><td>Week 2</td><td>2 孔全音</td><td>G → F → G；加一个 2 小节 slow blues 句子。</td></tr>
+        <tr><td>Week 3</td><td>3 孔半音</td><td>B → Bb → B；把它放进 -2 -3' 4 的句子里。</td></tr>
+        <tr><td>Week 4</td><td>3 孔全音 + 4 孔半音</td><td>B → A；D → Db；录 1 分钟，检查音准和音色。</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    每天不要练太久。压音是肌肉记忆和听觉记忆的结合，10–15 分钟高质量练习，比 1 小时蛮练有效。
+    如果第二天嘴巴累、喉咙痛，说明用力方式不对，先休息。
+  </p>
+
+  <div class="callout callout-listen">
+    <strong class="callout-title">这一章听完再走</strong>
+    <p>听 Big Walter Horton 的《Easy》和 Little Walter 的《Blue Midnight》。不要只听“压得多低”，听他们如何用压音制造语气、停顿和回答。</p>
+  </div>
+</ChapterLayout>

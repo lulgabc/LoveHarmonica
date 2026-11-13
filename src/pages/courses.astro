@@ -1,0 +1,205 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import VideoCard from "../components/VideoCard.astro";
+import CourseCard from "../components/CourseCard.astro";
+import { VIDEOS, CHANNELS, COURSES } from "../data/courses";
+import { url } from "../lib/url";
+
+const prices = ["全部", "免费", "免费试听", "付费"];
+const levels = ["全部", "入门", "进阶", "高级", "全阶段"];
+const langs = ["全部", "英文", "中文", "多语"];
+const types = ["全部", "免费课程", "免费试听", "付费课程", "曲谱工具", "参考网站", "播客社区"];
+
+const featuredVideos = VIDEOS.filter((video) => ["gussow-day1", "tomlin-first", "tomlin-chug", "liam-bend", "com-blues", "ricci-sonnyboy"].includes(video.id));
+---
+
+<BaseLayout
+  title="免费课程与频道"
+  description="精选蓝调口琴免费课程、YouTube 频道、系统学校、曲谱网站、播客和中文资源。按价格、级别、语言和类型筛选。"
+  current="/courses"
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href={url("/")}>首页</a><span>/</span><span>免费课程</span></div>
+      <span class="eyebrow" style="margin-top:18px;">The course library · curated, not scraped</span>
+      <h1>先看对的，<br />再看多的。</h1>
+      <p class="lead">
+        网上有几千支口琴视频，但你不需要全部。这里按“免费优先、结构优先、能跟下去”的标准，
+        精选了频道、课程、曲谱和中文资源。每一门都写清楚：适合谁、为什么看、免费还是付费。
+      </p>
+      <div class="chapter-meta">
+        <span class="pill pill-accent">{CHANNELS.length} 个频道</span>
+        <span class="pill">{COURSES.length} 个课程/资源</span>
+        <span class="pill">{VIDEOS.length} 支精选视频</span>
+        <span class="pill">含中文入口</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <SectionHead
+        kicker="Start here"
+        title="三条主线，选一个先走"
+        description="不要同时跟五个老师。先选一个主线，把前 30 天走完，再扩展。"
+      />
+      <div class="grid grid-3">
+        <a class="card card-link reveal" href="https://www.tomlinharmonicalessons.com/free-harmonica-lessons-library" target="_blank" rel="noopener noreferrer">
+          <span class="card-index">01</span>
+          <h3>零基础 · 友好路线</h3>
+          <p>Tomlin Leckie 的免费分级库。讲解清楚、节奏轻松，从第一音到 12 小节，适合完全新手。</p>
+          <div class="tag-row" style="margin-top:14px;"><span class="pill pill-teal">免费</span><span class="pill">英文</span><span class="pill">分级</span></div>
+        </a>
+        <a class="card card-link reveal" href="http://www.modernbluesharmonica.com/beginning_harmonica.html" target="_blank" rel="noopener noreferrer">
+          <span class="card-index">02</span>
+          <h3>传统 · 蓝调文化路线</h3>
+          <p>Adam Gussow 的初学者指南。老派、扎实、带历史与故事，适合想真正进入蓝调语境的人。</p>
+          <div class="tag-row" style="margin-top:14px;"><span class="pill pill-teal">免费</span><span class="pill">英文</span><span class="pill">Chicago</span></div>
+        </a>
+        <a class="card card-link reveal" href="http://www.tenholes.com/" target="_blank" rel="noopener noreferrer">
+          <span class="card-index">03</span>
+          <h3>中文 · 系统入口</h3>
+          <p>张晓松老师的蓝调口琴网。中文教程、曲谱、伴奏和论坛资料，适合不习惯英文讲解的人。</p>
+          <div class="tag-row" style="margin-top:14px;"><span class="pill pill-teal">免费</span><span class="pill">中文</span><span class="pill">系统</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Twelve lessons"
+        title="12 支值得反复看的课"
+        description="从第一课、shuffle、chug、压音、12 小节到舌堵、超吹和第三把位。每支都配“为什么看”。"
+        link="/toolkit/#jam"
+        linkLabel="看完去 jam"
+      />
+      <div class="video-grid">
+        {featuredVideos.map((video) => <VideoCard video={video} />)}
+      </div>
+      <div class="btn-row section-foot">
+        <a class="btn btn-ghost" href="#all-courses">看完整课程与资源库 <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="YouTube channels"
+        title="值得订阅的口琴频道"
+        description="不只是“教一首歌”，而是长期能跟着学、跟着听、跟着长大的频道。"
+      />
+      <div class="grid grid-3">
+        {CHANNELS.map((channel) => (
+          <article class="course-card reveal">
+            <div class="course-top">
+              <span class="course-type">{channel.lang} · {channel.level}</span>
+              <span class="pill pill-accent">{channel.style}</span>
+            </div>
+            <h3><a href={channel.url} target="_blank" rel="noopener noreferrer">{channel.name}</a></h3>
+            <div class="course-provider">{channel.teacher}</div>
+            <p>{channel.description}</p>
+            <div class="course-meta">
+              <span class="pill">YouTube</span>
+              <span class="pill">{channel.lang}</span>
+              <span class="pill">{channel.level}</span>
+            </div>
+            <a class="course-link" href={channel.url} target="_blank" rel="noopener noreferrer">打开频道 <span aria-hidden="true">↗</span></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="all-courses">
+    <div class="container">
+      <SectionHead
+        kicker="The full library"
+        title="课程、曲谱、参考与播客"
+        description="免费优先，付费的也标清楚。用筛选器找适合你当前阶段和语言的资源。"
+      />
+      <div data-filter-root>
+        <div class="resource-toolbar" style="align-items:flex-start;flex-direction:column;gap:12px;">
+          <div style="display:flex;flex-wrap:wrap;gap:18px;width:100%;justify-content:space-between;">
+            <div class="filter-group">
+              <span class="tiny muted" style="align-self:center;margin-right:4px;">价格</span>
+              {prices.map((price) => (
+                <button class:list={["filter-btn", price === "全部" && "is-active"]} type="button" data-filter data-filter-key="price" data-filter-value={price === "全部" ? "all" : price}>{price}</button>
+              ))}
+            </div>
+            <div class="filter-group">
+              <span class="tiny muted" style="align-self:center;margin-right:4px;">级别</span>
+              {levels.map((level) => (
+                <button class:list={["filter-btn", level === "全部" && "is-active"]} type="button" data-filter data-filter-key="level" data-filter-value={level === "全部" ? "all" : level}>{level}</button>
+              ))}
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:18px;width:100%;justify-content:space-between;">
+            <div class="filter-group">
+              <span class="tiny muted" style="align-self:center;margin-right:4px;">语言</span>
+              {langs.map((lang) => (
+                <button class:list={["filter-btn", lang === "全部" && "is-active"]} type="button" data-filter data-filter-key="lang" data-filter-value={lang === "全部" ? "all" : lang}>{lang}</button>
+              ))}
+            </div>
+            <div class="filter-group">
+              <span class="tiny muted" style="align-self:center;margin-right:4px;">类型</span>
+              {types.map((type) => (
+                <button class:list={["filter-btn", type === "全部" && "is-active"]} type="button" data-filter data-filter-key="type" data-filter-value={type === "全部" ? "all" : type}>{type}</button>
+              ))}
+            </div>
+            <span class="filter-count" data-filter-count></span>
+          </div>
+        </div>
+
+        <div class="course-grid">
+          {COURSES.map((course) => <CourseCard course={course} />)}
+        </div>
+        <div class="empty-state" data-filter-empty hidden>没有匹配的课程。换一个筛选条件试试。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="How to choose"
+        title="选课的三条原则"
+        description="课程不是越多越好。选错了，比不学更浪费时间。"
+      />
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <span class="card-index">01</span>
+          <h3>先看“顺序”，再看“名气”</h3>
+          <p>一个好的入门课会告诉你先学什么、后学什么。一个只有零散“神级 lick”的频道，适合补充，不适合当主线。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">02</span>
+          <h3>免费内容足够走完前 3 个月</h3>
+          <p>Tomlin、Gussow、Liam、Harmonica.com、张晓松的免费内容，已经足够你建立基础。先别急着付费。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">03</span>
+          <h3>付费买的是“反馈”和“结构”</h3>
+          <p>如果你需要有人告诉你下一步练什么、听你录音给反馈，再考虑系统学校。否则，免费课 + 本站路线图足够。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="padding:clamp(24px,4vw,42px);">
+        <span class="kicker">A note on links</span>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);margin:10px 0 12px;">关于外部链接与课程价格</h2>
+        <p style="max-width:760px;">
+          本站只收录公开可访问的课程、频道和资源。价格、免费试用期和课程内容可能随时间变化，请以对方网站为准。
+          本站不收取课程推广费，也不保证任何课程的效果。选择适合自己学习方式和预算的，才是最好的。
+        </p>
+        <p class="small muted" style="margin-top:12px;">部分链接为英文网站；中文资源已单独标注。若发现链接失效，欢迎在 GitHub Issues 里告诉我们。</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

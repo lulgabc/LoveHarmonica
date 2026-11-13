@@ -1,0 +1,174 @@
+---
+import ChapterLayout from "../../components/ChapterLayout.astro";
+import { url } from "../../lib/url";
+
+const toc = [
+  { id: "hold", label: "怎么拿琴" },
+  { id: "embouchure", label: "含琴与口型" },
+  { id: "breath", label: "呼吸：声音的发动机" },
+  { id: "single", label: "单音：先干净，再谈其他" },
+  { id: "long-tone", label: "长音与音色" },
+  { id: "tab", label: "读懂口琴 tab" },
+  { id: "first-rhythm", label: "第一段 12 小节" },
+  { id: "week-one", label: "第一周计划" },
+  { id: "mistakes", label: "五个常见错误" },
+];
+---
+
+<ChapterLayout
+  title="第一口呼吸"
+  description="从怎么拿琴、怎么含、怎么呼吸开始，建立干净单音。你会学到唇含与舌堵的区别、腹式呼吸、长音练习，以及如何读懂 -2、-3'、4 这样的 tab。"
+  number="02"
+  chapterId="first-notes"
+  toc={toc}
+  read="14 分钟"
+  meta={["持琴", "单音", "呼吸", "tab"]}
+>
+  <p class="lead">
+    很多人第一次吹口琴，会同时吹响三个孔，然后以为“我没有天赋”。其实不是天赋问题，是口型、含琴深度和气流还没有被组织起来。
+    这一章只做一件事：让你能稳定、干净地吹响一个音。
+  </p>
+
+  <h2 id="hold">怎么拿琴</h2>
+  <p>
+    把口琴低音孔（1 孔）放在左边，高音孔（10 孔）放在右边。左手托住琴身，右手包住左侧，形成一个可以开合的“杯”。
+    这不是为了好看，而是为了：
+  </p>
+  <ul>
+    <li><strong>聚音</strong>：手掌包住琴背，让声音更集中、更厚。</li>
+    <li><strong>手哇音</strong>：开合右手，制造“哇—哇”的音色变化。</li>
+    <li><strong>控制口水</strong>：琴稍微向上倾斜，减少口水流进簧片。</li>
+  </ul>
+  <p>
+    站姿或坐姿都可以，但保持肩膀放松、下巴微收。不要把琴压得太紧，也不要用脖子去够琴。
+    <strong>移动琴，不要移动头</strong>——这是很多初学者换孔不准的原因。
+  </p>
+
+  <h2 id="embouchure">含琴与口型</h2>
+  <p>单音有两种主要方式。入门阶段建议先学<strong>唇含（pucker / lip blocking）</strong>，之后再学舌堵。</p>
+  <h3>唇含（Pucker）</h3>
+  <ol>
+    <li>嘴唇放松，像要吹口哨，但不要撅得太用力。</li>
+    <li>嘴巴形成一个小的“O”形，含住一个孔。含得不要太浅，上唇要盖住一点盖板。</li>
+    <li>嘴角不要往两边拉。往两边拉会让气从相邻孔漏出去。</li>
+    <li>先吹 4 孔，再吸 4 孔；如果听到两个音，保持口型不变，只把琴左右微移。</li>
+  </ol>
+  <h3>舌堵（Tongue Blocking）</h3>
+  <p>
+    嘴巴含住 3–4 个孔，用舌头堵住左边，只让右边一个孔发声。音色更厚，能吹八度、和弦、slap 和舌堵压音。
+    但它需要更长的学习曲线。建议在你能稳定吹单音 2–4 周后，再开始每天 5 分钟舌堵练习。
+  </p>
+  <div class="callout callout-tip">
+    <strong class="callout-title">自检</strong>
+    <p>吹 4 孔时，如果声音里同时有 3 孔或 5 孔的音，先不要加力。把嘴形缩小一点，或把琴含深一点，再左右微调。干净单音是“找到”的，不是“用力压出来”的。</p>
+  </div>
+
+  <h2 id="breath">呼吸：声音的发动机</h2>
+  <p>
+    口琴不是靠肺活量大，而是靠气流稳定。用胸式呼吸，声音会浅、抖、容易憋气；用腹式呼吸，声音才有根。
+  </p>
+  <ul>
+    <li><strong>吸气</strong>：像闻一朵花，气息往下沉，腹部微微扩张。肩膀不要抬。</li>
+    <li><strong>呼气</strong>：像轻轻吹掉手心的灰，不要一下子把气全喷出去。</li>
+    <li><strong>换气</strong>：在乐句之间用鼻子补气/放气，不要把句子吹到缺氧。</li>
+  </ul>
+  <p>
+    一个简单的练习：不拿琴，手放在腹部，吸气 4 拍、屏住 2 拍、呼气 6 拍。每天 2 分钟。
+    然后拿琴，在 4 孔上吹 8 拍、吸 8 拍，保持音量平稳。
+  </p>
+
+  <h2 id="single">单音：先干净，再谈其他</h2>
+  <p>推荐从 4、5、6 孔开始，因为中音区最容易响应，也最常用。</p>
+  <ol>
+    <li>吹 4 孔 4 拍，吸 4 孔 4 拍。</li>
+    <li>吹 5 孔、吸 5 孔；吹 6 孔、吸 6 孔。</li>
+    <li>按 4–5–6–5–4 的顺序来回，每个音 2 拍。</li>
+    <li>再扩展到 1–6 孔，上下行，每个音 1 拍。</li>
+  </ol>
+  <p>
+    判断标准不是“吹得多响”，而是：<strong>只有一个音、音头清楚、音尾不抖、换孔时不漏气</strong>。
+    如果某个孔特别难，不要跳过它；那通常是你口型或含琴深度的线索。
+  </p>
+
+  <h2 id="long-tone">长音与音色</h2>
+  <p>长音是口琴的“健身房”。它同时训练呼吸、口型、音准和音色。</p>
+  <ul>
+    <li><strong>8 拍长音</strong>：每个音吹/吸 8 拍，保持音量平稳。用节拍器 60 BPM。</li>
+    <li><strong>渐强渐弱</strong>：4 拍渐强、4 拍渐弱。注意不要改变音高。</li>
+    <li><strong>音头</strong>：用“tu”或“ta”的舌头动作开始，而不是用喉咙挤。</li>
+    <li><strong>录音</strong>：手机录 30 秒，听有没有杂音、漏气、音量忽大忽小。</li>
+  </ul>
+
+  <h2 id="tab">读懂口琴 tab</h2>
+  <p>口琴 tab 不告诉你音名，而告诉你“哪个孔、吹还是吸、压不压”。常见写法：</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>写法</th><th>含义</th><th>例子</th></tr></thead>
+      <tbody>
+        <tr><td><code>4</code></td><td>第 4 孔吹</td><td>4 = C（C 调琴）</td></tr>
+        <tr><td><code>-4</code></td><td>第 4 孔吸</td><td>-4 = D</td></tr>
+        <tr><td><code>-3'</code></td><td>第 3 孔吸，压半音</td><td>B → Bb</td></tr>
+        <tr><td><code>-3''</code></td><td>第 3 孔吸，压全音</td><td>B → A</td></tr>
+        <tr><td><code>-4'</code></td><td>第 4 孔吸，压半音</td><td>D → Db（b5）</td></tr>
+        <tr><td><code>6o</code> / <code>6^</code></td><td>第 6 孔超吹</td><td>不同作者写法不同</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    不同网站/老师会用不同符号表示超吹、滑音、vibrato。看到不认识的符号，先看作者的说明；
+    如果没有说明，就以录音为准。<strong>Tab 是地图，录音才是地形。</strong>
+  </p>
+
+  <h2 id="first-rhythm">第一段 12 小节：只吹根音</h2>
+  <p>
+    不要等到“所有音都学会”才玩 12 小节。你可以只用三个音，甚至只用一个音，先建立结构感。
+    G 蓝调、C 调琴、第二把位：
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>小节</th><th>和弦</th><th>先吹什么</th></tr></thead>
+      <tbody>
+        <tr><td>1–4</td><td>G7</td><td>-2（G）长音，或 1 &amp; 3 拍 chug</td></tr>
+        <tr><td>5–6</td><td>C7</td><td>4（C）或 -2 继续</td></tr>
+        <tr><td>7–8</td><td>G7</td><td>-2</td></tr>
+        <tr><td>9</td><td>D7</td><td>-4（D）</td></tr>
+        <tr><td>10</td><td>C7</td><td>4（C）</td></tr>
+        <tr><td>11–12</td><td>G7 / D7</td><td>-2 → -4，做一个简单 turnaround</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    打开 <a href={url("/toolkit/#jam")}>12 小节伴奏机</a>，选 G 调、70 BPM，先每小节只吹一个根音。
+    能做到不断拍、不慌张，就已经比“背了 50 个 lick 但不敢 jam”的人走得远。
+  </p>
+
+  <h2 id="week-one">第一周计划</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>天</th><th>练什么</th><th>时间</th></tr></thead>
+      <tbody>
+        <tr><td>Day 1</td><td>持琴、4/5/6 孔长音，录 30 秒</td><td>15 min</td></tr>
+        <tr><td>Day 2</td><td>1–6 孔上下行单音，慢速</td><td>15 min</td></tr>
+        <tr><td>Day 3</td><td>腹式呼吸 + 8 拍长音</td><td>15 min</td></tr>
+        <tr><td>Day 4</td><td>4–5–6–5–4 来回，加节拍器</td><td>20 min</td></tr>
+        <tr><td>Day 5</td><td>12 小节根音，70 BPM</td><td>20 min</td></tr>
+        <tr><td>Day 6</td><td>读 tab：4 5 -5 6 -6 6 -5 5 4</td><td>20 min</td></tr>
+        <tr><td>Day 7</td><td>录 2 分钟：长音 + 12 小节根音</td><td>15 min</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="mistakes">五个常见错误</h2>
+  <ol>
+    <li><strong>用力过猛</strong>：口琴不需要“吹灭蜡烛”的气流。越用力，越容易吹到相邻孔、越容易累。</li>
+    <li><strong>嘴角往两边拉</strong>：这会让口型变宽、漏气。保持“O”形，嘴唇前后放松。</li>
+    <li><strong>只练曲子，不练长音</strong>：长音是音色和呼吸的地基。每天至少 3 分钟。</li>
+    <li><strong>移动头而不是琴</strong>：换孔时头跟着动，会让音准和节奏都不稳。保持头稳定，用手移琴。</li>
+    <li><strong>一上来就学压音</strong>：如果单音还不干净，压音会把问题放大。先干净，再压。</li>
+  </ol>
+
+  <div class="callout callout-listen">
+    <strong class="callout-title">这一章听完再走</strong>
+    <p>听 Sonny Boy Williamson II 的《Help Me》。注意他的音头有多清楚、句子之间留了多少空。你不需要吹得像他，但可以先学会“每个音都站稳”。</p>
+  </div>
+</ChapterLayout>

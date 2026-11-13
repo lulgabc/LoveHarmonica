@@ -1,0 +1,22 @@
+{
+  "name": "love-harmonica",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "LoveHarmonica — a Chinese-language blues harmonica field guide, roadmap, free course library and interactive practice studio.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.11"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^6.0.3"
+  }
+}

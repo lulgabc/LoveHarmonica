@@ -1,0 +1,208 @@
+---
+import ChapterLayout from "../../components/ChapterLayout.astro";
+
+const toc = [
+  { id: "notes", label: "音、音程与 12 个调" },
+  { id: "mixolydian", label: "Mixolydian：第二把位的母音阶" },
+  { id: "blues-scale", label: "蓝调音阶" },
+  { id: "harmony", label: "I–IV–V 与属七和弦" },
+  { id: "chord-tones", label: "Chord tones 与目标音" },
+  { id: "phrasing", label: "Call & response 与句子" },
+  { id: "changes", label: "Play the changes" },
+  { id: "jazz", label: "Jazz blues 入门" },
+  { id: "practice", label: "理论练习" },
+];
+---
+
+<ChapterLayout
+  title="蓝调理论与即兴"
+  description="蓝调音阶、Mixolydian、Dorian、I–IV–V、chord tone、call & response。不会让你变成理论家，但会让你知道自己在吹什么。"
+  number="06"
+  chapterId="theory"
+  toc={toc}
+  read="17 分钟"
+  meta={["音阶", "和声", "即兴", "phrasing"]}
+>
+  <p class="lead">
+    理论不是用来考试的。对蓝调口琴手来说，理论只解决三个问题：
+    <strong>我现在在哪个和弦上？哪些音是“家”？哪些音是“张力”？</strong>
+    知道这三点，你的 solo 就不会像随机跑音阶。
+  </p>
+
+  <h2 id="notes">音、音程与 12 个调</h2>
+  <p>
+    西方音乐把八度分成 12 个半音。C 到 C 是 12 个半音，中间有 11 个音。
+    口琴的每个孔、每个压音，都是这些半音中的某一个。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>音程</th><th>半音数</th><th>例子（从 C 起）</th><th>在蓝调里的感觉</th></tr></thead>
+      <tbody>
+        <tr><td>小二度</td><td>1</td><td>C → Db</td><td>紧张、经过</td></tr>
+        <tr><td>大二度</td><td>2</td><td>C → D</td><td>流动</td></tr>
+        <tr><td>小三度</td><td>3</td><td>C → Eb</td><td>小调、蓝调 b3</td></tr>
+        <tr><td>大三度</td><td>4</td><td>C → E</td><td>明亮、属七</td></tr>
+        <tr><td>纯四度</td><td>5</td><td>C → F</td><td>IV 级、开放</td></tr>
+        <tr><td>减五度</td><td>6</td><td>C → Gb</td><td>b5、蓝调张力</td></tr>
+        <tr><td>纯五度</td><td>7</td><td>C → G</td><td>稳定、根音上方</td></tr>
+        <tr><td>小七度</td><td>10</td><td>C → Bb</td><td>属七、蓝调 b7</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    你不需要背所有音程，但要知道 b3、b5、b7 为什么“蓝”。它们不是“错音”，而是蓝调用来制造张力和情感的音。
+  </p>
+
+  <h2 id="mixolydian">Mixolydian：第二把位的母音阶</h2>
+  <p>
+    第二把位 G 蓝调的“母音阶”是 G Mixolydian：<strong>G A B C D E F</strong>。
+    它和 G 大调只差一个音：第 7 音从 F# 变成 F。这个 b7 让音乐有了“属七”的蓝调味。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>级数</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>b7</th></tr></thead>
+      <tbody>
+        <tr><td>音</td><td>G</td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr>
+        <tr><td>C 琴孔位</td><td>-2</td><td>-3''</td><td>-3</td><td>4</td><td>-4</td><td>-5'</td><td>-5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    这条音阶比蓝调音阶“亮”，适合在 I7 和弦上制造开阔、歌唱性的句子。
+    蓝调音阶则更“酸”，适合表达张力和哭腔。两者不是替代关系，而是两种颜色。
+  </p>
+
+  <h2 id="blues-scale">蓝调音阶</h2>
+  <p>
+    蓝调音阶通常写作：<strong>1 – b3 – 4 – b5 – 5 – b7</strong>。
+    在 G 调里是：G – Bb – C – Db – D – F。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>级数</th><th>1</th><th>b3</th><th>4</th><th>b5</th><th>5</th><th>b7</th></tr></thead>
+      <tbody>
+        <tr><td>G 蓝调</td><td>G</td><td>Bb</td><td>C</td><td>Db</td><td>D</td><td>F</td></tr>
+        <tr><td>C 琴孔位</td><td>-2</td><td>-3'</td><td>4</td><td>-4'</td><td>-4</td><td>-5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    蓝调音阶不是“从头到尾爬”。它更像一组“落点”：你可以围绕 1、b3、4、5、b7 组织句子，把 b5 当作经过音或张力音。
+    如果你每次都把音阶从低到高吹一遍，听起来就会像练习曲，而不是蓝调。
+  </p>
+  <div class="callout callout-tip">
+    <strong class="callout-title">先唱，再吹</strong>
+    <p>用嘴巴唱出 G – Bb – C – D – F，然后再在琴上找。唱不准的音，吹出来也不会像“你想说的”。</p>
+  </div>
+
+  <h2 id="harmony">I–IV–V 与属七和弦</h2>
+  <p>
+    12 小节蓝调用三个和弦：I7、IV7、V7。以 G 调为例：
+  </p>
+  <ul>
+    <li><strong>I7 = G7</strong>：G – B – D – F</li>
+    <li><strong>IV7 = C7</strong>：C – E – G – Bb</li>
+    <li><strong>V7 = D7</strong>：D – F# – A – C</li>
+  </ul>
+  <p>
+    这三个和弦都是“属七”性质，包含一个小七度。小七度带来张力，也让蓝调可以“悬着”，不必马上解决。
+    这就是为什么蓝调听起来既稳定又不安。
+  </p>
+  <p>
+    一个简单的“和声地图”：
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>小节</th><th>和弦</th><th>最稳的落点</th><th>有张力的落点</th></tr></thead>
+      <tbody>
+        <tr><td>1–4</td><td>G7</td><td>G（-2）、D（-4）、B（-3）</td><td>Bb（-3'）、F（-5）</td></tr>
+        <tr><td>5–6</td><td>C7</td><td>C（4）、G（6）、E（5）</td><td>Bb（-3'）、Eb（-5'）</td></tr>
+        <tr><td>9</td><td>D7</td><td>D（-4）、A（-6）、F#（-2''）</td><td>C（7）、F（-5）</td></tr>
+        <tr><td>11–12</td><td>G7 → D7</td><td>G、D</td><td>F、F#</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="chord-tones">Chord tones 与目标音</h2>
+  <p>
+    即兴不是“吹蓝调音阶”，而是“在和弦上做选择”。最重要的 chord tones 是：
+  </p>
+  <ul>
+    <li><strong>3 度</strong>：决定和弦是大调还是小调，也是蓝调里最有“表情”的音。</li>
+    <li><strong>7 度</strong>：决定属七的张力，尤其是 b7。</li>
+    <li><strong>根音</strong>：稳定、回家，但不要每句都落在根音，否则会像练习。</li>
+    <li><strong>5 度</strong>：安全、开放，适合作为过渡。</li>
+  </ul>
+  <p>
+    练习方法：在 12 小节里，每小节只吹一个 chord tone，不吹经过音。先让耳朵习惯“每个和弦的家的位置”。
+    然后再加入蓝调音阶、经过音和压音。
+  </p>
+  <div class="callout">
+    <strong class="callout-title">目标音练习</strong>
+    <p>先唱一个目标音（例如 C7 的 E），再在琴上找 5 孔吹（E）。然后在它前面加 2–3 个音，最后落到 E。你会发现“句子有方向”了。</p>
+  </div>
+
+  <h2 id="phrasing">Call & response 与句子</h2>
+  <p>
+    蓝调即兴的本质是“说话”。一个句子通常由两部分组成：<strong>问句（call）</strong>和<strong>答句（response）</strong>。
+    问句可以上扬、开放；答句通常更短、更稳定、落在 chord tone 上。
+  </p>
+  <ul>
+    <li><strong>2 小节问，2 小节答</strong>：最基础的结构。</li>
+    <li><strong>重复</strong>：同一个动机重复 2–3 次，每次稍微变化。重复让听众记住你。</li>
+    <li><strong>留白</strong>：答句之后停 1–2 拍，让音乐呼吸。</li>
+    <li><strong>动态</strong>：问句可以响，答句可以轻；不要从头到尾一个音量。</li>
+  </ul>
+  <p>
+    一个常见错误是“每 4 小节换一个新想法”。听众需要时间记住你的动机。先学会重复，再学会变化。
+  </p>
+
+  <h2 id="changes">Play the changes</h2>
+  <p>
+    “Play the changes”意思是：你的句子要反映当前和弦，而不是从头到尾只吹一个蓝调音阶。
+    在 12 小节里，和弦在变，你的“家”和“张力音”也应该变。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>和弦</th><th>3 度</th><th>b7</th><th>在 C 琴上的位置</th></tr></thead>
+      <tbody>
+        <tr><td>G7</td><td>B</td><td>F</td><td>-3 / -5</td></tr>
+        <tr><td>C7</td><td>E</td><td>Bb</td><td>5 / -3'</td></tr>
+        <tr><td>D7</td><td>F#</td><td>C</td><td>-2'' / 7</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    一个很实用的练习：在 12 小节里，每到和弦变化，就落在该和弦的 3 度或 b7 上。
+    速度慢到 60 BPM，每小节只吹一个音。听起来会很简单，但这是“和声意识”的开始。
+  </p>
+
+  <h2 id="jazz">Jazz blues 入门</h2>
+  <p>
+    当你熟悉 12 小节和蓝调音阶，可以开始接触 jazz blues。它通常在 12 小节里加入更多 ii–V、变化和弦和半音经过。
+    你不需要一开始就懂所有和声，可以先学一个 ii–V 句子，放进第 9–10 小节。
+  </p>
+  <p>
+    推荐听：
+  </p>
+  <ul>
+    <li>Charlie Parker — 《Now's the Time》</li>
+    <li>Thelonious Monk — 《Blue Monk》</li>
+    <li>Toots Thielemans — 《Bluesette》（虽然不是 12 小节，但和声感很好）</li>
+    <li>Filip Jers — 第三把位 jazz blues</li>
+  </ul>
+
+  <h2 id="practice">理论练习：把知识变成声音</h2>
+  <ol>
+    <li><strong>唱音阶</strong>：G Mixolydian 和 G 蓝调音阶，各唱 2 遍，再吹。</li>
+    <li><strong>只吹 chord tones</strong>：12 小节，每小节一个 3 度或 7 度。</li>
+    <li><strong>2 小节问答</strong>：问句 4 个音，答句 2 个音；重复 4 次。</li>
+    <li><strong>限制 3 个音</strong>：只用 -2、-3'、4，吹 12 小节，靠节奏变化。</li>
+    <li><strong>录音</strong>：听自己有没有“落在和弦上”，还是只是在吹音阶。</li>
+  </ol>
+
+  <div class="callout callout-listen">
+    <strong class="callout-title">这一章听完再走</strong>
+    <p>听 Sonny Boy Williamson II 的《Help Me》和 Little Walter 的《Juke》。前者是“少即是多”的 call & response，后者是“把口琴当萨克斯”的句子结构。</p>
+  </div>
+</ChapterLayout>

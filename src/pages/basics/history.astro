@@ -1,0 +1,138 @@
+---
+import ChapterLayout from "../../components/ChapterLayout.astro";
+
+const toc = [
+  { id: "origins", label: "从笙到自由簧" },
+  { id: "hohner", label: "Hohner 与 Marine Band" },
+  { id: "america", label: "美国：从邮购到街头" },
+  { id: "prewar", label: "战前蓝调" },
+  { id: "electric", label: "电声革命" },
+  { id: "chicago", label: "Chicago 的夜晚" },
+  { id: "revival", label: "60 年代复兴" },
+  { id: "modern", label: "现代与未来" },
+  { id: "timeline", label: "时间线" },
+];
+---
+
+<ChapterLayout
+  title="蓝调口琴小史"
+  description="1820 年代的欧洲、1857 年的 Hohner、1896 年的 Marine Band、1920 年代的 race records、1940 年代的电声革命，以及今天的 YouTube 课堂。"
+  number="09"
+  chapterId="history"
+  toc={toc}
+  read="12 分钟"
+  meta={["历史", "Hohner", "Chicago", "流派"]}
+>
+  <p class="lead">
+    口琴不是为蓝调发明的。它诞生在欧洲，被移民带到美国，被黑人音乐家改造成一种“会哭的乐器”。
+    理解这段历史，你会明白为什么蓝调口琴的音色、禁忌和自由都那么特别。
+  </p>
+
+  <h2 id="origins">从笙到自由簧</h2>
+  <p>
+    口琴的远祖可以追溯到中国的<strong>笙</strong>：一种用竹管和自由簧发声的古老乐器。
+    自由簧的原理是：气流让一片固定在槽上的簧片振动，而不是像笛子那样让空气柱振动。
+    这个原理后来传入欧洲，启发了 19 世纪初的一系列“自由簧”实验。
+  </p>
+  <p>
+    通常把 1821 年德国的 Christian Friedrich Ludwig Buschmann 视为早期口琴的发明者之一。
+    但真正把口琴变成工业产品、并推向全世界的，是 1857 年在德国 Trossingen 创立公司的<strong>Matthias Hohner</strong>。
+  </p>
+
+  <h2 id="hohner">Hohner 与 Marine Band</h2>
+  <p>
+    Hohner 最初做的是钟表，后来转做口琴。19 世纪末，Hohner 已经成为世界上最大的口琴制造商之一。
+    1896 年，他们推出了 <strong>Marine Band</strong>（型号 1896）：10 孔、木格、金属盖板。
+    它原本是给美国海军陆战队乐队设计的，却意外成为 blues、folk 和 rock 口琴的象征。
+  </p>
+  <p>
+    Marine Band 的成功不只因为音色，还因为它的“不完美”：木格会膨胀、边缘会刮嘴、簧片会疲劳。
+    但正是这种“不完美”，让它可以被压音、被改装、被吹出粗糙的蓝调味。很多经典录音就是用一把普通的 Marine Band 完成的。
+  </p>
+
+  <h2 id="america">美国：从邮购到街头</h2>
+  <p>
+    19 世纪末到 20 世纪初，Hohner 通过邮购目录、百货公司和移民网络，把口琴卖到美国各地。
+    它便宜、便携、不需要电，也不占地方——对南方的黑人劳工、流浪音乐人、街头艺人来说，这是一件“可以随身携带的乐队”。
+  </p>
+  <p>
+    口琴很快进入乡村、福音、蓝调和早期爵士。它既能吹旋律，也能吹和弦；既能独奏，也能伴奏。
+    在录音技术还不成熟的年代，口琴的高频和穿透力让它成为录音室里的常客。
+  </p>
+
+  <h2 id="prewar">战前蓝调：Sonny Boy 与 Big Walter</h2>
+  <p>
+    1920–30 年代，唱片公司开始录制“race records”（面向黑人听众的唱片）。口琴随之进入蓝调录音。
+    <strong>Sonny Boy Williamson I</strong>（John Lee Williamson）是第一位以口琴为主角的蓝调明星之一，他的《Good Morning, School Girl》让口琴成为主奏乐器。
+  </p>
+  <p>
+    同一时期，<strong>Big Walter Horton</strong>、<strong>Rice Miller</strong>（后来的 Sonny Boy Williamson II）等人，在孟菲斯、密西西比和芝加哥的俱乐部/电台里发展出各自的音色。
+    他们的口琴常常是原声的、稀疏的、像人声一样说话的。
+  </p>
+
+  <h2 id="electric">电声革命：Little Walter</h2>
+  <p>
+    1940 年代，芝加哥的俱乐部越来越吵。吉他接上了放大器，歌手开始用麦克风，口琴也必须“变大”。
+    一些口琴手开始把口琴直接吹进手持麦克风，再把麦克风接进小音箱，制造出失真、压缩和巨大的音色。
+  </p>
+  <p>
+    <strong>Little Walter</strong> 是这场革命最具代表性的人物。1951 年，他开始录制电声口琴；1952 年，器乐曲《Juke》登上 R&B 榜首。
+    他的音色像萨克斯，句子像爵士号手，音量却能压过整个乐队。从此，蓝调口琴分成了“前 Little Walter”和“后 Little Walter”两个时代。
+  </p>
+
+  <h2 id="chicago">Chicago 的夜晚</h2>
+  <p>
+    1950 年代的芝加哥 South Side 和 West Side，是蓝调口琴的黄金现场。
+    Muddy Waters、Howlin' Wolf、Junior Wells、James Cotton、Little Walter 等人在俱乐部里演出，
+    Chess Records 把这些声音录成唱片。
+  </p>
+  <p>
+    Chicago blues 的编制通常是：吉他、口琴、贝斯、鼓、钢琴，有时加萨克斯。
+    口琴不再只是“伴奏”，而是和吉他、人声并列的主奏乐器。它可以在 12 小节里吹 solo，也可以在歌手身后 chug。
+  </p>
+
+  <h2 id="revival">60 年代复兴：从 Chicago 到世界</h2>
+  <p>
+    1960 年代，Paul Butterfield、Charlie Musselwhite、John Mayall 等白人音乐家把 Chicago blues 带到更广泛的听众面前。
+    英国的 Rolling Stones、Yardbirds、Led Zeppelin 也把口琴带进摇滚。
+  </p>
+  <p>
+    同时，美国的民谣/蓝调复兴让 Sonny Terry、Big Walter、Sonny Boy II 等老一代口琴手重新被看见。
+    口琴从“街头乐器”变成了“可以进音乐厅、进大学、进唱片收藏”的乐器。
+  </p>
+
+  <h2 id="modern">现代与未来</h2>
+  <p>
+    1970 年代以后，<strong>Howard Levy</strong> 等人系统发展了超吹/超吸技术，让十孔口琴可以演奏完整半音阶，
+    进入爵士、古典和世界音乐。Carlos del Junco、Filip Jers、Jason Ricci、Dennis Gruenling 等当代玩家，
+    把蓝调口琴推向更技术化、更多元的方向。
+  </p>
+  <p>
+    2000 年代以后，YouTube 和在线课程改变了学习方式。Adam Gussow、Tomlin Leckie、Liam Ward、Ronnie Shellist 等人
+    把过去需要“找老师、买录像带”的知识，变成了免费视频和互动课程。你手上的这把口琴，比历史上任何时期都更容易学。
+  </p>
+
+  <h2 id="timeline">时间线</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>年代</th><th>事件</th><th>意义</th></tr></thead>
+      <tbody>
+        <tr><td>古代</td><td>中国笙</td><td>自由簧原理的远祖</td></tr>
+        <tr><td>1821</td><td>Buschmann 的早期口琴</td><td>自由簧乐器进入欧洲</td></tr>
+        <tr><td>1857</td><td>Matthias Hohner 创立公司</td><td>口琴工业化、全球化</td></tr>
+        <tr><td>1896</td><td>Hohner Marine Band 诞生</td><td>蓝调口琴的象征型号</td></tr>
+        <tr><td>1920s–30s</td><td>Race records、Sonny Boy I</td><td>口琴进入蓝调录音</td></tr>
+        <tr><td>1940s</td><td>芝加哥电声化</td><td>口琴 + 麦克风 + 小音箱</td></tr>
+        <tr><td>1952</td><td>Little Walter《Juke》</td><td>电声口琴的里程碑</td></tr>
+        <tr><td>1960s</td><td>Blues revival、Butterfield</td><td>口琴进入摇滚与主流</td></tr>
+        <tr><td>1970s–80s</td><td>Howard Levy 超吹体系</td><td>十孔口琴半音化</td></tr>
+        <tr><td>2000s–</td><td>YouTube、在线课程</td><td>学习门槛大幅降低</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-listen">
+    <strong class="callout-title">这一章听完再走</strong>
+    <p>按时间顺序听：Sonny Boy Williamson I 的《Good Morning, School Girl》→ Little Walter 的《Juke》→ Junior Wells 的《Hoodoo Man Blues》→ Howard Levy 的《Flight of the Cosmic Hippo》。一条线，听口琴如何从原声走到电声，再走到爵士。</p>
+  </div>
+</ChapterLayout>

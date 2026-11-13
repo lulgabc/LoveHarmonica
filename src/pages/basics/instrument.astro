@@ -1,0 +1,170 @@
+---
+import ChapterLayout from "../../components/ChapterLayout.astro";
+import { url } from "../../lib/url";
+
+const toc = [
+  { id: "types", label: "三种口琴" },
+  { id: "anatomy", label: "十孔口琴的构造" },
+  { id: "layout", label: "C 调琴的音位" },
+  { id: "first-harp", label: "第一把琴怎么选" },
+  { id: "models", label: "品牌与型号" },
+  { id: "care", label: "保养与寿命" },
+  { id: "faq", label: "常见问题" },
+];
+---
+
+<ChapterLayout
+  title="认识这件乐器"
+  description="十孔、半音阶、复音到底有什么区别？一把口琴由哪些部分组成？第一把琴该买什么调、什么型号、多少钱？这一章把“买琴”变成一件有依据的事。"
+  number="01"
+  chapterId="instrument"
+  toc={toc}
+  read="12 分钟"
+  meta={["选琴", "构造", "调性", "保养"]}
+>
+  <p class="lead">
+    口琴看起来像玩具，实际上是一件非常精密的自由簧乐器。它的声音不是“吹响”那么简单：
+    每一口气流都在和两片簧片、一个气室、你的口腔和双手共同工作。理解它的构造，会直接改变你练习的方式。
+  </p>
+
+  <div class="callout">
+    <strong class="callout-title">先记住一句话</strong>
+    <p>蓝调口琴通常指“10 孔全音阶口琴”（10-hole diatonic）。它只有 20 个基本音，却能通过压音、超吹和把位，演奏出远超 20 个音的音乐。限制，正是它的表达力来源。</p>
+  </div>
+
+  <h2 id="types">三种口琴：先别买错</h2>
+  <p>
+    口琴家族很大，但自学蓝调最常见的是下面三类。你不需要一开始就全懂，只要知道它们各自解决什么问题。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>类型</th><th>结构</th><th>适合</th><th>蓝调里的角色</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>十孔全音阶</strong><br /><span class="muted small">Diatonic</span></td>
+          <td>10 孔、20 个基本音、Richter 调音</td>
+          <td>Blues、Rock、Country、Folk</td>
+          <td>主角。压音、超吹、第二把位都在这件乐器上。</td>
+        </tr>
+        <tr>
+          <td><strong>半音阶</strong><br /><span class="muted small">Chromatic</span></td>
+          <td>12/16 孔，带按键，可升高半音</td>
+          <td>Jazz、Classical、Pop</td>
+          <td>爵士与流行中的“完整乐器”，Toots、Stevie Wonder 的代表。</td>
+        </tr>
+        <tr>
+          <td><strong>复音</strong><br /><span class="muted small">Tremolo</span></td>
+          <td>每个音两片簧片，轻微失谐</td>
+          <td>民谣、老歌、合奏</td>
+          <td>蓝调里不常用，但亚洲和欧洲传统音乐中很常见。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    如果你要学的是 Chicago blues、cross harp、压音和 12 小节，<strong>先买一把 10 孔全音阶</strong>。
+    半音阶很好，但它不是蓝调入门的必经之路；复音则更适合另一套曲目和审美。
+  </p>
+
+  <h2 id="anatomy">十孔口琴的构造</h2>
+  <p>一把标准十孔口琴，基本由五部分组成：</p>
+  <ul>
+    <li><strong>盖板（cover plates）</strong>：外面的金属壳，保护簧片，也影响声音的投射和手感。</li>
+    <li><strong>簧板（reed plates）</strong>：上下各一块，固定着 20 片簧片。吹气簧片和吸气簧片交替排列。</li>
+    <li><strong>簧片（reeds）</strong>：真正发声的部分。长度、厚度、材质和间隙决定音高、响应和音色。</li>
+    <li><strong>琴格（comb）</strong>：中间的气室结构，把每个孔隔开。材质常见木、塑料、金属。</li>
+    <li><strong>螺丝/铆钉</strong>：固定结构。可拆设计的琴更方便清洁和维修。</li>
+  </ul>
+  <p>
+    每个孔里有两片簧片：一片对吹气响应，一片对吸气响应。标准 Richter 调音下，吹气音和吸气音不是简单的“相邻音”，
+    而是为了和弦与压音设计的。比如 C 琴的 1 孔吹是 C、吸是 D；2 孔吹是 E、吸是 G；3 孔吹是 G、吸是 B。
+  </p>
+
+  <h2 id="layout">C 调琴的音位</h2>
+  <p>
+    下面是最常见的 C 调十孔口琴音位。先不用背，把它当成地图：你会在“把位”和“压音”两章反复回来查。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>孔</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>吹 Blow</strong></td><td>C</td><td>E</td><td>G</td><td>C</td><td>E</td><td>G</td><td>C</td><td>E</td><td>G</td><td>C</td></tr>
+        <tr><td><strong>吸 Draw</strong></td><td>D</td><td>G</td><td>B</td><td>D</td><td>F</td><td>A</td><td>B</td><td>D</td><td>F</td><td>A</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    注意：低音区缺少 F 和 A，高音区又重复了 C、E、G。这不是做错了，而是 Richter 调音为了和弦与蓝调演奏做的取舍。
+    缺失的音，可以通过压音补回来；这正是十孔口琴“不完整却更蓝调”的秘密。
+  </p>
+  <div class="callout callout-tip">
+    <strong class="callout-title">练习建议</strong>
+    <p>打开本站的 <a href={url("/toolkit/#harp-map")}>交互式音位图</a>，点每个孔听声音，并切换“显示压音”。视觉 + 听觉一起记，比背表格快得多。</p>
+  </div>
+
+  <h2 id="first-harp">第一把琴怎么选</h2>
+  <p>第一把琴的原则只有三条：<strong>音准可靠、响应容易、你愿意每天拿起来</strong>。具体建议：</p>
+  <ul>
+    <li><strong>调性选 C</strong>。绝大多数教材、视频和 tab 都以 C 调琴为例。C 琴也是第二把位 G 蓝调的标准琴。</li>
+    <li><strong>选塑料或密封性好的琴格</strong>。木格有味道，但容易受潮膨胀；塑料格更耐用，适合新手。</li>
+    <li><strong>预算 200–500 元</strong>。这个价位已经能买到可靠的入门/进阶琴。30–80 元的玩具琴通常漏气、音不准、压音困难。</li>
+    <li><strong>不要一次买一套 7 把</strong>。先一把 C，学完前三个月，再按曲目需要补 A、Bb、G。</li>
+  </ul>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>预算</th><th>建议</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>200–350 元</td><td>Hohner Special 20 / Lee Oskar Major Diatonic</td><td>最稳妥的入门选择，响应好、耐用、配件多。</td></tr>
+        <tr><td>350–600 元</td><td>Seydel Session Steel / Suzuki Manji / Hohner Rocket</td><td>音色和手感更好，适合确定要长期学的人。</td></tr>
+        <tr><td>600 元以上</td><td>Hohner Crossover / Seydel 1847 / 定制琴</td><td>不是初学必需。等你知道自己喜欢什么音色再买。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="models">品牌与型号：一张不踩坑的清单</h2>
+  <ul>
+    <li><strong>Hohner Special 20</strong>：塑料格、圆角、响应好。无数职业玩家的工作琴，也是最常见的“第一把好琴”。</li>
+    <li><strong>Hohner Marine Band 1896</strong>：木格、经典音色，但木格可能膨胀、边缘较刮嘴。适合喜欢传统音色的人。</li>
+    <li><strong>Hohner Crossover</strong>：Marine Band 的现代版，竹格、密封性好，音色温暖，适合 amplified blues。</li>
+    <li><strong>Lee Oskar Major Diatonic</strong>：耐用、音色明亮，替代调音选择多，适合摇滚/流行/蓝调。</li>
+    <li><strong>Seydel Session Steel</strong>：不锈钢簧片、寿命长，响应直接，欧洲玩家常用。</li>
+    <li><strong>Suzuki Manji</strong>：音色厚、响应快，性价比高，在蓝调圈口碑很好。</li>
+    <li><strong>Seydel 1847</strong>：高端木格琴，音色和手感都很好，但价格高，适合作为第二/第三把。</li>
+  </ul>
+  <div class="callout callout-warn">
+    <strong class="callout-title">别被“调音”吓到</strong>
+    <p>“Just intonation”“compromise tuning”“equal temperament”这些词会出现在买琴页面。初学阶段不用纠结：选一把主流型号、音准可靠的琴，先吹起来。等你开始和固定乐器长时间合奏，再研究调音差异。</p>
+  </div>
+
+  <h2 id="care">保养与寿命</h2>
+  <p>口琴是“会呼吸”的乐器，保养比很多人想的简单：</p>
+  <ul>
+    <li><strong>吹前漱口</strong>，不要吃完东西立刻吹。糖和油脂会粘在簧片上。</li>
+    <li><strong>吹前暖琴</strong>，放在手心或口袋里几分钟，减少冷凝水。</li>
+    <li><strong>吹后轻拍</strong>，把口水拍出，放在通风处自然干燥。不要用吹风机高温吹。</li>
+    <li><strong>不要泡水</strong>，尤其是木格琴。塑料格可以有限度冲洗，但也不建议经常整把浸泡。</li>
+    <li><strong>不要借给别人</strong>，这不是小气，是卫生和簧片寿命。</li>
+    <li><strong>簧片疲劳/跑音</strong>时，考虑换簧或换琴。严重跑音不要自己乱掰。</li>
+  </ul>
+
+  <h2 id="faq">常见问题</h2>
+  <h3>1. 木格琴会发霉吗？</h3>
+  <p>会，尤其是潮湿环境。每次吹完保持干燥、通风；如果琴格已经膨胀刮嘴，可以用细砂纸轻微打磨，或者换塑料格琴。新手更推荐塑料格。</p>
+  <h3>2. 我可以买二手琴吗？</h3>
+  <p>可以，但要谨慎。检查簧片是否锈蚀、音准是否严重偏离、琴格是否膨胀、螺丝是否滑牙。二手适合有经验的人；第一把琴建议买新。</p>
+  <h3>3. 需要买不同调的吗？</h3>
+  <p>需要，但不是现在。先 C，再根据你常 jam 的调补 A、Bb、G。第二把位下，A 琴吹 E 蓝调（吉他最爱的调），Bb 琴吹 F 蓝调，G 琴吹 D 蓝调。</p>
+  <h3>4. 半音阶口琴能学蓝调吗？</h3>
+  <p>能，而且很有味道。但蓝调口琴的核心语汇（压音、cross harp、chug）是围绕十孔琴建立的。先学十孔，之后再扩展半音阶，会更顺。</p>
+
+  <div class="callout callout-listen">
+    <strong class="callout-title">这一章听完再走</strong>
+    <p>听 Little Walter 的《Juke》和 Big Walter Horton 的《Easy》。你不需要听懂每个音，只要注意：同一把 10 孔口琴，为什么能发出完全不同的人格。</p>
+  </div>
+</ChapterLayout>

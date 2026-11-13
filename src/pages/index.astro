@@ -1,0 +1,326 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import VideoCard from "../components/VideoCard.astro";
+import PlayerCard from "../components/PlayerCard.astro";
+import BookCard from "../components/BookCard.astro";
+import { SITE, SITE_STATS } from "../lib/site";
+import { url } from "../lib/url";
+import { PHASES } from "../data/roadmap";
+import { FEATURED_VIDEOS, CHANNELS } from "../data/courses";
+import { FEATURED_PLAYERS } from "../data/players";
+import { FEATURED_BOOKS } from "../data/books";
+---
+
+<BaseLayout description={SITE.description} current="/">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow hero-kicker">A field guide to the blues harp</span>
+        <h1>
+          <span class="line cn">把一口气</span>
+          <span class="line cn">吹成一整个</span>
+          <span class="line"><em>蓝调夜晚。</em></span>
+        </h1>
+        <p class="hero-lead">
+          一份写给自学者的中文蓝调口琴地图：从第一口呼吸、单音与压音，
+          到 12 小节、Chicago 音色、即兴与上台。不堆资料，只告诉你今天该练什么。
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href={url("/roadmap/")}>从 12 个月路线开始 <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href={url("/basics/first-notes/")}>先学第一口呼吸</a>
+        </div>
+        <div class="listen-row">
+          <button class="listen-btn" type="button" data-demo aria-pressed="false">
+            <span class="eq" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            <span data-demo-label>听 12 小节蓝调</span>
+          </button>
+          <span class="listen-note">浏览器实时合成 · 不用下载音频</span>
+        </div>
+        <div class="hero-meta">
+          <span>零基础可入门</span>
+          <span>48 周练习计划</span>
+          <span>20+ 免费课程</span>
+          <span>8 个互动工具</span>
+        </div>
+      </div>
+
+      <div class="hero-visual hero-stage" aria-hidden="true">
+        <div class="deco-arch"></div>
+        <div class="vinyl">
+          <div class="vinyl-label">
+            <div>
+              <strong>LOVE<br />HARMONICA</strong>
+              <small>Blues in C · 12 bars</small>
+            </div>
+          </div>
+          <div class="vinyl-hole"></div>
+        </div>
+
+        <div class="harp-hero">
+          <div class="harp-body">
+            <span class="harp-screw harp-screw-a"></span>
+            <span class="harp-screw harp-screw-b"></span>
+            <span class="harp-screw harp-screw-c"></span>
+            <span class="harp-screw harp-screw-d"></span>
+            <div class="harp-topline">
+              <span>Diatonic · 10 holes</span>
+              <strong>Love Harmonica</strong>
+              <span>Key of C</span>
+            </div>
+            <div class="harp-holes">
+              {Array.from({ length: 10 }).map(() => <span class="harp-hole"></span>)}
+            </div>
+            <div class="harp-bottomline">
+              <span>Breathe the blues</span>
+              <em>2nd position · G</em>
+              <span>Est. 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-float hero-float-a">
+          <span class="float-accent">C → G</span>
+          <strong>2nd Position</strong>
+          C 调琴吹 G 蓝调
+        </div>
+        <div class="hero-float hero-float-b">
+          <strong>I–IV–V</strong>
+          12 bars · shuffle 92 BPM
+        </div>
+        <div class="hero-float hero-float-c">
+          <strong>今日 20 分钟</strong>
+          呼吸 4 · 技巧 5 · 曲目 5 · 录音 2
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hero-stats">
+        {SITE_STATS.map((stat) => (
+          <div class="hero-stat"><strong>{stat.value}</strong><span>{stat.label}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      {["Little Walter", "Big Walter Horton", "Sonny Boy Williamson II", "Howlin' Wolf", "Junior Wells", "James Cotton", "Charlie Musselwhite", "Howard Levy", "Filip Jers", "Indiara Sfair", "Little Walter", "Big Walter Horton", "Sonny Boy Williamson II", "Howlin' Wolf", "Junior Wells", "James Cotton", "Charlie Musselwhite", "Howard Levy", "Filip Jers", "Indiara Sfair"].map((name) => <span>{name}</span>)}
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="The three pillars"
+        title="先校准三件事，再谈即兴"
+        description="蓝调口琴不是“先背完所有音阶再开始”。真正决定你像不像蓝调的，是呼吸、时间和语言这三条主线。"
+      />
+      <div class="pillar-grid">
+        <article class="pillar-card reveal">
+          <div class="pillar-num">01</div>
+          <h3>呼吸先于技巧</h3>
+          <p>
+            音色不是“吹得响”，而是气流稳定、口腔打开、身体放松。
+            腹式呼吸、长音和压音，决定了你的口琴像不像在说话。
+          </p>
+          <span class="pillar-tag">Breath · Tone · Bending</span>
+        </article>
+        <article class="pillar-card reveal">
+          <div class="pillar-num">02</div>
+          <h3>时间先于音符</h3>
+          <p>
+            Shuffle、12 小节、chug、留白——蓝调首先是节奏音乐。
+            先能在伴奏里站稳，再谈你吹了什么音。
+          </p>
+          <span class="pillar-tag">Shuffle · 12-bar · Space</span>
+        </article>
+        <article class="pillar-card reveal">
+          <div class="pillar-num">03</div>
+          <h3>语言先于速度</h3>
+          <p>
+            一个短句、一次重复、一个回答，比一百个 lick 更像蓝调。
+            学会听、唱、模仿，再让句子从你身上长出来。
+          </p>
+          <span class="pillar-tag">Phrasing · Vocabulary · Voice</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Start here · 7 days"
+        title="第一周，不用买十把琴"
+        description="一把 C 调十孔口琴、一个节拍器、一个能录音的手机，足够开始。每天 15–20 分钟，按这个顺序走。"
+        link="/basics/first-notes/"
+        linkLabel="打开第一口呼吸"
+      />
+      <div class="start-grid">
+        {[
+          { day: "Day 01", title: "认识琴与单音", text: "持琴、含琴、4/5/6 孔长音。先让一个音干净。", time: "15 min", href: "/basics/instrument/" },
+          { day: "Day 02", title: "数完 12 小节", text: "1–4 拍，I–IV–V。只吹根音也算完成。", time: "15 min", href: "/basics/rhythm/" },
+          { day: "Day 03", title: "Chug 与 shuffle", text: "1 & 3 拍低音、2 & 4 拍和弦，找到“火车感”。", time: "20 min", href: "/toolkit/#jam" },
+          { day: "Day 04", title: "2 孔吸音压音", text: "G → F# → F。不要用力吸，用口腔改变气流。", time: "15 min", href: "/basics/bending/" },
+          { day: "Day 05", title: "3 孔吸音压音", text: "B → Bb → A。蓝调口琴的“哭腔”从这里开始。", time: "20 min", href: "/basics/bending/" },
+          { day: "Day 06", title: "第一段 solo", text: "用 5 个音、2 个动机，吹完 12 小节。", time: "20 min", href: "/tabs/" },
+          { day: "Day 07", title: "录音与复盘", text: "录 2 分钟，听哪里断拍、哪里漏气，下周只改一个点。", time: "15 min", href: "/toolkit/#timer" },
+        ].map((item) => (
+          <a class="start-day reveal" href={url(item.href)}>
+            <strong>{item.day}</strong>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <span class="start-time">{item.time} · 打开 →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="The roadmap"
+        title="12 个月，四个阶段"
+        description="从“能吹完一首”到“能上台”。每个阶段都有明确目标、48 周计划、检查点和可勾选的练习清单。"
+        link="/roadmap/"
+        linkLabel="打开完整路线图"
+      />
+      <div class="grid grid-4">
+        {PHASES.map((phase) => (
+          <a class="card card-link phase-card reveal" href={url(`/roadmap/#${phase.id}`)}>
+            <div class="phase-top">
+              <span class="phase-num">{phase.number}</span>
+              <span class="pill">{phase.months.split(" · ")[0]}</span>
+            </div>
+            <h3>{phase.title}</h3>
+            <p>{phase.subtitle}</p>
+            <ul class="phase-list">
+              {phase.focus.slice(0, 3).map((item) => <li>{item}</li>)}
+            </ul>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Free lessons"
+        title="先看这三支，别急着收藏 100 个"
+        description="从“第一课”“shuffle 律动”“第一段 12 小节”三个入口开始。每支都值得反复看，而不是看一遍就过。"
+        link="/courses/"
+        linkLabel="浏览全部免费课程"
+      />
+      <div class="video-grid">
+        {FEATURED_VIDEOS.slice(0, 3).map((video) => <VideoCard video={video} />)}
+      </div>
+      <div class="btn-row section-foot">
+        <a class="btn btn-ghost" href={url("/courses/")}>还有 {CHANNELS.length} 个频道与 20+ 个免费入口 <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Listen deeper"
+        title="听谁，决定你像谁"
+        description="从 Little Walter 的电声风暴到 Indiara Sfair 的清音长句。每位大师都附上“先听哪张、听什么”。"
+        link="/players/"
+        linkLabel="进入大师名录"
+      />
+      <div class="player-grid">
+        {FEATURED_PLAYERS.slice(0, 4).map((player) => <PlayerCard player={player} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2" style="align-items: stretch;">
+        <div class="card" style="display:flex;flex-direction:column;justify-content:center;">
+          <span class="kicker">Practice studio</span>
+          <h2 style="font-size: clamp(1.8rem, 3vw, 2.8rem); margin: 12px 0;">今天就能用的练习室</h2>
+          <p style="max-width: 480px;">
+            12 小节伴奏机、交互式口琴音位图、节拍器、练习计时器、第二把位换算器。
+            全部在浏览器里运行，不需要注册，也不会收集你的数据。
+          </p>
+          <div class="tag-row" style="margin: 18px 0 22px;">
+            <span class="pill pill-accent">Jam track</span>
+            <span class="pill pill-accent">Harp map</span>
+            <span class="pill pill-accent">Metronome</span>
+            <span class="pill pill-accent">Timer</span>
+            <span class="pill pill-accent">Key finder</span>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href={url("/toolkit/")}>打开练习室 <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href={url("/tabs/")}>先学一条乐句</a>
+          </div>
+        </div>
+        <div class="card" style="display:flex;flex-direction:column;justify-content:center;background:linear-gradient(145deg,var(--panel-2),var(--panel));">
+          <div class="metronome-bpm" style="font-size: clamp(3.2rem, 7vw, 5.4rem); color: var(--brass); font-family: var(--font-display); line-height:1;">92<small style="font-size:0.2em; letter-spacing:0.12em; color:var(--muted); margin-left:6px;">BPM</small></div>
+          <div class="beat-dots" style="margin-bottom: 18px;">
+            <span class="beat-dot is-accent is-on"></span>
+            <span class="beat-dot"></span>
+            <span class="beat-dot is-accent"></span>
+            <span class="beat-dot"></span>
+          </div>
+          <p class="small muted" style="margin-bottom: 16px;">2 &amp; 4 的重音，是蓝调 shuffle 的入口。</p>
+          <div class="jam-grid" style="grid-template-columns: repeat(4, minmax(0,1fr)); margin:0;">
+            {["G7", "G7", "C7", "G7", "C7", "C7", "G7", "G7", "D7", "C7", "G7", "D7"].map((chord, index) => (
+              <div class:list={["jam-bar", index === 0 && "is-current"]} style="min-height:48px; padding:6px 8px;">
+                <span class="bar-num">{index + 1}</span>
+                <span class="bar-chord" style="font-size:1rem;">{chord}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="The library"
+        title="书不用多，读对顺序"
+        description="方法书、技巧、历史、乐句。先选一本主线，其余当参考。每本都写清楚“为什么读、什么时候读”。"
+        link="/books/"
+        linkLabel="查看完整书单"
+      />
+      <div class="book-grid">
+        {FEATURED_BOOKS.slice(0, 3).map((book) => <BookCard book={book} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-band">
+    <div class="container">
+      <blockquote>蓝调不是音阶，是一口气的诚实。</blockquote>
+      <cite>LoveHarmonica · 编辑手记</cite>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="padding: clamp(28px, 5vw, 56px); text-align:center; background: radial-gradient(circle at 50% 0%, var(--brass-soft), transparent 60%), var(--panel);">
+        <span class="eyebrow" style="justify-content:center;">Start where you are</span>
+        <h2 style="font-size: clamp(2rem, 4vw, 3.4rem); margin: 14px auto; max-width: 760px;">
+          今天不用练很多，<br />只要先吹响一个音。
+        </h2>
+        <p class="lead" style="max-width: 620px; margin: 0 auto 24px;">
+          拿一把 C 调口琴，打开练习室的 12 小节伴奏，吹一个 2 孔吸音。
+          剩下的，路线图会带你走。
+        </p>
+        <div class="btn-row" style="justify-content:center;">
+          <a class="btn btn-primary" href={url("/toolkit/#jam")}>打开 12 小节伴奏</a>
+          <a class="btn btn-ghost" href={url("/roadmap/")}>看 12 个月路线</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

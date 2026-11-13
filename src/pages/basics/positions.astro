@@ -1,0 +1,171 @@
+---
+import ChapterLayout from "../../components/ChapterLayout.astro";
+import { url } from "../../lib/url";
+
+const toc = [
+  { id: "what", label: "什么是把位" },
+  { id: "second", label: "第二把位：蓝调的家" },
+  { id: "table", label: "12 个把位表" },
+  { id: "song-key", label: "歌曲调 → 口琴调" },
+  { id: "third", label: "第三把位：小调的颜色" },
+  { id: "twelfth", label: "第十二把位与其他" },
+  { id: "practice", label: "把位练习" },
+];
+---
+
+<ChapterLayout
+  title="把位与调性"
+  description="为什么 C 调口琴能吹 G 调蓝调？第二把位、第三把位、第十二把位分别在什么场合用？一张表解决“我该买哪把琴、吹哪个调”。"
+  number="03"
+  chapterId="positions"
+  toc={toc}
+  read="11 分钟"
+  meta={["第二把位", "Cross Harp", "选琴", "12 调"]}
+>
+  <p class="lead">
+    “我只有一把 C 调口琴，怎么吹 G 调的蓝调？”——答案不是再买一把，而是换一个“把位”。
+    把位是口琴最重要的概念之一，也是自学最容易绕晕的地方。这一章把它讲清楚。
+  </p>
+
+  <h2 id="what">什么是把位</h2>
+  <p>
+    把位（position）不是“口琴的调”，而是<strong>你决定把哪个音当作 home（主音）</strong>。
+    同一把 C 调口琴，你可以把 C 当 home（第一把位），也可以把 G 当 home（第二把位），或者把 D 当 home（第三把位）。
+  </p>
+  <p>
+    为什么同一把琴能吹不同调？因为十孔口琴的音位是固定的，但你可以用不同的孔作为根音，围绕它组织音阶、和弦和句子。
+    不同的把位，会让你更容易或更难得到某些音，因此带来不同的“颜色”和“难度”。
+  </p>
+  <div class="callout">
+    <strong class="callout-title">一句话记忆</strong>
+    <p>把位 = 用哪个孔当“家”。蓝调最常用第二把位，因为它的根音、b3、b5、b7 都在最顺手的位置。</p>
+  </div>
+
+  <h2 id="second">第二把位：蓝调的家</h2>
+  <p>
+    第二把位（2nd position），也叫 <strong>Cross Harp</strong>。C 调口琴的第二把位是 G：
+    以 2 孔吸音（G）为主音，围绕 G 蓝调音阶组织句子。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>音级</th><th>G 蓝调</th><th>C 调琴孔位</th><th>感觉</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>G</td><td>-2（2 吸）</td><td>家，稳定</td></tr>
+        <tr><td>b3</td><td>Bb</td><td>-3'（3 吸压半音）</td><td>蓝调“酸味”的核心</td></tr>
+        <tr><td>4</td><td>C</td><td>4（4 吹）</td><td>明亮、开放</td></tr>
+        <tr><td>b5</td><td>Db</td><td>-4'（4 吸压半音）</td><td>张力、转折</td></tr>
+        <tr><td>5</td><td>D</td><td>-4（4 吸）</td><td>稳定、回答</td></tr>
+        <tr><td>b7</td><td>F</td><td>-5（5 吸）</td><td>蓝调、属七色彩</td></tr>
+        <tr><td>8</td><td>G</td><td>6（6 吹）</td><td>高八度，回家</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    第二把位的好处是：你不需要压很多音，就能得到 b3、b5、b7 这些“蓝调味”的音；
+    而且 2 孔吸音、4 孔吹/吸、5 孔吸、6 孔吹都在中音区，容易控制动态和音色。
+  </p>
+  <p>
+    第二把位的代价是：低音区缺少一些音，某些旋律需要压音或超吹；高音区也需要更好的控制。
+    但对蓝调来说，这些“缺失”反而制造了张力和个性。
+  </p>
+
+  <h2 id="table">12 个把位表（以 C 调琴为例）</h2>
+  <p>
+    把位按五度圈排列。你不需要背全部，但可以把它当成“调色盘”：不同的把位有不同的颜色和难度。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>把位</th><th>C 琴上的调</th><th>根音位置</th><th>常见用途</th></tr></thead>
+      <tbody>
+        <tr><td>1st</td><td>C</td><td>1 吹 / 4 吹</td><td>Straight harp、民谣、旋律、部分 blues</td></tr>
+        <tr><td>2nd</td><td>G</td><td>2 吸</td><td>蓝调、摇滚、乡村最常用</td></tr>
+        <tr><td>3rd</td><td>D</td><td>4 吸</td><td>Minor blues、Dorian、爵士蓝调</td></tr>
+        <tr><td>4th</td><td>A</td><td>6 吸</td><td>小调、部分 blues/rock</td></tr>
+        <tr><td>5th</td><td>E</td><td>2 吹 / 5 吹 / 8 吹</td><td>小调、摇滚、实验</td></tr>
+        <tr><td>6th</td><td>B</td><td>3 吸 / 7 吸</td><td>较少用，特殊色彩</td></tr>
+        <tr><td>7th</td><td>F# / Gb</td><td>2 吸压音等</td><td>进阶，特殊调性</td></tr>
+        <tr><td>8th</td><td>Db / C#</td><td>4 吸压音等</td><td>进阶，特殊调性</td></tr>
+        <tr><td>9th</td><td>Ab / G#</td><td>6 吸压音等</td><td>进阶，特殊调性</td></tr>
+        <tr><td>10th</td><td>Eb / D#</td><td>8 吹压音等</td><td>进阶，特殊调性</td></tr>
+        <tr><td>11th</td><td>Bb / A#</td><td>3 吸压音</td><td>进阶，特殊调性</td></tr>
+        <tr><td>12th</td><td>F</td><td>5 吸 / 9 吸</td><td>部分 minor blues、特殊音色</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted">
+    注：7–11 把位的根音位置会因调音和演奏方式不同而变化，表中只给方向。初学阶段重点掌握 1st、2nd、3rd。
+  </p>
+
+  <h2 id="song-key">歌曲调 → 口琴调（第二把位）</h2>
+  <p>
+    这是最实用的一张表。公式：<strong>口琴调 = 歌曲调 + 纯四度（5 个半音）</strong>。
+    例如 G 蓝调用 C 琴；E 蓝调用 A 琴。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>歌曲调</th><th>第二把位口琴</th><th>常见场景</th></tr></thead>
+      <tbody>
+        <tr><td>E</td><td>A</td><td>吉他最爱的调，open E / E shuffle</td></tr>
+        <tr><td>A</td><td>D</td><td>吉他友好，rock/blues 常用</td></tr>
+        <tr><td>G</td><td>C</td><td>教材最常用，C 琴入门</td></tr>
+        <tr><td>D</td><td>G</td><td>明亮、适合 upbeat blues</td></tr>
+        <tr><td>C</td><td>F</td><td>钢琴友好，jump blues 常见</td></tr>
+        <tr><td>F</td><td>Bb</td><td>管乐/钢琴友好</td></tr>
+        <tr><td>Bb</td><td>Eb</td><td>管乐调，进阶</td></tr>
+        <tr><td>B</td><td>E</td><td>较少见，但很好听</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout callout-tip">
+    <strong class="callout-title">用工具算</strong>
+    <p>打开 <a href={url("/toolkit/#key-finder")}>第二把位换算器</a>，点一个歌曲调，它会直接告诉你该用哪把口琴。买琴前也可以用这个表检查自己缺哪个调。</p>
+  </div>
+
+  <h2 id="third">第三把位：小调的颜色</h2>
+  <p>
+    C 调琴的第三把位是 D minor。根音在 4 孔吸音（D），b3 在 5 孔吸音（F），4 在 6 孔吹（G），5 在 6 孔吸（A），b7 在 7 孔吹（C）。
+    它比第二把位更暗、更内省，适合 minor blues、Dorian 和爵士蓝调。
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>音级</th><th>D 小调</th><th>C 调琴孔位</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>D</td><td>-4</td></tr>
+        <tr><td>b3</td><td>F</td><td>-5</td></tr>
+        <tr><td>4</td><td>G</td><td>6</td></tr>
+        <tr><td>5</td><td>A</td><td>-6</td></tr>
+        <tr><td>b7</td><td>C</td><td>7</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    第三把位的挑战是：它的“家”不在你最熟悉的 2 孔吸音，而在 4 孔吸音。
+    你需要重新建立“哪里是 home”的感觉。练习时可以先只吹 -4、-5、6、-6、7 五个音，吹一个 8 小节 loop。
+  </p>
+
+  <h2 id="twelfth">第十二把位与其他</h2>
+  <p>
+    C 琴的第十二把位是 F。它的根音在 5 孔吸音（F），音色比较“暗”，在部分 minor blues 和特殊曲目里会用到。
+    第七到第十一把位更偏进阶/实验，不建议在入门阶段分散精力。
+  </p>
+  <p>
+    一个常见的误区是“把位越多越厉害”。实际上，很多职业蓝调口琴手一辈子主要用第二把位，偶尔用第一、第三把位。
+    <strong>把位是工具，不是勋章。</strong>
+  </p>
+
+  <h2 id="practice">把位练习：同一段 12 小节，三种颜色</h2>
+  <ol>
+    <li><strong>第一把位</strong>：C 琴吹 C 蓝调。根音 1 吹/4 吹。感受“直”和“明亮”。</li>
+    <li><strong>第二把位</strong>：C 琴吹 G 蓝调。根音 -2。感受“蓝调”和“张力”。</li>
+    <li><strong>第三把位</strong>：C 琴吹 D minor。根音 -4。感受“暗”和“内省”。</li>
+  </ol>
+  <p>
+    每个把位只吹 12 小节，每小节一个长音或一个短句。录下来对比：同一把琴，为什么像三件不同的乐器？
+    这就是把位的意义。
+  </p>
+
+  <div class="callout callout-listen">
+    <strong class="callout-title">这一章听完再走</strong>
+    <p>听 Little Walter 的《Juke》（第二把位）、Junior Wells 的《Hoodoo Man Blues》（第二把位/Chicago）、以及 Filip Jers 的第三把位爵士蓝调。注意同一首 12 小节，在不同把位里“颜色”完全不同。</p>
+  </div>
+</ChapterLayout>

@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import PlayerCard from "../components/PlayerCard.astro";
+import { PLAYERS } from "../data/players";
+import { url } from "../lib/url";
+
+const eras = ["全部", "传统", "Chicago", "现代", "爵士", "当代"];
+---
+
+<BaseLayout
+  title="大师名录"
+  description="蓝调口琴大师名录：Little Walter、Big Walter、Sonny Boy Williamson、Howlin' Wolf、Junior Wells、Howard Levy、Toots、Filip Jers、Indiara Sfair 等，附推荐专辑与聆听重点。"
+  current="/players"
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href={url("/")}>首页</a><span>/</span><span>大师名录</span></div>
+      <span class="eyebrow" style="margin-top:18px;">The masters · listen before you play</span>
+      <h1>听谁，<br />决定你像谁。</h1>
+      <p class="lead">
+        口琴的音色、句子和“人格”，都是从听来的。这里不是排行榜，而是一条可以按年代、风格走下去的聆听路径。
+        每位大师都附上“先听哪张、听什么”，以及他们为什么值得你花时间。
+      </p>
+      <div class="chapter-meta">
+        <span class="pill pill-accent">{PLAYERS.length} 位演奏者</span>
+        <span class="pill">5 个年代/风格</span>
+        <span class="pill">附专辑与聆听重点</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <div class="card" style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;">
+        <div>
+          <span class="kicker">How to listen</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);margin:10px 0;">不要“背景播放”</h2>
+          <p style="max-width:760px;">
+            选一首歌，听三遍：第一遍听整体，第二遍只听口琴，第三遍跟着唱口琴的句子。
+            然后问自己：他用了几个音？句子在哪里停？音色是亮还是暗？最后那个音落在哪里？
+          </p>
+        </div>
+        <a class="btn btn-ghost" href={url("/toolkit/#jam")}>打开伴奏，试着模仿</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="The listening path"
+        title="五张唱片，一条从 Delta 到 Jazz 的线"
+        description="如果你不知道从哪开始，按这个顺序听。每张都代表一个转折点。"
+      />
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <span class="pill pill-accent">1920s–30s · 源头</span>
+          <h3 style="margin-top:12px;">Sonny Boy Williamson I</h3>
+          <p>《Good Morning, School Girl》。听口琴如何第一次成为蓝调的主奏乐器。</p>
+        </article>
+        <article class="card reveal">
+          <span class="pill pill-accent">1950s · 电声</span>
+          <h3 style="margin-top:12px;">Little Walter</h3>
+          <p>《The Best of Little Walter》。听《Juke》如何把口琴变成萨克斯。</p>
+        </article>
+        <article class="card reveal">
+          <span class="pill pill-accent">1960s · 乐队</span>
+          <h3 style="margin-top:12px;">Junior Wells</h3>
+          <p>《Hoodoo Man Blues》。听口琴如何在一支小乐队里“说话”。</p>
+        </article>
+        <article class="card reveal">
+          <span class="pill pill-accent">1970s– · 爵士</span>
+          <h3 style="margin-top:12px;">Howard Levy</h3>
+          <p>《Flight of the Cosmic Hippo》。听十孔口琴如何飞出蓝调的边界。</p>
+        </article>
+        <article class="card reveal">
+          <span class="pill pill-accent">当代 · 新声音</span>
+          <h3 style="margin-top:12px;">Indiara Sfair</h3>
+          <p>《Improvisation in Cm》。听一个长音如何承载完整的情绪。</p>
+        </article>
+        <article class="card reveal">
+          <span class="pill pill-accent">当代 · 爵士</span>
+          <h3 style="margin-top:12px;">Filip Jers</h3>
+          <p>《In the Spirit of Toots》。听口琴如何唱爵士标准曲。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="The masters"
+        title="按年代与风格浏览"
+        description="点击筛选，找你想听的声音。每位都附推荐专辑、聆听重点和标志性技巧。"
+      />
+      <div data-filter-root>
+        <div class="resource-toolbar">
+          <div class="filter-group">
+            {eras.map((era) => (
+              <button class:list={["filter-btn", era === "全部" && "is-active"]} type="button" data-filter data-filter-key="era" data-filter-value={era === "全部" ? "all" : era}>{era}</button>
+            ))}
+          </div>
+          <span class="filter-count" data-filter-count></span>
+        </div>
+        <div class="grid grid-3">
+          {PLAYERS.map((player) => <PlayerCard player={player} detailed />)}
+        </div>
+        <div class="empty-state" data-filter-empty hidden>没有匹配的演奏者。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Beyond the harmonica"
+        title="也听听没有口琴的蓝调"
+        description="你的口琴句子，最终要从整个蓝调传统里长出来，而不只是从口琴里。"
+      />
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <h3>Muddy Waters</h3>
+          <p>听他的乐队如何为口琴留空间，以及他如何用最小的动机制造最大的张力。</p>
+        </article>
+        <article class="card reveal">
+          <h3>Howlin' Wolf</h3>
+          <p>听他的嗓音、吉他和口琴如何融为一体。蓝调不是“独奏”，是“一起呼吸”。</p>
+        </article>
+        <article class="card reveal">
+          <h3>B.B. King</h3>
+          <p>听他的“少即是多”和长音控制。口琴手可以从吉他手那里学到最多的是“留白”。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

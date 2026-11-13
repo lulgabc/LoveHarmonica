@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { BASICS_CHAPTERS } from "../data/basics";
+import { url } from "../lib/url";
+
+interface Props {
+  title: string;
+  description: string;
+  number: string;
+  chapterId: string;
+  toc: Array<{ id: string; label: string }>;
+  read?: string;
+  meta?: string[];
+}
+
+const { title, description, number, chapterId, toc, read, meta = [] } = Astro.props;
+
+const index = BASICS_CHAPTERS.findIndex((chapter) => chapter.id === chapterId);
+const prev = index > 0 ? BASICS_CHAPTERS[index - 1] : null;
+const next = index >= 0 && index < BASICS_CHAPTERS.length - 1 ? BASICS_CHAPTERS[index + 1] : null;
+---
+
+<BaseLayout title={`${title} · 基础知识`} description={description} current="/basics">
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href={url("/")}>首页</a><span>/</span>
+        <a href={url("/basics/")}>基础知识</a><span>/</span>
+        <span>第 {number} 章</span>
+      </div>
+      <span class="eyebrow" style="margin-top:18px;">Chapter {number} · The fundamentals</span>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      <div class="chapter-meta">
+        {read && <span class="pill pill-accent">{read}</span>}
+        {meta.map((item) => <span class="pill">{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container doc-layout">
+      <aside class="doc-sidebar" aria-label="章节导航">
+        <div class="doc-sidebar-title">本章目录</div>
+        <ul class="toc">
+          {toc.map((item) => <li><a href={`#${item.id}`}>{item.label}</a></li>)}
+          <li><a href="#chapter-end">本章检查点</a></li>
+        </ul>
+        <div class="doc-sidebar-title" style="margin-top:26px;">全部章节</div>
+        <ul class="toc">
+          {BASICS_CHAPTERS.map((chapter) => (
+            <li>
+              <a href={url(chapter.href)} class:list={[chapter.id === chapterId && "is-active"]}>
+                {chapter.number} · {chapter.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+
+      <div class="doc-content">
+        <div class="prose">
+          <slot />
+        </div>
+
+        <div id="chapter-end" class="callout callout-tip" style="margin-top:40px;">
+          <strong class="callout-title">本章检查点</strong>
+          <p>读完之后，回到练习室：用 20 分钟，把本章的一个概念放进 12 小节里。能“用出来”，才算读完。</p>
+        </div>
+
+        <nav class="chapter-nav" aria-label="章节翻页">
+          {prev ? (
+            <a href={url(prev.href)}>
+              <small>上一章</small>
+              <strong>← {prev.number} · {prev.title}</strong>
+            </a>
+          ) : <span />}
+          {next ? (
+            <a href={url(next.href)} style="text-align:right;">
+              <small>下一章</small>
+              <strong>{next.number} · {next.title} →</strong>
+            </a>
+          ) : <span />}
+        </nav>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

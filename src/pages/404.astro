@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { url } from "../lib/url";
+---
+
+<BaseLayout title="页面未找到" description="这个页面不在谱子上。回到首页，或者从基础知识重新开始。" noindex>
+  <section class="page-hero">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow" style="justify-content:center;">404 · Wrong hole</span>
+      <h1 style="font-size:clamp(4rem,14vw,9rem);line-height:0.9;color:var(--brass);">404</h1>
+      <p class="lead" style="max-width:560px;margin:0 auto 24px;">
+        这个页面不在谱子上。可能是链接过期了，也可能是我们写错了一个孔。
+      </p>
+      <div class="btn-row" style="justify-content:center;">
+        <a class="btn btn-primary" href={url("/")}>回到首页</a>
+        <a class="btn btn-ghost" href={url("/basics/first-notes/")}>从第一口呼吸开始</a>
+        <a class="btn btn-ghost" href={url("/roadmap/")}>看路线图</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

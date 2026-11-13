@@ -1,0 +1,171 @@
+---
+import ChapterLayout from "../../components/ChapterLayout.astro";
+
+const toc = [
+  { id: "recipe", label: "音色的配方" },
+  { id: "hands", label: "手型与聚音" },
+  { id: "vibrato", label: "Vibrato：让长音活起来" },
+  { id: "growl", label: "Growl 与特殊音色" },
+  { id: "mic", label: "麦克风：口琴的第二个嘴" },
+  { id: "amp", label: "音箱与增益" },
+  { id: "feedback", label: "反馈控制" },
+  { id: "record", label: "录音与自听" },
+  { id: "practice", label: "每日音色练习" },
+];
+---
+
+<ChapterLayout
+  title="音色与电声"
+  description="手型、聚音、vibrato、growl、麦克风、音箱、反馈控制。Chicago 口琴的声音不是“效果器”，而是一整套呼吸与空间的配合。"
+  number="07"
+  chapterId="tone"
+  toc={toc}
+  read="14 分钟"
+  meta={["音色", "麦克风", "音箱", "Chicago"]}
+>
+  <p class="lead">
+    同样一把 C 调 Special 20，Little Walter 吹出来像萨克斯，Big Walter 吹出来像大提琴，你吹出来像……口琴。
+    差别不在琴，而在音色。音色不是“加效果”，而是呼吸、口腔、双手和空间的整体。
+  </p>
+
+  <h2 id="recipe">音色的配方</h2>
+  <p>一个蓝调口琴的音色，大致由下面几层叠加：</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>层</th><th>你 control 什么</th><th>听起来像</th></tr></thead>
+      <tbody>
+        <tr><td>呼吸</td><td>气流速度、稳定性、深浅</td><td>饱满 / 虚弱 / 发抖</td></tr>
+        <tr><td>口腔</td><td>舌头位置、口腔空间、喉咙开合</td><td>明亮 / 暗 / 闷 / 哭腔</td></tr>
+        <tr><td>双手</td><td>包琴的紧密程度、开合</td><td>干 / 湿 / 哇音 / 聚音</td></tr>
+        <tr><td>麦克风</td><td>距离、角度、手掌包麦</td><td>近讲 / 远场 / 失真</td></tr>
+        <tr><td>音箱</td><td>音量、EQ、增益、混响</td><td>清音 / Chicago 过载 / 脏</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    很多人一上来就买麦、买音箱，但呼吸和口腔没解决，声音还是“薄”。
+    先把清音吹好，再考虑电声。清音是地基，失真只是放大。
+  </p>
+
+  <h2 id="hands">手型与聚音</h2>
+  <p>
+    双手包住口琴，形成一个可以开合的气室。手掌越紧，声音越“聚”、越低；打开，声音更亮、更散。
+    这个动作就是最基础的“手哇音”。
+  </p>
+  <ul>
+    <li><strong>基本握法</strong>：左手托琴，右手包住左侧；手指不要漏气。</li>
+    <li><strong>聚音</strong>：手掌紧贴琴背，声音变厚、变暗，适合慢蓝调。</li>
+    <li><strong>打开</strong>：手掌打开，声音变亮、变远，适合欢快的 shuffle。</li>
+    <li><strong>哇音</strong>：快速开合，制造“wah-wah”的效果；注意不要变成“扇风”。</li>
+  </ul>
+  <p>
+    练习：吹一个 8 拍长音，前 4 拍慢慢合手，后 4 拍慢慢打开。听音量和音色的变化，而不是只动手。
+  </p>
+
+  <h2 id="vibrato">Vibrato：让长音活起来</h2>
+  <p>
+    Vibrato 是音高的周期性轻微波动。它是蓝调口琴“像人声”的关键。常见三种：
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>类型</th><th>怎么做</th><th>感觉</th></tr></thead>
+      <tbody>
+        <tr><td>喉震（throat vibrato）</td><td>喉咙像轻轻咳嗽/叹气一样收缩</td><td>深、宽、适合慢蓝调</td></tr>
+        <tr><td>腹震（diaphragm vibrato）</td><td>用腹部推动气流，像“笑”的感觉</td><td>稳定、可控</td></tr>
+        <tr><td>手震（hand vibrato）</td><td>手掌快速开合</td><td>明显、戏剧化</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    练习时先吹 8 拍长音，前 4 拍不颤，后 4 拍开始颤。不要一开始就快速抖；先慢、均匀，再加速。
+    用手机录音，听颤音是否均匀，还是像“抽搐”。
+  </p>
+
+  <h2 id="growl">Growl 与特殊音色</h2>
+  <p>
+    Growl 是一边吹口琴、一边从喉咙发出低吼/哼唱。两个声音冲突，产生粗糙、野性的音色。
+    它在 Chicago blues 和 rock 里很常见，但用多了会变成噪音。
+  </p>
+  <ul>
+    <li><strong>Growl</strong>：喉咙发出低音“grrr”，同时保持口琴气流。先在小音量下练。</li>
+    <li><strong>Flutter tongue</strong>：舌头快速颤动，像“rrrr”，适合火车节奏和戏剧性段落。</li>
+    <li><strong>Slap / lift</strong>：舌堵时舌头快速离开/盖上，制造节奏性的“啪”。</li>
+    <li><strong>Hand wah</strong>：手掌开合，适合句尾和长音。</li>
+  </ul>
+  <p>
+    特殊音色是调味料，不是主菜。先有一个干净、稳定的基础音色，再用 growl 或 wah 去强调某个音。
+  </p>
+
+  <h2 id="mic">麦克风：口琴的第二个嘴</h2>
+  <p>
+    电声口琴的经典配置是“子弹麦 + 小电子管音箱”。麦克风不只是扩音，它和手掌、口琴一起构成一个“共鸣腔”。
+  </p>
+  <ul>
+    <li><strong>Shure 520DX “Green Bullet”</strong>：最经典的子弹麦，高阻抗、中频突出，直接推小音箱。</li>
+    <li><strong>Audix FireBall</strong>：现代口琴麦，反馈抑制更好，适合舞台。</li>
+    <li><strong>Shure SM58</strong>：不是专门的口琴麦，但很多清音/原声演出用它，可靠、通用。</li>
+  </ul>
+  <p>
+    握麦方式：手掌包住麦头，口琴贴近麦头，形成一个密闭空间。距离越近、包得越紧，声音越厚、越容易过载。
+    但不要堵住麦头背面的气孔，否则会闷死或产生反馈。
+  </p>
+
+  <h2 id="amp">音箱与增益</h2>
+  <p>
+    蓝调口琴不需要大功率音箱。5–15W 的小电子管音箱更容易得到自然的过载和压缩。
+    常见选择：Fender Champ / Princeton、Gibson GA-5、Harpgear、Lone Wolf、Mission 等。
+  </p>
+  <p>一个起点设置（不是绝对）：</p>
+  <ul>
+    <li>Volume：3–5（找到“刚开始破”的点）</li>
+    <li>Tone：5–7（太亮会刺，太暗会闷）</li>
+    <li>Gain / Drive：少一点，靠音量推动</li>
+    <li>Reverb：少量，别把 Chicago 变成教堂</li>
+  </ul>
+  <p>
+    最重要的是“用耳朵调”，不是照抄旋钮。同一个设置，在不同房间、不同音量下听起来完全不同。
+  </p>
+
+  <h2 id="feedback">反馈控制</h2>
+  <p>
+    反馈（feedback）是麦克风收到音箱的声音后再次放大，形成啸叫。电声口琴很容易遇到。控制方法：
+  </p>
+  <ul>
+    <li>不要直接站在音箱正前方；稍微偏一点。</li>
+    <li>手掌不要完全封死麦头，留一点泄压。</li>
+    <li>降低高频或总音量；必要时用 EQ 切掉容易反馈的频段。</li>
+    <li>用指向性更好的麦克风，或加反馈抑制器。</li>
+    <li>先找到反馈点，再在它下面留安全余量。</li>
+  </ul>
+
+  <h2 id="record">录音与自听</h2>
+  <p>
+    录音是最诚实的老师。你不需要专业设备，手机就够。录 1 分钟，听三件事：
+  </p>
+  <ol>
+    <li><strong>音头</strong>：每个音是“软”的还是“有骨头”的？</li>
+    <li><strong>音准</strong>：压音有没有到位？长音有没有漂？</li>
+    <li><strong>动态</strong>：是不是从头到尾一个音量？有没有留白？</li>
+  </ol>
+  <p>
+    如果条件允许，用一支动圈麦近距离录口琴，再和伴奏分轨。你会更清楚地听到自己的呼吸、杂音和节奏。
+  </p>
+
+  <h2 id="practice">每日音色练习（10 分钟）</h2>
+  <ol>
+    <li><strong>2 分钟</strong>：4 孔长音，合手/开手各 4 拍。</li>
+    <li><strong>2 分钟</strong>：8 拍长音 + 慢速 vibrato（喉震/腹震）。</li>
+    <li><strong>2 分钟</strong>：同一句用三种音量吹：耳语、说话、喊。</li>
+    <li><strong>2 分钟</strong>：growl 或 hand wah，只用在句尾。</li>
+    <li><strong>2 分钟</strong>：录下来，听“有没有一个稳定的基础音色”。</li>
+  </ol>
+  <p>
+    音色不是一天练成的。它会在你每天的长音、压音和录音里慢慢长出来。
+    不要急着买设备；先让你的清音值得被放大。
+  </p>
+
+  <div class="callout callout-listen">
+    <strong class="callout-title">这一章听完再走</strong>
+    <p>听 Little Walter 的《Blue Midnight》、Big Walter 的《Easy》、James Cotton 的《The Creeper》。同一套电声配置，三个人的音色人格完全不同。</p>
+  </div>
+</ChapterLayout>
