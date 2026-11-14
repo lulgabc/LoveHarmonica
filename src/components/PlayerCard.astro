@@ -1,5 +1,6 @@
 ---
 import type { Player } from "../data/players";
+import { url } from "../lib/url";
 
 interface Props {
   player: Player;
@@ -11,34 +12,52 @@ const initial = player.name.replace(/[^A-Za-z]/g, "").charAt(0) || "♪";
 ---
 
 <article
-  class="player-card reveal"
+  class:list={["player-card", "reveal", player.image && "has-photo"]}
   id={player.id}
   data-filter-item
   data-era={player.era}
   data-style={player.style}
 >
+  {player.image && (
+    <img
+      class="player-photo"
+      src={url(player.image)}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      width="1000"
+      height="1000"
+      style={`object-position:${player.imagePosition || "center 28%"};`}
+    />
+  )}
   <span class="player-years">{player.years}</span>
   <span class="player-initial" aria-hidden="true">{initial}</span>
+  {player.photoNote && <span class="player-photo-note">{player.photoNote}</span>}
   <div class="player-role">{player.style}</div>
   <h3>{player.name}</h3>
   {player.nameZh && <div class="player-zh">{player.nameZh}</div>}
   <p>{player.oneLiner}</p>
-  {detailed && <p style="margin-top:10px;">{player.bio}</p>}
+  {detailed && <p class="player-bio">{player.bio}</p>}
   <div class="player-listen">
     {!detailed && (
       <><span>先听：</span>{player.listen[0].title}{player.listen[0].year ? ` (${player.listen[0].year})` : ""}</>
     )}
     {detailed && (
-      <div style="margin-top:0;display:grid;gap:7px;">
+      <div class="player-listen-list">
         {player.listen.map((item) => (
-          <div>
-            <strong style="color:var(--text-soft);font-weight:600;">{item.title}{item.year ? ` · ${item.year}` : ""}</strong>
-            <div style="color:var(--muted);font-size:0.74rem;line-height:1.55;">{item.note}</div>
+          <div class="player-listen-item">
+            <strong>{item.title}{item.year ? ` · ${item.year}` : ""}</strong>
+            <div>{item.note}</div>
           </div>
         ))}
-        <div style="margin-top:4px;color:var(--faint);font-size:0.7rem;">标志性：{player.signature}</div>
-        <div style="margin-top:2px;color:var(--faint);font-size:0.7rem;">代表作：{player.keyTracks.join(" · ")}</div>
+        <div class="player-signature">标志性：{player.signature}</div>
+        <div class="player-signature">代表作：{player.keyTracks.join(" · ")}</div>
       </div>
     )}
   </div>
+  {player.imageCredit && (
+    <a class="player-photo-credit" href={player.imageCreditUrl} target="_blank" rel="noopener noreferrer">
+      Photo: {player.imageCredit}
+    </a>
+  )}
 </article>

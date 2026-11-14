@@ -12,9 +12,14 @@ export interface Player {
   keyTracks: string[];
   tags: string[];
   featured?: boolean;
+  image?: string;
+  imageCredit?: string;
+  imageCreditUrl?: string;
+  photoNote?: string;
+  imagePosition?: string;
 }
 
-export const PLAYERS: Player[] = [
+const BASE_PLAYERS: Player[] = [
   {
     id: "little-walter",
     name: "Little Walter",
@@ -405,5 +410,137 @@ export const PLAYERS: Player[] = [
     featured: true,
   },
 ];
+
+const PLAYER_PHOTOS: Record<string, Pick<Player, "image" | "imageCredit" | "imageCreditUrl" | "photoNote" | "imagePosition">> = {
+  "little-walter": {
+    image: "/images/players/little-walter.webp",
+    imageCredit: "Cleveland Call and Post, 1956 · Public domain",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Little_Walter_1956.jpg",
+    imagePosition: "center 20%",
+  },
+  "big-walter": {
+    image: "/images/players/big-walter.webp",
+    imageCredit: "Safetydave720 · CC BY-SA 3.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Big_Walter_Horton_(public_domain).jpg",
+    imagePosition: "68% 35%",
+  },
+  "sonny-boy-ii": {
+    image: "/images/players/sonny-boy-ii.webp",
+    imageCredit: "Roman Medellín · CC BY-SA 4.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Sonny_Boy_Williamson_II_montaje.jpg",
+    imagePosition: "center 20%",
+  },
+  "sonny-boy-i": {
+    image: "/images/players/sonny-boy-i.webp",
+    imageCredit: "档案照片暂缺 · درفش کاویانی · CC BY-SA 3.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Harmonica.jpg",
+    photoNote: "档案照片暂缺 · 以同时代口琴影像代替",
+    imagePosition: "center 50%",
+  },
+  "howlin-wolf": {
+    image: "/images/players/howlin-wolf.webp",
+    imageCredit: "Eatonland · CC BY-SA 4.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Howlin_Wolf_AABF_1970_JT.jpg",
+    imagePosition: "center 22%",
+  },
+  "junior-wells": {
+    image: "/images/players/junior-wells.webp",
+    imageCredit: "Jerry Fitzpatrick · CC0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Junior_Wells,_c.1984.jpg",
+    imagePosition: "center 20%",
+  },
+  "james-cotton": {
+    image: "/images/players/james-cotton.webp",
+    imageCredit: "Brian McMillen · CC BY-SA 4.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:James_Cotton_Monterey_1981.jpg",
+    imagePosition: "center 20%",
+  },
+  "charlie-musselwhite": {
+    image: "/images/players/charlie-musselwhite.webp",
+    imageCredit: "Mikesfox · CC BY-SA 3.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Charlie_Musselwhite_7-16-03.jpg",
+    imagePosition: "center 20%",
+  },
+  "paul-butterfield": {
+    image: "/images/players/paul-butterfield.webp",
+    imageCredit: "Rtsanderson · CC BY-SA 3.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Paul_Butterfield_79.jpg",
+    imagePosition: "center 20%",
+  },
+  "kim-wilson": {
+    image: "/images/players/kim-wilson.webp",
+    imageCredit: "Carl Lender · CC BY-SA 3.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:KimWilson1996.jpg",
+    imagePosition: "center 20%",
+  },
+  "william-clarke": {
+    image: "/images/players/william-clarke.webp",
+    imageCredit: "Verlag Dirk Föhrs · CC BY-SA 3.0 de",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Bluesnews_Ausgabe_01.jpg",
+    imagePosition: "center 20%",
+  },
+  "sugar-blue": {
+    image: "/images/players/sugar-blue.webp",
+    imageCredit: "Gampe · Public domain",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:SugarBlue1988.jpg",
+    imagePosition: "center 20%",
+  },
+  "howard-levy": {
+    image: "/images/players/howard-levy.webp",
+    imageCredit: "Tom Beetz · CC BY 2.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Howard_Levy.jpg",
+    imagePosition: "35% 30%",
+  },
+  "carlos-del-junco": {
+    image: "/images/players/carlos-del-junco.webp",
+    imageCredit: "KSMF Webmaster · CC BY 2.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Carlos_del_Junco.jpg",
+    imagePosition: "35% 30%",
+  },
+  "jason-ricci": {
+    image: "/images/players/jason-ricci.webp",
+    imageCredit: "Ronald Reuter · CC BY-SA 3.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Jason_Ricci_Stage_2.jpg",
+    imagePosition: "68% 28%",
+  },
+  "dennis-gruenling": {
+    image: "/images/players/dennis-gruenling.webp",
+    imageCredit: "Roberta · CC BY 2.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Jeweltones_01_(14594037376).jpg",
+    imagePosition: "65% 25%",
+  },
+  "filip-jers": {
+    image: "/images/players/filip-jers.webp",
+    imageCredit: "Filip Jers 官方站点",
+    imageCreditUrl: "https://www.filipjers.com/en-us/",
+    imagePosition: "center 20%",
+  },
+  "toots": {
+    image: "/images/players/toots-thielemans.webp",
+    imageCredit: "Haags Uitburo · CC BY-NC-SA 2.0",
+    imageCreditUrl: "https://www.flickr.com/photos/haagsuitburo/2535352287",
+    imagePosition: "center 20%",
+  },
+  "stevie-wonder": {
+    image: "/images/players/stevie-wonder.webp",
+    imageCredit: "Raph_PH · CC BY 2.0",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:SWonderBSTHyde060719-72_(cropped).jpg",
+    imagePosition: "center 18%",
+  },
+  "lee-oskar": {
+    image: "/images/players/lee-oskar.webp",
+    imageCredit: "United Artists Records · Public domain",
+    imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Lee_Oskar_1976_press_photo.png",
+    imagePosition: "center 18%",
+  },
+  "indiara-sfair": {
+    image: "/images/players/indiara-sfair.webp",
+    imageCredit: "Indiara Sfair / YouTube",
+    imageCreditUrl: "https://www.youtube.com/watch?v=uIss2Qmmc5k",
+    imagePosition: "62% 25%",
+  },
+};
+
+export const PLAYERS: Player[] = BASE_PLAYERS.map((player) => ({ ...player, ...PLAYER_PHOTOS[player.id] }));
 
 export const FEATURED_PLAYERS = PLAYERS.filter((player) => player.featured);

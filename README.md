@@ -66,6 +66,7 @@ If you fork the project under a different repository name, update both values in
 - Code: MIT — see [LICENSE](./LICENSE).
 - Original text, diagrams and site content: CC BY-NC-SA 4.0 — see [CONTENT-LICENSE.md](./CONTENT-LICENSE.md).
 - External videos, book covers, trademarks and recording information belong to their respective owners.
+- Artist photos are sourced from Wikimedia Commons (public domain / Creative Commons) or official/public artist pages; each player card includes a source credit. Rights holders can request an adjustment via GitHub Issues.
 
 ## Credits
 

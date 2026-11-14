@@ -20,7 +20,7 @@ const eras = ["全部", "传统", "Chicago", "现代", "爵士", "当代"];
       <h1>听谁，<br />决定你像谁。</h1>
       <p class="lead">
         口琴的音色、句子和“人格”，都是从听来的。这里不是排行榜，而是一条可以按年代、风格走下去的聆听路径。
-        每位大师都附上“先听哪张、听什么”，以及他们为什么值得你花时间。
+        每位大师都配上照片，并附上“先听哪张、听什么”，以及他们为什么值得你花时间。
       </p>
       <div class="chapter-meta">
         <span class="pill pill-accent">{PLAYERS.length} 位演奏者</span>
@@ -93,7 +93,7 @@ const eras = ["全部", "传统", "Chicago", "现代", "爵士", "当代"];
       <SectionHead
         kicker="The masters"
         title="按年代与风格浏览"
-        description="点击筛选，找你想听的声音。每位都附推荐专辑、聆听重点和标志性技巧。"
+        description="点击筛选，找你想听的声音。每位都附照片、推荐专辑、聆听重点和标志性技巧。"
       />
       <div data-filter-root>
         <div class="resource-toolbar">
@@ -108,6 +108,10 @@ const eras = ["全部", "传统", "Chicago", "现代", "爵士", "当代"];
           {PLAYERS.map((player) => <PlayerCard player={player} detailed />)}
         </div>
         <div class="empty-state" data-filter-empty hidden>没有匹配的演奏者。</div>
+        <p class="small muted" style="margin-top:18px;">
+          照片来源：Wikimedia Commons 的公共领域/CC 授权图片、艺术家官方站点与公开视频；每张卡片底部标注具体来源。
+          若你是权利人并希望调整或移除某张照片，请在 GitHub Issues 联系我们。
+        </p>
       </div>
     </div>
   </section>
