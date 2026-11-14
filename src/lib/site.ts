@@ -12,9 +12,10 @@ export const SITE = {
     { href: "/basics/", label: "基础知识", short: "基础" },
     { href: "/roadmap/", label: "学习路线", short: "路线" },
     { href: "/courses/", label: "免费课程", short: "课程" },
+    { href: "/library/", label: "乐谱库", short: "乐谱" },
+    { href: "/tabs/", label: "乐句工坊", short: "乐句" },
     { href: "/players/", label: "大师名录", short: "大师" },
     { href: "/books/", label: "教材书单", short: "书单" },
-    { href: "/tabs/", label: "乐句工坊", short: "乐句" },
     { href: "/toolkit/", label: "练习室", short: "工具" },
   ],
 };
@@ -22,6 +23,7 @@ export const SITE = {
 export const SITE_STATS = [
   { value: "10", label: "章系统知识" },
   { value: "48", label: "周学习计划" },
+  { value: "220+", label: "练习乐谱" },
   { value: "20+", label: "免费课程入口" },
   { value: "6", label: "互动练习工具" },
 ];

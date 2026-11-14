@@ -1,0 +1,245 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHead from "../../components/SectionHead.astro";
+import ScoreCard from "../../components/ScoreCard.astro";
+import { SCORES } from "../../data/scores";
+import { url } from "../../lib/url";
+
+const categories = ["全部", "基础训练", "音阶与琶音", "压音专项", "节奏与舌堵", "蓝调乐句", "12 小节练习曲", "旋律与视奏", "爵士蓝调"];
+const levels = ["全部", "入门", "进阶", "高级"];
+const positions = ["全部", "1st", "2nd", "3rd", "12th"];
+const featured = categories
+  .filter((category) => category !== "全部")
+  .map((category) => SCORES.find((score) => score.category === category && score.featured))
+  .filter((score): score is (typeof SCORES)[number] => Boolean(score))
+  .slice(0, 6);
+
+const counts = {
+  beginner: SCORES.filter((score) => score.level === "入门").length,
+  intermediate: SCORES.filter((score) => score.level === "进阶").length,
+  advanced: SCORES.filter((score) => score.level === "高级").length,
+};
+---
+
+<BaseLayout
+  title="乐谱库"
+  description="220 首蓝调口琴练习乐谱：基础训练、音阶与琶音、压音、节奏、蓝调乐句、12 小节练习曲、旋律视奏与爵士蓝调。按难度筛选，附 tab、五线谱与练习说明。"
+  current="/library"
+>
+  <section class="page-hero library-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href={url("/")}>首页</a><span>/</span><span>乐谱库</span></div>
+      <span class="eyebrow" style="margin-top:18px;">The score library · 220 studies</span>
+      <h1>220 首练习乐谱，<br />按难度和技法整理。</h1>
+      <p class="lead">
+        从第一口长音、单音换孔，到压音、shuffle、12 小节 solo、传统曲调与爵士蓝调。
+        每首都有口琴 tab、五线谱、速度、把位、技术标签和练习说明；可以筛选、搜索、播放。
+      </p>
+      <div class="chapter-meta">
+        <span class="pill pill-accent">{SCORES.length} 首</span>
+        <span class="pill">8 个类别</span>
+        <span class="pill">3 个难度</span>
+        <span class="pill">可播放 · 可打印</span>
+      </div>
+      <div class="hero-stats" style="margin-top:28px; grid-template-columns: repeat(3, minmax(0, 1fr));">
+        <div class="hero-stat"><strong>{counts.beginner}</strong><span>入门</span></div>
+        <div class="hero-stat"><strong>{counts.intermediate}</strong><span>进阶</span></div>
+        <div class="hero-stat"><strong>{counts.advanced}</strong><span>高级</span></div>
+      </div>
+      <div class="callout callout-tip" style="margin-top:22px;">
+        <strong class="callout-title">记谱方式</strong>
+        <p>所有乐谱默认以 C 调十孔口琴记谱；G、D 等歌曲调通过 2nd / 3rd position 实现。换成 A 调琴时，孔位不变，实际音高整体移动。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container">
+      <SectionHead
+        kicker="How to use"
+        title="不要从第一首开始刷"
+        description="先按难度和当前练习目标选一首，练到能录下来，再换下一首。乐谱库是练习菜单，不是打卡清单。"
+      />
+      <div class="grid grid-3">
+        <article class="card reveal">
+          <span class="card-index">01</span>
+          <h3>先选“今天要练什么”</h3>
+          <p>热身选基础训练；卡在压音选压音专项；想 jam 选蓝调乐句或 12 小节练习曲；想练旋律选传统曲调。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">02</span>
+          <h3>慢速、分段、录音</h3>
+          <p>先 60–70% 速度，按小节分段；每段吹 4 遍再合起来。录音比“感觉对了”可靠。</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-index">03</span>
+          <h3>把乐谱放进 12 小节</h3>
+          <p>练习曲不是孤立的。打开伴奏机，把句子放进 12 小节里，或者用练习计时器做 10 分钟循环。</p>
+          <a class="text-link" href={url("/toolkit/#jam")} style="margin-top:12px;">打开伴奏机 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Featured"
+        title="六首，先感受一下"
+        description="每个类别选一首。它们不是“最简单”，而是最能代表这一类练习的入口。"
+      />
+      <div class="grid grid-3">
+        {featured.map((score) => <ScoreCard score={score} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="all-scores">
+    <div class="container">
+      <SectionHead
+        kicker="The full library"
+        title="全部 220 首"
+        description="按难度、类别、把位筛选，或直接搜索“压音”“shuffle”“G 蓝调”。点击卡片查看完整 tab、五线谱和播放。"
+      />
+
+      <div class="library-toolbar" data-library-toolbar>
+        <div class="library-filter-row">
+          <span class="library-filter-label">难度</span>
+          <div class="filter-group" data-library-levels>
+            {levels.map((level) => (
+              <button class:list={["filter-btn", level === "全部" && "is-active"]} type="button" data-library-filter data-filter-key="level" data-filter-value={level === "全部" ? "all" : level}>{level}</button>
+            ))}
+          </div>
+          <span class="library-filter-label">把位</span>
+          <div class="filter-group" data-library-positions>
+            {positions.map((position) => (
+              <button class:list={["filter-btn", position === "全部" && "is-active"]} type="button" data-library-filter data-filter-key="position" data-filter-value={position === "全部" ? "all" : position}>{position === "全部" ? "全部" : position}</button>
+            ))}
+          </div>
+        </div>
+        <div class="library-filter-row">
+          <span class="library-filter-label">类别</span>
+          <div class="filter-group" data-library-categories>
+            {categories.map((category) => (
+              <button class:list={["filter-btn", category === "全部" && "is-active"]} type="button" data-library-filter data-filter-key="category" data-filter-value={category === "全部" ? "all" : category}>{category}</button>
+            ))}
+          </div>
+        </div>
+        <div class="library-search-row">
+          <input type="search" placeholder="搜索：压音、shuffle、G 蓝调、12 小节…" aria-label="搜索乐谱" data-library-search data-search />
+          <span class="filter-count" data-library-count>{SCORES.length} 首</span>
+        </div>
+      </div>
+
+      <div class="score-grid" data-library-grid>
+        {SCORES.map((score) => <ScoreCard score={score} />)}
+      </div>
+      <div class="empty-state" data-library-empty hidden>没有匹配的乐谱。试试更短的关键词，或清空筛选。</div>
+      <div class="btn-row" style="justify-content:center; margin-top:24px;">
+        <button class="btn btn-ghost" type="button" data-library-more>加载更多</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="Difficulty guide"
+        title="难度不是“快慢”，是“要求”"
+        description="同一首练习，用 60 BPM 和 120 BPM 是两件事。先看要求，再看速度。"
+      />
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>难度</th><th>典型长度</th><th>技术重点</th><th>建议速度</th><th>完成标准</th></tr></thead>
+          <tbody>
+            <tr><td><strong>入门</strong></td><td>2–4 小节</td><td>单音、长音、基础换孔、少量压音</td><td>60–80 BPM</td><td>不断拍、音头干净、能录下来</td></tr>
+            <tr><td><strong>进阶</strong></td><td>4–12 小节</td><td>2/3/4 孔压音、shuffle、call & response</td><td>80–110 BPM</td><td>能放进 12 小节，句子有落点</td></tr>
+            <tr><td><strong>高级</strong></td><td>12 小节或更长</td><td>第三把位、爵士和声、复杂节奏、长句</td><td>100–140 BPM</td><td>能跟伴奏完整演奏，并留下录音</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-tip" style="margin-top:24px;">
+        <strong class="callout-title">关于曲谱与版权</strong>
+        <p>
+          本乐谱库以原创练习曲、通用蓝调语汇和公有领域传统曲调为主，不包含对受版权保护的完整 solo 的逐音转录。
+          传统曲调只用于教学改编；如果你要学某位大师的完整 solo，请跟着原录音逐句扒，并尊重原作版权。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card" style="padding:clamp(24px,4vw,42px);text-align:center;">
+        <span class="eyebrow" style="justify-content:center;">Practice, not collecting</span>
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);margin:12px auto;">选一首，练到能录下来。</h2>
+        <p class="lead" style="max-width:620px;margin:0 auto 22px;">
+          乐谱库有 220 首，但你今天只需要一首。选一个 2 小节动机，打开节拍器，吹 10 遍。
+        </p>
+        <div class="btn-row" style="justify-content:center;">
+          <a class="btn btn-primary" href={url("/toolkit/#timer")}>打开练习计时器</a>
+          <a class="btn btn-ghost" href={url("/roadmap/")}>回到路线图</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const cards = [...document.querySelectorAll<HTMLElement>("[data-library-grid] [data-score-card]")];
+    const buttons = [...document.querySelectorAll<HTMLButtonElement>("[data-library-filter]")];
+    const search = document.querySelector<HTMLInputElement>("[data-library-search]");
+    const count = document.querySelector<HTMLElement>("[data-library-count]");
+    const empty = document.querySelector<HTMLElement>("[data-library-empty]");
+    const more = document.querySelector<HTMLButtonElement>("[data-library-more]");
+    const active = new Map<string, string>();
+    let visible = 36;
+
+    function apply() {
+      const query = (search?.value || "").trim().toLowerCase();
+      const matched = cards.filter((card) => {
+        const groupOk = [...active.entries()].every(([key, value]) => {
+          const cardValue = key === "level" ? card.dataset.level : key === "category" ? card.dataset.category : card.dataset.position;
+          return cardValue === value;
+        });
+        const queryOk = !query || (card.dataset.search || "").includes(query);
+        return groupOk && queryOk;
+      });
+      cards.forEach((card) => {
+        card.hidden = true;
+      });
+      matched.slice(0, visible).forEach((card) => {
+        card.hidden = false;
+      });
+      if (count) count.textContent = `${matched.length} 首 · 显示 ${Math.min(matched.length, visible)}`;
+      if (empty) empty.hidden = matched.length !== 0;
+      if (more) more.hidden = matched.length <= visible;
+    }
+
+    buttons.forEach((button) => {
+      if (button.classList.contains("is-active") && button.dataset.filterValue !== "all") {
+        active.set(button.dataset.filterKey || "", button.dataset.filterValue || "");
+      }
+      button.addEventListener("click", () => {
+        const key = button.dataset.filterKey || "";
+        const value = button.dataset.filterValue || "all";
+        if (value === "all") active.delete(key);
+        else active.set(key, value);
+        buttons.filter((item) => (item.dataset.filterKey || "") === key).forEach((item) => item.classList.toggle("is-active", item === button));
+        visible = 36;
+        apply();
+      });
+    });
+
+    search?.addEventListener("input", () => {
+      visible = 36;
+      apply();
+    });
+
+    more?.addEventListener("click", () => {
+      visible += 36;
+      apply();
+    });
+
+    apply();
+  </script>
+</BaseLayout>

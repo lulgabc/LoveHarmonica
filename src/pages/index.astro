@@ -4,12 +4,19 @@ import SectionHead from "../components/SectionHead.astro";
 import VideoCard from "../components/VideoCard.astro";
 import PlayerCard from "../components/PlayerCard.astro";
 import BookCard from "../components/BookCard.astro";
+import ScoreCard from "../components/ScoreCard.astro";
 import { SITE, SITE_STATS } from "../lib/site";
 import { url } from "../lib/url";
 import { PHASES } from "../data/roadmap";
 import { FEATURED_VIDEOS, CHANNELS } from "../data/courses";
 import { FEATURED_PLAYERS } from "../data/players";
 import { FEATURED_BOOKS } from "../data/books";
+import { SCORES } from "../data/scores";
+const homeScores = [
+  SCORES[0],
+  SCORES.find((score) => score.category === "蓝调乐句" && score.featured),
+  SCORES.find((score) => score.category === "12 小节练习曲" && score.featured),
+].filter((score): score is (typeof SCORES)[number] => Boolean(score));
 ---
 
 <BaseLayout description={SITE.description} current="/">
@@ -40,6 +47,7 @@ import { FEATURED_BOOKS } from "../data/books";
         <div class="hero-meta">
           <span>零基础可入门</span>
           <span>48 周练习计划</span>
+          <span>220+ 练习乐谱</span>
           <span>20+ 免费课程</span>
           <span>6 个练习工具</span>
         </div>
@@ -220,6 +228,24 @@ import { FEATURED_BOOKS } from "../data/books";
       </div>
       <div class="btn-row section-foot">
         <a class="btn btn-ghost" href={url("/courses/")}>还有 {CHANNELS.length} 个频道与 20+ 个免费入口 <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        kicker="The score library"
+        title="220 首练习乐谱，按难度选"
+        description="从 2 小节长音到 12 小节 solo，每首都有 tab、五线谱、速度和练习说明。先选一首，练到能录下来。"
+        link="/library/"
+        linkLabel="打开完整乐谱库"
+      />
+      <div class="grid grid-3">
+        {homeScores.map((score) => <ScoreCard score={score} />)}
+      </div>
+      <div class="btn-row section-foot">
+        <a class="btn btn-ghost" href={url("/library/")}>按难度、类别、把位筛选 220 首 <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>

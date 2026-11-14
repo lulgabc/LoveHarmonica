@@ -1,0 +1,52 @@
+---
+import type { Score } from "../data/scores";
+import { noteNameForToken, positionLabel, tokenLabel } from "../lib/harp";
+import { url } from "../lib/url";
+
+interface Props {
+  score: Score;
+}
+
+const { score } = Astro.props;
+const preview = score.tokens.filter((token) => !token.rest).slice(0, 8);
+const href = url(`/library/${score.slug}/`);
+---
+
+<article
+  class="score-card reveal"
+  data-score-card
+  data-level={score.level}
+  data-category={score.category}
+  data-position={score.position}
+  data-search={`${score.title} ${score.category} ${score.level} ${score.key} ${score.position} ${score.techniques.join(" ")} ${score.description}`.toLowerCase()}
+>
+  <a class="score-card-link" href={href} aria-label={`打开乐谱：${score.title}`}>
+    <div class="score-card-top">
+      <span class="pill pill-accent">{score.level}</span>
+      <span class="pill">{score.category}</span>
+    </div>
+    <h3>{score.title}</h3>
+    <div class="score-card-meta">
+      <span>{score.key} · {positionLabel(score.position)}</span>
+      <span>{score.harp} 调琴</span>
+      <span>{score.bars} 小节</span>
+      <span>{score.tempo} BPM</span>
+    </div>
+    <p>{score.description}</p>
+    <div class="score-preview" aria-hidden="true">
+      {preview.map((token) => (
+        <span class="score-preview-note">
+          {tokenLabel(token)}
+          <small>{noteNameForToken(token, score.harp)}</small>
+        </span>
+      ))}
+      {score.tokens.filter((token) => !token.rest).length > 8 && <span class="score-preview-more">…</span>}
+    </div>
+    <div class="score-card-foot">
+      <div class="tag-row">
+        {score.techniques.slice(0, 3).map((tag) => <span class="pill">{tag}</span>)}
+      </div>
+      <span class="score-open">打开乐谱 <span aria-hidden="true">→</span></span>
+    </div>
+  </a>
+</article>

@@ -11,6 +11,7 @@ A Chinese-language blues harmonica field guide, 12-month roadmap, curated free-c
 - **免费课程库** — 20 curated videos, 15 YouTube channels, 24 course/tab/reference/podcast entries, with free/paid/trial labels and Chinese-language resources.
 - **大师名录** — 21 blues harmonica players with recommended albums and listening notes.
 - **教材书单** — 16 method books, technique books, history/culture and lick collections.
+- **乐谱库** — 220 original/public-domain studies across 8 categories and 3 levels, with tab, staff notation, playback and practice notes.
 - **乐句工坊** — 10 playable tab phrases with Web Audio playback.
 - **练习室** — 12-bar jam machine, interactive harp map, 2nd-position key finder, metronome, 20-minute practice timer.
 
@@ -37,6 +38,7 @@ Open http://localhost:4321/LoveHarmonica/
 npm run build
 npm run preview
 npm run check
+npm run generate:scores   # regenerate src/data/scores.ts
 ```
 
 ## Deployment

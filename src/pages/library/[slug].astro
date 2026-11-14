@@ -1,0 +1,195 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SCORES, type Score } from "../../data/scores";
+import { groupTokensByBar } from "../../lib/score";
+import { renderStaffSvg } from "../../lib/staff";
+import { keyLabel, noteNameForToken, positionLabel, scoreBeatsPerBar, tokenLabel } from "../../lib/harp";
+import { url } from "../../lib/url";
+
+export function getStaticPaths() {
+  return SCORES.map((score) => ({ params: { slug: score.slug }, props: { score } }));
+}
+
+interface Props {
+  score: Score;
+}
+
+const { score } = Astro.props;
+const index = SCORES.findIndex((item) => item.id === score.id);
+const prev = index > 0 ? SCORES[index - 1] : null;
+const next = index >= 0 && index < SCORES.length - 1 ? SCORES[index + 1] : null;
+const beatsPerBar = scoreBeatsPerBar(score.meter);
+const bars = groupTokensByBar(score.tokens, beatsPerBar);
+const staffSvg = renderStaffSvg(score);
+const related = SCORES.filter((item) => item.category === score.category && item.id !== score.id)
+  .sort((a, b) => Math.abs(SCORES.indexOf(a) - index) - Math.abs(SCORES.indexOf(b) - index))
+  .slice(0, 3);
+const sourceLabel = score.source === "traditional" ? "传统曲调 · 公有领域 · 教学改编" : "原创练习曲";
+---
+
+<BaseLayout
+  title={`${score.title} · 乐谱`}
+  description={`${score.title}：${score.level}，${score.key} 调，${positionLabel(score.position)}，${score.bars} 小节。${score.description}`}
+  current="/library"
+>
+  <section class="page-hero score-page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href={url("/")}>首页</a><span>/</span>
+        <a href={url("/library/")}>乐谱库</a><span>/</span>
+        <span>{score.id}</span>
+      </div>
+      <div class="score-hero-grid">
+        <div>
+          <span class="eyebrow" style="margin-top:18px;">{score.category} · {score.level}</span>
+          <h1>{score.title}</h1>
+          <p class="lead">{score.description}</p>
+          <div class="chapter-meta">
+            <span class="pill pill-accent">{score.level}</span>
+            <span class="pill">{score.key} 调</span>
+            <span class="pill">{score.harp} 调琴</span>
+            <span class="pill">{positionLabel(score.position)}</span>
+            <span class="pill">{score.bars} 小节</span>
+            <span class="pill">{score.tempo} BPM</span>
+          </div>
+        </div>
+        <div class="score-hero-side">
+          <div class="score-source">{sourceLabel}</div>
+          <button class="btn btn-ghost btn-sm" type="button" data-print-score>打印 / 存 PDF</button>
+          <a class="btn btn-primary btn-sm" href={url("/toolkit/#jam")}>去伴奏机</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="container score-layout">
+      <div class="score-main">
+        <div class="score-sheet">
+          <div class="score-sheet-head">
+            <div>
+              <span class="tool-tag">Harmonica score</span>
+              <h2>{score.title}</h2>
+            </div>
+            <div class="score-facts">
+              <span>{score.meter}</span>
+              <span>{score.bars} bars</span>
+              <span>{score.tempo} BPM</span>
+            </div>
+          </div>
+
+          <div class="score-staff" set:html={staffSvg}></div>
+          <p class="tool-note score-staff-hint">左右滑动查看完整五线谱 →</p>
+
+          <div class="score-player" data-score-player data-harp={score.harp} data-tempo={score.tempo} data-meter={score.meter}>
+            <script type="application/json" data-score-tokens set:html={JSON.stringify(score.tokens)}></script>
+            <div class="score-controls">
+              <button class="tool-btn tool-btn-primary" type="button" data-score-play>▶ 播放</button>
+              <button class="tool-btn" type="button" data-score-stop>停止</button>
+              <div class="score-tempo-control">
+                <label for={`tempo-${score.id}`}>速度</label>
+                <input id={`tempo-${score.id}`} type="range" min="40" max="160" value={score.tempo} data-score-tempo />
+                <span class="pill pill-accent" data-score-tempo-label>{score.tempo} BPM</span>
+              </div>
+              <label class="jam-toggle"><input type="checkbox" data-score-click checked /> 节拍器</label>
+              <label class="jam-toggle"><input type="checkbox" data-score-loop /> 循环</label>
+            </div>
+            <div class="score-status" data-score-status aria-live="polite">准备</div>
+          </div>
+
+          <div class="score-tab-wrap">
+            <div class="score-tab-head">
+              <span class="tool-tag">Harmonica tab</span>
+              <span class="tiny muted">数字 = 孔位 · - = 吸 · ' = 压半音 · 休 = 留白</span>
+            </div>
+            <div class="score-tab" data-score-tab>
+              {bars.map((bar) => (
+                <div class="score-bar">
+                  <span class="score-bar-num">{bar.bar}</span>
+                  <div class="score-bar-notes">
+                    {bar.tokens.map(({ token, index }) => (
+                      <button
+                        class:list={["score-note", token.rest && "is-rest"]}
+                        type="button"
+                        data-score-note={index}
+                      >
+                        <span class="score-note-tab">{tokenLabel(token)}</span>
+                        <span class="score-note-name">{noteNameForToken(token, score.harp)}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="score-tab-footer">
+            <span class="tiny muted">Tip：点任意音可以单独试听；播放时当前音会高亮。</span>
+            <a class="text-link" href={url("/toolkit/#harp-map")}>查音位图 →</a>
+          </div>
+        </div>
+
+        <div class="chapter-nav" aria-label="乐谱翻页">
+          {prev ? (
+            <a href={url(`/library/${prev.slug}/`)}>
+              <small>上一首 · {prev.category}</small>
+              <strong>← {prev.title}</strong>
+            </a>
+          ) : <span />}
+          {next ? (
+            <a href={url(`/library/${next.slug}/`)} style="text-align:right;">
+              <small>下一首 · {next.category}</small>
+              <strong>{next.title} →</strong>
+            </a>
+          ) : <span />}
+        </div>
+      </div>
+
+      <aside class="score-aside">
+        <div class="card">
+          <span class="kicker">Practice notes</span>
+          <h2 style="font-size:1.4rem;margin:10px 0;">怎么练这首</h2>
+          <p>{score.tips}</p>
+          <ol class="score-steps">
+            <li><strong>唱 / 听：</strong>先唱一遍旋律或节奏，找到句子的方向。</li>
+            <li><strong>慢速：</strong>用 60–70% 的速度，按小节分段，每段 4 遍。</li>
+            <li><strong>合起来：</strong>跟节拍器/伴奏完整走 3 遍，再录一遍。</li>
+            <li><strong>变形：</strong>改掉一个音或一个节奏，让它变成你的句子。</li>
+          </ol>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <span class="kicker">At a glance</span>
+          <div class="score-aside-facts">
+            <div><span>类别</span><strong>{score.category}</strong></div>
+            <div><span>难度</span><strong>{score.level}</strong></div>
+            <div><span>调性</span><strong>{keyLabel(score.key)}</strong></div>
+            <div><span>口琴</span><strong>{score.harp} 调</strong></div>
+            <div><span>把位</span><strong>{positionLabel(score.position)}</strong></div>
+            <div><span>拍号</span><strong>{score.meter}</strong></div>
+            <div><span>长度</span><strong>{score.bars} 小节</strong></div>
+            <div><span>来源</span><strong>{sourceLabel}</strong></div>
+          </div>
+          <div class="tag-row" style="margin-top:16px;">
+            {score.techniques.map((tag) => <span class="pill pill-accent">{tag}</span>)}
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <span class="kicker">Keep going</span>
+          <h2 style="font-size:1.3rem;margin:10px 0;">同类练习</h2>
+          <ul class="resource-links">
+            {related.map((item) => (
+              <li><a href={url(`/library/${item.slug}/`)}>{item.title}</a> <span>· {item.level}</span></li>
+            ))}
+          </ul>
+          <a class="text-link" href={url("/library/")} style="margin-top:12px;">回到乐谱库 →</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script>
+    import "../../scripts/score-player";
+  </script>
+</BaseLayout>
